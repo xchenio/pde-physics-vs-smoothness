@@ -3,10 +3,30 @@ import unittest
 from pathlib import Path
 import numpy as np
 import torch
-from scripts.architecture_core import make_model, output, train_one
+from scripts.architecture_core import DeterministicPool, make_model, output, train_one
 
 
 class ArchitectureTests(unittest.TestCase):
+    def test_pool_equivalence(self):
+        x=torch.randn(3,16,256,dtype=torch.float64,requires_grad=True)
+        a=DeterministicPool()(x)
+        b=torch.nn.functional.adaptive_avg_pool1d(x,24)
+        self.assertTrue(torch.allclose(a,b,atol=1e-14,rtol=0))
+        ga=torch.autograd.grad(a.square().sum(),x,retain_graph=True)[0]
+        gb=torch.autograd.grad(b.square().sum(),x)[0]
+        self.assertTrue(torch.allclose(ga,gb,atol=1e-14,rtol=0))
+
+    def test_field_coefficient_gradient_equivalence(self):
+        q=torch.linalg.qr(torch.randn(32,4,dtype=torch.float64))[0]
+        y=torch.randn(7,32,dtype=torch.float64)
+        c=torch.randn(7,4,dtype=torch.float64,requires_grad=True)
+        w=torch.rand(7,dtype=torch.float64)
+        field=(w*(c@q.T-y).square().sum(1)).mean()
+        coefficient=(w*(c-y@q).square().sum(1)).mean()
+        a=torch.autograd.grad(field,c,retain_graph=True)[0]
+        b=torch.autograd.grad(coefficient,c)[0]
+        self.assertTrue(torch.allclose(a,b,atol=1e-12,rtol=0))
+
     def test_resume_and_zero_initialization(self):
         torch.set_num_threads(4)
         torch.use_deterministic_algorithms(True)
