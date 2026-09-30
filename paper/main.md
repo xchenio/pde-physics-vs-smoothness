@@ -2,8 +2,8 @@
 
 **Evidence-audited research draft v2 — 2026-09-24. Not a submitted manuscript.**
 
-**Ongoing architecture diagnosis:** [fitting and architecture follow-up](FOLLOWUP_ARCHITECTURE_20260930.md).
-The completed development-only fitting stage finds direct MLP coefficient prediction much stronger than frozen-ridge residual prediction on Allen-Cahn; Burgers still favors regularized residuals. CNN/FNO transfer controls are pending. This weakens any general recommendation of residual learning based only on its improvement over linear regression.
+**Completed architecture diagnosis (108 development-only fits):** [fitting and architecture follow-up](FOLLOWUP_ARCHITECTURE_20260930.md).
+Direct full-field FNO is substantially stronger than the tested POD branches on all three tasks. Same-POD projection preserves its Burgers advantage, while rank16 limits Allen-Cahn accuracy. Direct prediction also beats the tested residual FNO settings. These results weaken any general recommendation of residual learning based only on its improvement over linear regression; they do not establish a novel architecture or unseen-data success.
 
 **Latest 2026-09-30 follow-up:** [continuous uncertainty shrinkage and next diagnostic](FOLLOWUP_UNCERTAINTY_20260930.md).
 The conditional uncertainty penalty does not beat old continuous/all-mode controls;

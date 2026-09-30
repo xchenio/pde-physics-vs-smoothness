@@ -1,5 +1,13 @@
 # Experiment ledger
 
+2026-09-30 architecture stages:72 MLP fitting controls +18 CNN/POD +18 full-field FNO,
+three seeds, three nonlinear tasks, development only. Selections sealed8192e38 before
+architecture transfer. Direct FNO0.195846/0.220706/0.003315; post-hoc same-POD projection
+0.192454/0.217435/0.026098. All108 checkpoints replayed;52 regression tests pass.
+Protocol/results: ARCHITECTURE_STAGES_V1.md / ARCHITECTURE_STAGES_V1_RESULTS.md.
+No fresh confirmation consumption; prior consumed IDs remain consumed. Prior continuous
+and all-mode controls retained; no established method novelty or equal-compute claim.
+
 > 2026-09-22 authority update: older rankings and statistical claims below are historical.
 > AUDIT_V2.md supersedes their error-decomposition and provenance interpretation.
 > New public-data evidence is indexed below and must not be pooled with legacy runs.

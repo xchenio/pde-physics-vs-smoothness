@@ -1,5 +1,16 @@
 # Current conclusions
 
+> Latest architecture diagnosis:108 development-only fits completed and replay-audited.
+> Direct FNO dev relative L2: original Burgers0.195846, independent0.220706,
+> synthetic Allen-Cahn0.003315. Best MLP residual:0.363701/0.402240/0.287272.
+> CNN same-POD helps Allen-Cahn (direct0.046134), not consistently Burgers.
+> FNO projected to same POD:0.192454/0.217435/0.026098. Thus Burgers has a large
+> mapping/encoder gap, while rank16 becomes a hard accuracy limit for Allen-Cahn.
+> Parameter count also differs (8752/8848/136481); no isolated encoder causal claim.
+> Next: parameter-matched spectral/POD controls and rank16/32/64, then lock rules
+> before genuinely unused confirmation. No new confirmation opened in this round.
+> Full tables: ARCHITECTURE_STAGES_V1_RESULTS.md; all52 regression tests passed.
+
 > Latest2026-09-30 UNCERTAINTY_MODAL_V1: continuous uncertainty penalty fails to beat
 > old continuous/all/matched-global controls. Independent Burgers error0.384878 versus
 > old0.382451,0.6345% worse, adjusted difference interval[0.001133,0.003818]. Original

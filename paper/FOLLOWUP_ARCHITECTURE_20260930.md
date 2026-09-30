@@ -32,4 +32,18 @@ CNN stage completed (18 fits; archived efe95e4):
 
 The almost parameter-matched CNN provides no consistent Burgers improvement, but substantially improves Allen-Cahn under the same POD basis and transferred settings. Direct CNN remains better than residual CNN on Allen-Cahn. This is task-dependent evidence for spatial inductive structure, not a universal superiority claim. POD projection oracle development relative L2 is0.110922/0.120144/0.025842 respectively; it is a lower bound within each fixed-POD affine output space, not for full-field models.
 
-FNO results are pending. Numerical source: `results/public_architecture_stages_v1`; source commit12d4c1e; selection seal8192e38. See `docs/ARCHITECTURE_STAGES_V1.md` for resume commands and limitations. No method novelty follows merely from using CNN/POD, FNO, or frozen-ridge residual learning.
+FNO stage completed (18 fits):
+
+| Task | FNO residual dev | FNO direct dev | Direct FNO projected to same POD |
+|---|---:|---:|---:|
+| Burgers original | 0.251721 ± 0.002890 | 0.195846 ± 0.007377 | 0.192454 |
+| Burgers independent | 0.276705 ± 0.004599 | 0.220706 ± 0.005479 | 0.217435 |
+| Allen-Cahn | 0.043046 ± 0.000211 | 0.003315 ± 0.000286 | 0.026098 |
+
+Post-hoc projection is a diagnostic, not a trained FNO/POD candidate or an independent validation. Burgers gains largely remain when FNO predictions are projected back into exactly the same affine POD space, so decoder freedom alone cannot explain the difference. It does not isolate spectral structure from parameter count or optimization. Allen-Cahn projected FNO approaches the POD oracle0.025842, while the full-field prediction is far below it: rank16 limits attainable accuracy once mapping is strong enough. Projection can reduce Burgers error by removing prediction components outside the basis; its error is not required to exceed the unprojected predictor's error.
+
+All108 new runs have been replay-audited and52 regression tests pass. Numerical source: `results/public_architecture_stages_v1`; source commit12d4c1e; selection seal8192e38. Full tables: `docs/ARCHITECTURE_STAGES_V1_RESULTS.md`. No new confirmation was opened; three development seeds and transferred settings do not establish a fully tuned architecture ranking. No method novelty follows merely from using CNN/POD, FNO, or frozen-ridge residual learning.
+
+## Revised research priority
+
+Retain old continuous/all-mode controls, but stop treating small modal-residual gains as the main contribution. First isolate encoder and decoder: spectral encoder with the same POD output, a parameter-matched non-spectral control, and rank16/32/64 selected using training/development only. Compare accuracy, measured compute and sample efficiency against direct full-field FNO. If an efficient low-rank model is competitive, lock its rule and all controls before genuinely unused confirmation and parameter/distribution shift tests. Efficient adaptive representation is a research hypothesis, not established novelty or success. No further architecture fitting is part of this completed108-run round.

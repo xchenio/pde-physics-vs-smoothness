@@ -1,5 +1,11 @@
 # Ordered architecture diagnosis (development only)
 
+Completed:108/108 runs; source12d4c1e, fitting-selection seal8192e38. Full tables in
+ARCHITECTURE_STAGES_V1_RESULTS.md; manuscript follow-up in paper/FOLLOWUP_ARCHITECTURE_20260930.md.
+Final audit: `scripts/audit_architecture_stages.py --require-complete`;52 tests pass.
+Post-hoc FNO→POD diagnostic was added after observing full-field results and is explicitly
+exploratory, not a preregistered arm or fresh confirmation.
+
 2026-09-30. Retain all previous experiments. No confirmation set is reopened as unseen data.
 
 1. Fixed rank-16 POD / MLP32: residual penalties 0, 0.1, 1 and budgets 1500, 6000; direct coefficients with penalty 0 at both budgets. Three paired seeds on original Burgers, independent Burgers and synthetic nonlinear Allen-Cahn: 72 fits.
