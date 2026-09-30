@@ -537,3 +537,6 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Initial CUDA CNN preflight failed because adaptive pooling backward is nondeterministic. Replaced pooling with equivalent bin-average matrix multiplication; retained preflight_plan.json, regenerated active plan before real training. No development outcome was used for this repair.
 - Commands: `D:/miniconda3/envs/pytorch/python.exe -m unittest tests.test_architecture_core -q`; `D:/miniconda3/envs/pytorch/python.exe scripts/run_architecture_stages.py plan`.
 - Next: fit (72), commit choices, spatial (18), FNO (18); all development-only, resumable every50 steps. Existing confirmations remain consumed.
+
+- First completed task: original Burgers24 fits; checkpoint replay audit passed24. Selected residual penalty1/1500 (dev0.363701) and direct1500 (0.369034). No-penalty residual train improves0.349670 to0.310076 with6000 schedule, while dev worsens0.370425 to0.386662. Penalty1/6000 dev0.365952 also loses to1500. These are development observations, not a fresh validation claim.
+- Full regression50 tests passed before two added equivalence checks; those additional checks passed separately. Audit/report commands: `scripts/audit_architecture_stages.py`, `scripts/report_architecture_stages.py` using the pytorch interpreter.
