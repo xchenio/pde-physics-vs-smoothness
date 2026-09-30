@@ -1,5 +1,16 @@
 # Current conclusions
 
+> Latest2026-09-30 UNCERTAINTY_MODAL_V1: continuous uncertainty penalty fails to beat
+> old continuous/all/matched-global controls. Independent Burgers error0.384878 versus
+> old0.382451,0.6345% worse, adjusted difference interval[0.001133,0.003818]. Original
+> Burgers has no confirmed primary gain; Allen-Cahn nonlinear arms are exact repeats.
+> Four more500-ID confirmation sets are now consumed; sealbfd52cd preceded extraction.
+> Next diagnostic: fixed penalty1 implies unconstrained correction r/2, not full r.
+> Allen-Cahn train actual0.353639 vs penalty1 oracle0.229930 vs POD oracle0.026088.
+> This supports investigating coefficient fitting/regularization before replacing the
+> decoder; not uniquely network capacity or optimization. Then compare spatial branch
+> and FNO with matched data/budgets. No architecture implementation started in this review.
+
 > Latest2026-09-29 FIELD_MODAL_V1: whole-field relevance (including projection error)
 > keeps original Burgers modes1/2/4, independent1/2, Advection none, synthetic Allen-Cahn
 > 1–15. Sourceb2d554c, selectionseal8a4020b BEFORE four new500-ID confirmation sets.

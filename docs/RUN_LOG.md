@@ -506,3 +506,26 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - No coefficient newly becomes zero. Added fresh-ID exclusion/preflight metadata test.
   Freeze these results and commit selection before new target extraction; no changes
   to penalty strength or candidate rule follow the unfavorable development comparison.
+- Full preconfirmation regression48 passed. Candidate sealbfd52cd preceded all four
+  new500-ID confirmations. Confirmation completed before the interrupted turn ended;
+  raw files persisted. On2026-09-30 resumed archival and architecture-direction review,
+  without changing models or starting any new architecture training.
+- No uncertainty candidate beats old continuous/all/matched-global controls under
+  predeclared criteria. Independent Burgers uncertainty0.384878 versus old0.382451,
+ 0.6345% worse, adjusted difference interval[0.001133,0.003818]. Original primary fails
+  despite1.4590% mean gain (interval crosses0). Independent primary3.4022% and synthetic
+  Allen-Cahn21.4176% pass versus linear; Allen-Cahn is unchanged old all-mode prediction,
+  not uncertainty gain. Advection deploys none. All2000 additional targets are consumed.
+- Read-only fitting diagnostic on existing training/development data: penalty1 free
+  coefficients minimize squared objective at delta=r/2. Allen-Cahn training actual
+ 0.353639, free-coefficient penalty1 oracle0.229930, POD oracle0.026088; development
+ 0.359048/0.230826/0.025842. Label-dependent diagnostic, not a deployable model, and
+  not a pure optimization attribution. No confirmation labels used for this diagnostic.
+- Historical FNO pilot test0.22835 is informative but from a different protocol; do not
+  compare directly with current residual results as a new controlled superiority claim.
+  Recommended next experiment is fitting/penalty/budget control before spatial branch
+  and same-protocol FNO, not an unsupported new-architecture novelty claim.
+- Independent audit replayed all bootstrap draws, development/confirmation predictions,
+  masks, matched-energy controls and16 inference comparisons. Final full regression49
+  passed, including historical candidate sealbfd52cd, raw-error statistics and paper
+  tables. Previous-turn results/documentation now archived; no new architecture training.

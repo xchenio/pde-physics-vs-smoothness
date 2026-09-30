@@ -94,3 +94,31 @@ Old/new nonzero mode counts remain11/11,9/9,13/13,16/16: no modes are newly dele
 Matched global amplitude factors are0.891607,0.797415,0.404901,1.0. On Allen-Cahn the
 box-constrained coefficients stay all1, so every nonlinear arm is an exact duplicate.
 No uncertainty advantage can be inferred from those identical predictions.
+
+## Confirmation completed; final assessment2026-09-30
+
+Selection sealbfd52cd preceded all four new500-ID extractions/generations. These2000
+targets are now consumed. The confirmation process completed before the conversation
+interruption; no model/strength changes followed. Raw errors remain in each task folder.
+
+| Task | All modes | Old continuous | Raw uncertainty | Matched global |
+|---|---:|---:|---:|---:|
+| Original Burgers | 0.420848 | 0.419806 | 0.419982 | 0.419670 |
+| Independent Burgers | 0.382781 | 0.382451 | 0.384878 | 0.384784 |
+| Advection | 0.017884071348 | 0.017884069382 | 0.017884124078 | 0.017884132110 |
+| Synthetic Allen-Cahn | 0.369091 | 0.369091 | 0.369091 | 0.369091 |
+
+The locked Advection candidate is none (0.017884195185), not the raw uncertainty arm.
+No comparison establishes superiority over old continuous, all-mode or matched-global
+controls under the16-comparison criteria. Independent Burgers is0.6345% worse than
+old continuous, adjusted error-difference interval[0.001133,0.003818]. Original Burgers
+versus linear improves1.4590% in mean but its adjusted interval[-0.018638,0.018631]
+crosses zero, so primary success fails. Independent Burgers versus linear passes3.4022%,
+and Allen-Cahn passes21.4176%, but Allen-Cahn is an exact old-model repeat, not a benefit
+of uncertainty. Advection has no gain claim. Do not rescue failure with secondary RMSE.
+
+Conclusion: this conditional-bootstrap amplitude penalty is not supported as an
+improvement. Retain old continuous/all as strong controls; do not tune1.96 on consumed
+confirmation targets. Before proposing another architecture, examine residual fitting
+under the fixed penalty1 and fixed1500-step budget, then compare a spatially structured
+coefficient encoder and an end-to-end FNO under matched data/tuning budgets.

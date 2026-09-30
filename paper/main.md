@@ -2,7 +2,13 @@
 
 **Evidence-audited research draft v2 — 2026-09-24. Not a submitted manuscript.**
 
-**Latest 2026-09-29 follow-up:** [whole-field relevance and synthetic Allen-Cahn](FOLLOWUP_FIELD_MODAL_20260929.md).
+**Latest 2026-09-30 follow-up:** [continuous uncertainty shrinkage and next diagnostic](FOLLOWUP_UNCERTAINTY_20260930.md).
+The conditional uncertainty penalty does not beat old continuous/all-mode controls;
+independent Burgers is slightly worse and Allen-Cahn is unchanged. Four new confirmation
+sets are consumed. Fixed correction penalty1 motivates a fitting/regularization audit
+before interpreting the remaining coefficient gap as a need for a novel architecture.
+
+**Earlier 2026-09-29 follow-up:** [whole-field relevance and synthetic Allen-Cahn](FOLLOWUP_FIELD_MODAL_20260929.md).
 Four newly sealed confirmation sets support gains over tuned linear maps on Burgers
 and a custom synthetic second nonlinear PDE. The new gate does not beat energy or old
 rules under predeclared criteria; Allen-Cahn exhibits slight harm from removing a small
