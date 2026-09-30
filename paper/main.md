@@ -2,6 +2,9 @@
 
 **Evidence-audited research draft v2 — 2026-09-24. Not a submitted manuscript.**
 
+**Ongoing architecture diagnosis:** [fitting and architecture follow-up](FOLLOWUP_ARCHITECTURE_20260930.md).
+The completed development-only fitting stage finds direct MLP coefficient prediction much stronger than frozen-ridge residual prediction on Allen-Cahn; Burgers still favors regularized residuals. CNN/FNO transfer controls are pending. This weakens any general recommendation of residual learning based only on its improvement over linear regression.
+
 **Latest 2026-09-30 follow-up:** [continuous uncertainty shrinkage and next diagnostic](FOLLOWUP_UNCERTAINTY_20260930.md).
 The conditional uncertainty penalty does not beat old continuous/all-mode controls;
 independent Burgers is slightly worse and Allen-Cahn is unchanged. Four new confirmation
