@@ -22,4 +22,14 @@ The previous Allen-Cahn residual gain over linear regression is therefore insuff
 
 ## Architecture stages
 
-CNN and FNO results are pending. Numerical source: `results/public_architecture_stages_v1`; source commit12d4c1e; selection seal8192e38. See `docs/ARCHITECTURE_STAGES_V1.md` for resume commands and limitations. No method novelty follows merely from using CNN/POD, FNO, or frozen-ridge residual learning.
+CNN stage completed (18 fits; archived efe95e4):
+
+| Task | CNN residual dev | CNN direct dev |
+|---|---:|---:|
+| Burgers original | 0.367876 ± 0.000291 | 0.389238 ± 0.001264 |
+| Burgers independent | 0.401304 ± 0.000833 | 0.423261 ± 0.001015 |
+| Allen-Cahn | 0.063771 ± 0.001256 | 0.046134 ± 0.000290 |
+
+The almost parameter-matched CNN provides no consistent Burgers improvement, but substantially improves Allen-Cahn under the same POD basis and transferred settings. Direct CNN remains better than residual CNN on Allen-Cahn. This is task-dependent evidence for spatial inductive structure, not a universal superiority claim. POD projection oracle development relative L2 is0.110922/0.120144/0.025842 respectively; it is a lower bound within each fixed-POD affine output space, not for full-field models.
+
+FNO results are pending. Numerical source: `results/public_architecture_stages_v1`; source commit12d4c1e; selection seal8192e38. See `docs/ARCHITECTURE_STAGES_V1.md` for resume commands and limitations. No method novelty follows merely from using CNN/POD, FNO, or frozen-ridge residual learning.
