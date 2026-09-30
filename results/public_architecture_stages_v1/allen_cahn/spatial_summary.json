@@ -1,0 +1,98 @@
+{
+  "context": {
+    "plan": "32bed3bf2d6f4bbec2a65c2aa3d77a869e2029eaf7704c13a0c469cb5dfafb11",
+    "task": "allen_cahn",
+    "anchor_sha256": "8f79d5f48746c16ee23c5891d635b9136e4398432de85f4ef03fc504bfa350fb",
+    "stage": "spatial",
+    "fit_selection_sha256": "824f57f38ea500d4e153f12e3e0830fd70c6ced8bcf939c7b41d6a2f11ef1236"
+  },
+  "groups": {
+    "residual_p0.1_b6000": {
+      "mapping": "residual",
+      "penalty": 0.1,
+      "steps": 6000,
+      "metrics": {
+        "train": {
+          "mean_relative_l2": {
+            "mean": 0.058191282713068136,
+            "std": 0.0006648107796202058
+          },
+          "rmse": {
+            "mean": 0.05111886052479551,
+            "std": 0.0006392166662282238
+          },
+          "relative_fro": {
+            "mean": 0.05892343044283068,
+            "std": 0.0007368090443277242
+          }
+        },
+        "val": {
+          "mean_relative_l2": {
+            "mean": 0.06377085703235073,
+            "std": 0.0012561192362937974
+          },
+          "rmse": {
+            "mean": 0.05745651485712322,
+            "std": 0.0012322685353579647
+          },
+          "relative_fro": {
+            "mean": 0.06595336144574294,
+            "std": 0.0014145002061607633
+          }
+        }
+      },
+      "parameters_real": 8848,
+      "mean_optimization_seconds": 35.41942923347233
+    },
+    "direct_p0_b6000": {
+      "mapping": "direct",
+      "penalty": 0.0,
+      "steps": 6000,
+      "metrics": {
+        "train": {
+          "mean_relative_l2": {
+            "mean": 0.041433172237887304,
+            "std": 0.0003710473466100893
+          },
+          "rmse": {
+            "mean": 0.03694824080415005,
+            "std": 0.0002656997227454981
+          },
+          "relative_fro": {
+            "mean": 0.04258931194196456,
+            "std": 0.00030626541693509887
+          }
+        },
+        "val": {
+          "mean_relative_l2": {
+            "mean": 0.046133698037514596,
+            "std": 0.0002898398855401398
+          },
+          "rmse": {
+            "mean": 0.041775537084034586,
+            "std": 6.620304235442214e-05
+          },
+          "relative_fro": {
+            "mean": 0.047953432326078314,
+            "std": 7.599335239992923e-05
+          }
+        }
+      },
+      "parameters_real": 8848,
+      "mean_optimization_seconds": 35.28934753353436
+    }
+  },
+  "neural_runs": 6,
+  "linear": {
+    "train": {
+      "mean_relative_l2": 0.45711051002738884,
+      "relative_fro": 0.45965280595771274,
+      "rmse": 0.39877053153550945
+    },
+    "val": {
+      "mean_relative_l2": 0.4588846345225843,
+      "relative_fro": 0.4628680167471848,
+      "rmse": 0.4032362035557535
+    }
+  }
+}
