@@ -16,7 +16,7 @@ from src.public_benchmark import atomic_json,file_hash
 
 def main():
     torch.set_num_threads(4)
-    audited=[];tables={}
+    audited=[];tables={};projection_diagnostics={}
     for task in ('burgers_original','burgers_independent','allen_cahn'):
         arrays,_=data_and_root(task);rows=field_plan()['correction_rows']
         arrays=dict(arrays,train_x=arrays['train_x'][rows],train_y=arrays['train_y'][rows])
@@ -48,6 +48,11 @@ def main():
                             measured=metrics(pred+v['offset'],v['y'])
                             for k,value in measured.items():
                                 assert np.isclose(value,r['metrics'][s]['prediction'][k],rtol=1e-6,atol=1e-8),(root,s,k)
+                            if c['architecture']=='fno' and s=='val':
+                                projected=pred@anchor['q']@anchor['q'].T+v['offset']
+                                projection_diagnostics[root.relative_to(ROOT).as_posix()]=dict(
+                                    full_field=measured,projected_to_fixed_pod=metrics(projected,v['y']),
+                                    pod_oracle=v['oracle'])
                     audited.append(str(root.relative_to(ROOT)))
                 actual=group(runs)
                 for s in ('train','val'):
@@ -60,6 +65,8 @@ def main():
     if '--require-complete' in sys.argv:
         assert len(audited)==108, f'expected108 runs, found{len(audited)}'
     atomic_json(OUT/'audit.json',dict(audited_runs=len(audited),runs=audited,scope='final checkpoint hashes, prediction replay, group aggregation, fit selection; development only'))
+    atomic_json(OUT/'fno_projection_diagnostic.json',dict(
+        scope='post-hoc development diagnostic, not a trained FNO/POD model or selected candidate',runs=projection_diagnostics))
     for task,stages in tables.items():
         print('\n'+task)
         for stage,s in stages.items():
@@ -67,6 +74,10 @@ def main():
             for label,g in s['groups'].items():
                 print(label,'train',round(g['metrics']['train']['mean_relative_l2']['mean'],6),'val',round(g['metrics']['val']['mean_relative_l2']['mean'],6),'sd',round(g['metrics']['val']['mean_relative_l2']['std'],6),'params',g['parameters_real'],'sec',round(g['mean_optimization_seconds'],1))
     print('AUDITED',len(audited))
+    for task in tables:
+        for mapping in ('direct','residual'):
+            values=[v for k,v in projection_diagnostics.items() if f'/{task}/' in k and f'/{mapping}_' in k]
+            if values:print('FNO projection',task,mapping,'full',np.mean([v['full_field']['mean_relative_l2'] for v in values]),'projected',np.mean([v['projected_to_fixed_pod']['mean_relative_l2'] for v in values]))
 
 
 if __name__=='__main__':main()
