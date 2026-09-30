@@ -1,0 +1,35 @@
+{
+  "source": "dbeda47d74fb8c289a8afec0cbf2b84317e059fe685e9ab0727d5c192236d5f7",
+  "tasks": [
+    "burgers_original",
+    "burgers_independent",
+    "allen_cahn"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "budgets": [
+    1500,
+    6000
+  ],
+  "penalties": [
+    0.0,
+    0.1,
+    1.0
+  ],
+  "rank": 16,
+  "lr": 0.001,
+  "lr_min": 1e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 32,
+  "eval_every": 250,
+  "checkpoint_every": 50,
+  "objective": "guarded training-energy normalized squared field-equivalent error; mean-target penalty on raw correction",
+  "stage1": "MLP32/one tanh; residual penalties0/.1/1 x1500/6000, direct penalty0 x1500/6000;3 paired seeds",
+  "selection": "stage1 fixed-final mean development L2 selects residual penalty/budget and direct budget separately; ties listed order; commit before stage2",
+  "stage2": "periodic CNN16x3,kernel5,tanh,adaptive24-bin pool and positional linear POD head; use both stage1-selected settings unchanged",
+  "stage3": "FNO32width16modes4layers full field; use both same selected settings unchanged; no own architecture-specific tuning",
+  "limits": "Development only; no fresh confirmation IDs/targets opened.600 fitting samples plus fixed representation400 information shared across models. Three seeds, not5; architecture-dependent parameters/compute. Cosine horizon changes with budget; no pure step-count attribution."
+}

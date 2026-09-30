@@ -529,3 +529,11 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   masks, matched-energy controls and16 inference comparisons. Final full regression49
   passed, including historical candidate sealbfd52cd, raw-error statistics and paper
   tables. Previous-turn results/documentation now archived; no new architecture training.
+
+### 2026-09-30 Ordered architecture preflight
+
+- Added architecture_core and run_architecture_stages; protocol in ARCHITECTURE_STAGES_V1.md.
+- CPU/CUDA resume test covers three architectures and both mappings (12 combinations), zero initialization and identity rejection; passed with exact model/history equality.
+- Initial CUDA CNN preflight failed because adaptive pooling backward is nondeterministic. Replaced pooling with equivalent bin-average matrix multiplication; retained preflight_plan.json, regenerated active plan before real training. No development outcome was used for this repair.
+- Commands: `D:/miniconda3/envs/pytorch/python.exe -m unittest tests.test_architecture_core -q`; `D:/miniconda3/envs/pytorch/python.exe scripts/run_architecture_stages.py plan`.
+- Next: fit (72), commit choices, spatial (18), FNO (18); all development-only, resumable every50 steps. Existing confirmations remain consumed.
