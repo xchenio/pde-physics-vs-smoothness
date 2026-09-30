@@ -1,0 +1,381 @@
+{
+  "identity": {
+    "config": {
+      "rank": 16,
+      "lr": 0.001,
+      "lr_min": 1e-05,
+      "weight_decay": 0.0001,
+      "batch_size": 32,
+      "eval_every": 250,
+      "checkpoint_every": 50,
+      "architecture": "mlp",
+      "mapping": "residual",
+      "penalty": 0.1,
+      "steps": 1500,
+      "seed": 0
+    },
+    "context": {
+      "plan": "32bed3bf2d6f4bbec2a65c2aa3d77a869e2029eaf7704c13a0c469cb5dfafb11",
+      "task": "burgers_independent",
+      "anchor_sha256": "3cfc337544fcfd3c8011d00a8804c711cc57cc8e68077f8f3f93219b1fba8472",
+      "stage": "fit"
+    },
+    "environment": {
+      "python": "3.11.16",
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "cuda": "13.0"
+    }
+  },
+  "git_commit": "ad076f698f886553eff29c0e126ff43e44431dda",
+  "history": [
+    {
+      "step": 0,
+      "metrics": {
+        "train": {
+          "prediction": {
+            "mean_relative_l2": 0.3883685659735439,
+            "relative_fro": 0.2503037641859777,
+            "rmse": 0.1478507852955133
+          },
+          "oracle": {
+            "mean_relative_l2": 0.11371009292105581,
+            "relative_fro": 0.06964725006058034,
+            "rmse": 0.041139615493272164
+          },
+          "coefficient_relative_fro": 0.24041887389443536,
+          "closure": 1.1102230246251565e-16,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.11894631163572503,
+            "relative_fro": 0.07299613412642636,
+            "rmse": 0.043117752500556945
+          }
+        },
+        "val": {
+          "prediction": {
+            "mean_relative_l2": 0.4093817737928228,
+            "relative_fro": 0.2555372611381545,
+            "rmse": 0.15936945823576826
+          },
+          "oracle": {
+            "mean_relative_l2": 0.12014404907286562,
+            "relative_fro": 0.07067257480173428,
+            "rmse": 0.044075959443698916
+          },
+          "coefficient_relative_fro": 0.24557011015366398,
+          "closure": -2.0816681711721685e-17,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.1256195353250017,
+            "relative_fro": 0.07411476645023934,
+            "rmse": 0.0462227313693374
+          }
+        }
+      }
+    },
+    {
+      "step": 250,
+      "metrics": {
+        "train": {
+          "prediction": {
+            "mean_relative_l2": 0.37165052993945874,
+            "relative_fro": 0.24521869544862307,
+            "rmse": 0.14484710930788042
+          },
+          "oracle": {
+            "mean_relative_l2": 0.11371009292105581,
+            "relative_fro": 0.06964725006058034,
+            "rmse": 0.041139615493272164
+          },
+          "coefficient_relative_fro": 0.2351201164437519,
+          "closure": 1.0408340855860843e-16,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.11894631163572503,
+            "relative_fro": 0.07299613412642636,
+            "rmse": 0.043117752500556945
+          }
+        },
+        "val": {
+          "prediction": {
+            "mean_relative_l2": 0.4124980940407187,
+            "relative_fro": 0.2590493588912025,
+            "rmse": 0.16155982810073954
+          },
+          "oracle": {
+            "mean_relative_l2": 0.12014404907286562,
+            "relative_fro": 0.07067257480173428,
+            "rmse": 0.044075959443698916
+          },
+          "coefficient_relative_fro": 0.2492227066557867,
+          "closure": 6.938893903907228e-18,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.1256195353250017,
+            "relative_fro": 0.07411476645023934,
+            "rmse": 0.0462227313693374
+          }
+        }
+      }
+    },
+    {
+      "step": 500,
+      "metrics": {
+        "train": {
+          "prediction": {
+            "mean_relative_l2": 0.3579707204290361,
+            "relative_fro": 0.2402254760382856,
+            "rmse": 0.14189768737900094
+          },
+          "oracle": {
+            "mean_relative_l2": 0.11371009292105581,
+            "relative_fro": 0.06964725006058034,
+            "rmse": 0.041139615493272164
+          },
+          "coefficient_relative_fro": 0.22990767689840155,
+          "closure": 1.1102230246251565e-16,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.11894631163572503,
+            "relative_fro": 0.07299613412642636,
+            "rmse": 0.043117752500556945
+          }
+        },
+        "val": {
+          "prediction": {
+            "mean_relative_l2": 0.40834297912917883,
+            "relative_fro": 0.25757519256906647,
+            "rmse": 0.1606404432444496
+          },
+          "oracle": {
+            "mean_relative_l2": 0.12014404907286562,
+            "relative_fro": 0.07067257480173428,
+            "rmse": 0.044075959443698916
+          },
+          "coefficient_relative_fro": 0.24769006237208013,
+          "closure": -6.938893903907228e-18,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.1256195353250017,
+            "relative_fro": 0.07411476645023934,
+            "rmse": 0.0462227313693374
+          }
+        }
+      }
+    },
+    {
+      "step": 750,
+      "metrics": {
+        "train": {
+          "prediction": {
+            "mean_relative_l2": 0.3493584584551497,
+            "relative_fro": 0.23750717828446996,
+            "rmse": 0.14029202851535696
+          },
+          "oracle": {
+            "mean_relative_l2": 0.11371009292105581,
+            "relative_fro": 0.06964725006058034,
+            "rmse": 0.041139615493272164
+          },
+          "coefficient_relative_fro": 0.22706589417094303,
+          "closure": 9.71445146547012e-17,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.11894631163572503,
+            "relative_fro": 0.07299613412642636,
+            "rmse": 0.043117752500556945
+          }
+        },
+        "val": {
+          "prediction": {
+            "mean_relative_l2": 0.40911574455227084,
+            "relative_fro": 0.25734870092500783,
+            "rmse": 0.16049918849965117
+          },
+          "oracle": {
+            "mean_relative_l2": 0.12014404907286562,
+            "relative_fro": 0.07067257480173428,
+            "rmse": 0.044075959443698916
+          },
+          "coefficient_relative_fro": 0.24745452317280925,
+          "closure": 6.938893903907228e-18,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.1256195353250017,
+            "relative_fro": 0.07411476645023934,
+            "rmse": 0.0462227313693374
+          }
+        }
+      }
+    },
+    {
+      "step": 1000,
+      "metrics": {
+        "train": {
+          "prediction": {
+            "mean_relative_l2": 0.345399460862326,
+            "relative_fro": 0.23587430630000486,
+            "rmse": 0.1393275148334499
+          },
+          "oracle": {
+            "mean_relative_l2": 0.11371009292105581,
+            "relative_fro": 0.06964725006058034,
+            "rmse": 0.041139615493272164
+          },
+          "coefficient_relative_fro": 0.2253573804682407,
+          "closure": 1.1796119636642288e-16,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.11894631163572503,
+            "relative_fro": 0.07299613412642636,
+            "rmse": 0.043117752500556945
+          }
+        },
+        "val": {
+          "prediction": {
+            "mean_relative_l2": 0.40962562436489447,
+            "relative_fro": 0.25669317217207144,
+            "rmse": 0.16009035864153917
+          },
+          "oracle": {
+            "mean_relative_l2": 0.12014404907286562,
+            "relative_fro": 0.07067257480173428,
+            "rmse": 0.044075959443698916
+          },
+          "coefficient_relative_fro": 0.24677271285669727,
+          "closure": 2.7755575615628914e-17,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.1256195353250017,
+            "relative_fro": 0.07411476645023934,
+            "rmse": 0.0462227313693374
+          }
+        }
+      }
+    },
+    {
+      "step": 1250,
+      "metrics": {
+        "train": {
+          "prediction": {
+            "mean_relative_l2": 0.34378489647832133,
+            "relative_fro": 0.23533040484329856,
+            "rmse": 0.13900624017040628
+          },
+          "oracle": {
+            "mean_relative_l2": 0.11371009292105581,
+            "relative_fro": 0.06964725006058034,
+            "rmse": 0.041139615493272164
+          },
+          "coefficient_relative_fro": 0.22478803349535686,
+          "closure": 1.1796119636642288e-16,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.11894631163572503,
+            "relative_fro": 0.07299613412642636,
+            "rmse": 0.043117752500556945
+          }
+        },
+        "val": {
+          "prediction": {
+            "mean_relative_l2": 0.40953938814419244,
+            "relative_fro": 0.25652017022230916,
+            "rmse": 0.1599824635076376
+          },
+          "oracle": {
+            "mean_relative_l2": 0.12014404907286562,
+            "relative_fro": 0.07067257480173428,
+            "rmse": 0.044075959443698916
+          },
+          "coefficient_relative_fro": 0.2465927511136038,
+          "closure": 0.0,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.1256195353250017,
+            "relative_fro": 0.07411476645023934,
+            "rmse": 0.0462227313693374
+          }
+        }
+      }
+    },
+    {
+      "step": 1500,
+      "metrics": {
+        "train": {
+          "prediction": {
+            "mean_relative_l2": 0.34341126652438836,
+            "relative_fro": 0.23522892518650299,
+            "rmse": 0.13894629761621605
+          },
+          "oracle": {
+            "mean_relative_l2": 0.11371009292105581,
+            "relative_fro": 0.06964725006058034,
+            "rmse": 0.041139615493272164
+          },
+          "coefficient_relative_fro": 0.22468179232727406,
+          "closure": 9.71445146547012e-17,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.11894631163572503,
+            "relative_fro": 0.07299613412642636,
+            "rmse": 0.043117752500556945
+          }
+        },
+        "val": {
+          "prediction": {
+            "mean_relative_l2": 0.40967043842501893,
+            "relative_fro": 0.25659571425217936,
+            "rmse": 0.1600295776195277
+          },
+          "oracle": {
+            "mean_relative_l2": 0.12014404907286562,
+            "relative_fro": 0.07067257480173428,
+            "rmse": 0.044075959443698916
+          },
+          "coefficient_relative_fro": 0.24667133547187714,
+          "closure": 6.938893903907228e-18,
+          "penalized_free_output_oracle": {
+            "mean_relative_l2": 0.1256195353250017,
+            "relative_fro": 0.07411476645023934,
+            "rmse": 0.0462227313693374
+          }
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "train": {
+      "prediction": {
+        "mean_relative_l2": 0.34341126652438836,
+        "relative_fro": 0.23522892518650299,
+        "rmse": 0.13894629761621605
+      },
+      "oracle": {
+        "mean_relative_l2": 0.11371009292105581,
+        "relative_fro": 0.06964725006058034,
+        "rmse": 0.041139615493272164
+      },
+      "coefficient_relative_fro": 0.22468179232727406,
+      "closure": 9.71445146547012e-17,
+      "penalized_free_output_oracle": {
+        "mean_relative_l2": 0.11894631163572503,
+        "relative_fro": 0.07299613412642636,
+        "rmse": 0.043117752500556945
+      }
+    },
+    "val": {
+      "prediction": {
+        "mean_relative_l2": 0.40967043842501893,
+        "relative_fro": 0.25659571425217936,
+        "rmse": 0.1600295776195277
+      },
+      "oracle": {
+        "mean_relative_l2": 0.12014404907286562,
+        "relative_fro": 0.07067257480173428,
+        "rmse": 0.044075959443698916
+      },
+      "coefficient_relative_fro": 0.24667133547187714,
+      "closure": 6.938893903907228e-18,
+      "penalized_free_output_oracle": {
+        "mean_relative_l2": 0.1256195353250017,
+        "relative_fro": 0.07411476645023934,
+        "rmse": 0.0462227313693374
+      }
+    }
+  },
+  "optimization_seconds": 4.224726499582175,
+  "parameters_real": 8752,
+  "selected_sha256": "87711fc9ee697e43872c1f5c998c0aa82d19778e9e5bcb27602116589384d227",
+  "denominator_floor": 0.011867149969475225,
+  "selection": "fixed final step; all histories retained, no checkpoint picking"
+}
