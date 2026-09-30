@@ -57,6 +57,8 @@ def main():
                 for mapping in ('residual','direct'):
                     best=min([g for g in summary['groups'].values() if g['mapping']==mapping],key=lambda g:g['metrics']['val']['mean_relative_l2']['mean'])
                     assert chosen[mapping]==best
+    if '--require-complete' in sys.argv:
+        assert len(audited)==108, f'expected108 runs, found{len(audited)}'
     atomic_json(OUT/'audit.json',dict(audited_runs=len(audited),runs=audited,scope='final checkpoint hashes, prediction replay, group aggregation, fit selection; development only'))
     for task,stages in tables.items():
         print('\n'+task)
