@@ -5,6 +5,7 @@
 - Added FNO_PROJECTION_V1 protocol:36 paired fits, full/POD16/32/64,3 tasks,3 seeds; identical136481-parameter encoder/head, optimizer, initialization and batches. No new confirmation data.
 - Coefficient loss equals projected-field squared loss up to a fixed target projection constant. Raw projected-arm fields outside the POD subspace are diagnostic only. Saved initialization and rolling batch hashes make pairing auditable.
 - Preflight: gradient/subspace equivalence, CPU/CUDA exact resume, matching initialization/batch hashes, full-arm bitwise equivalence to historical training core. Source and immutable plan to be committed before formal training.
+- Source seal3cac70a; full regression57 tests passed (46.908s). Original Burgers12 fits completed/replay-audited. Full0.195846; training-POD16/32/64:0.191759/0.188328/0.190009; paired full-training post-hoc POD:0.192454/0.192368/0.194286. Historical full final tensors match bitwise for all3 seeds. Initialization and all1500 batch hashes agree across arms. Differences remain exploratory reused-development evidence.
 
 ## 2026-10-08 Spectral/POD matched-parameter study
 
