@@ -5,6 +5,7 @@
 - New54-fit development-only protocol in SPECTRAL_POD_V1.md. Historical sources/results unchanged. Two encoders share heads and exactly match nominal real parameter counts; rank16/32/64 basis uses representation400 only, correction600 fitting,dev200; three seeds.
 - CPU/CUDA resume, zero head, parameter matching and nested-basis tests passed (`-m unittest tests.test_spectral_pod -q`,3 tests). Real-data basis preflight succeeded for all3 tasks and ranks, preserving historical q16. No confirmation data loaded.
 - Source/plan committed before outcomes; run command `D:/miniconda3/envs/pytorch/python.exe scripts/run_spectral_pod.py run`. Checkpoints every50 steps; all54 fits and rank selections will be archived. Selection is development-adaptive, not unseen validation.
+- Source seal de5cc93. Full regression55 tests passed (37.685s). Original Burgers18 fits completed/replay-audited: spectral ranks16/32/64 dev0.273799/0.288870/0.296425; local matched0.373109/0.393550/0.398890. Both select16. Nominal real parameters147696/160000/184608. Increasing rank improves training/projection floor but worsens final development error; all tested spectral models remain weaker than old direct full FNO0.195846.
 
 ## 2026-09-22 — second audit and actual recovery implementation
 
