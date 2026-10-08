@@ -1,0 +1,33 @@
+{
+  "parent": "ca3ed46b8a527af0645f61b327cd4609807922186ce0f364bc92c25ea9f97097",
+  "source": "77409904db72e9bf8107ccf9be710b01301690e5736c5290c4bd82c05725c4f3",
+  "tasks": [
+    "burgers_original",
+    "burgers_independent",
+    "allen_cahn"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "rank": 64,
+  "steps": {
+    "burgers_original": 1500,
+    "burgers_independent": 1500,
+    "allen_cahn": 6000
+  },
+  "lr": 0.001,
+  "lr_min": 1e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 32,
+  "eval_every": 250,
+  "checkpoint_every": 50,
+  "encoder": "periodic CNN32 stride4/4,16positions x4channels=64 scalars, linear64->64 branch head",
+  "trunk": "physical x,t; periodic sin/cos frequencies1..16 plus normalized time; tanh33->64->64->64; inner product/sqrt64",
+  "data": "historical correction600 train, development200; same normalization, input sample mean offset and guarded weighted field loss as FNO",
+  "selection": "rank64 locked before compression study finished; fixed final step, all9 fits reported; no per-model tuning",
+  "grid": "Burgers true retained cell centers(4i+0.5)/1024,t1; Allen-Cahn2i/256,t0.5",
+  "comparison": "retained full-field FNO136481 params, same seeds/batches/loss/steps; different params and readout, contextual baseline only",
+  "limits": "Fixed-time data-only training: supplied t is constant within each task, temporal dependence unvalidated. No physics, attention, cross-resolution or fresh confirmation yet. No future-field encoder at inference."
+}

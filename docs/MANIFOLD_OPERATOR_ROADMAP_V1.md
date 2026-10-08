@@ -35,14 +35,24 @@ These are finite-grid structure diagnostics, not continuum/PDE residual certific
 All ranks and seeds reported. Repeated development; no new confirmation opened.
 Full optimizer/model/random/step/history checkpoints every50; eval every250.
 
-## Stage 2: data-only operator baseline (pending)
+## Stage 2: data-only operator baseline (registered, training after stage1)
 
-Retain historical full-field FNO and its post-hoc projection. Build CNN branch plus
-smooth coordinate trunk DeepONet; distinguish output representation reconstruction
+Retain historical full-field FNO and its post-hoc projection. New registered family
+`results/spatial_deeponet_v1`: CNN branch plus smooth coordinate trunk DeepONet;
+rank64 predetermined before stage1 finished,9 fits, three tasks x three seeds.
+Command `D:/miniconda3/envs/pytorch/python.exe scripts/run_spatial_deeponet.py run`.
+Periodic stride4/4 CNN,16positions x4channels, linear64->64 branch; periodic Fourier
+features1..16 with physical x and normalized t, tanh33->64->64->64 trunk. Branch
+head zero initialized, fixed final step1500 Burgers/6000 Allen-Cahn. Same correction600
+and development200, normalized weighted field objective and paired batches as FNO.
+Capacity differs; no attribution to encoder alone. No transferred output AE at inference.
+Coordinates use actual Burgers retained centers(4i+0.5)/1024 and Allen-Cahn2i/256.
+Physical coordinate derivative finite-difference and periodicity tests passed; CPU/CUDA
+bitwise resume passed. This first baseline is fixed-time only; distinguish reconstruction
 from the initial-field-to-solution mapping. Check coordinate derivative correctness
 before adding physics. Select architecture/trunk rank by a declared development
 protocol, not by reusing stage1 reconstruction as evidence of operator accuracy.
-For evolving PDEs, expand output to u(a;x,t); fixed-time predictor cannot supply u_t.
+For evolving PDEs, expand training to u(a;x,t); fixed-time training cannot identify u_t.
 Existing Burgers HDF5 contains time slices; inspect coordinate/time conventions and
 subsampling before choosing a trajectory protocol. Synthetic solver can provide
 time slices; register generator versions and discretization QA. No new data required

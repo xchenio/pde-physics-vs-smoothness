@@ -577,6 +577,17 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- While stage1 runs, register fixed rank64 CNN/smooth periodic-trunk DeepONet
+  baseline (spatial_deeponet_v1),9 fits queued sequentially after stage1. No attention
+  or physics; same600 correction rows,200 dev, guarded field loss/batches/budgets as FNO.
+- Stage2 tests2 passed4.421s: first/second physical-coordinate derivatives against
+  finite differences, exact periodicity, native coarse coordinates,64-scalar bottleneck,
+  CPU/CUDA exact resume and configuration-change rejection.
+- Time alignment is ALREADY registered in src/public_benchmark.py/protocol.json:
+  discard trailing2.01 time coordinate. Upstream generator confirmed it_tot solution
+  entries versus it_tot+1 coordinates and epsilon/pi diffusion coefficient:
+  https://raw.githubusercontent.com/pdebench/PDEBench/main/pdebench/data_gen/data_gen_NLE/BurgersEq/burgers_multi_solution_Hydra.py
+
 - User authorized five ordered stages; register them in MANIFOLD_OPERATOR_ROADMAP_V1.md.
 - New stage1 family manifold_reconstruction_v1,81 AE fits:3tasks x3ranks x3arms x3seeds;
   train representation400, evaluate reused development200 only. Independent POD per rank.
