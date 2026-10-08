@@ -1,5 +1,11 @@
 # Run log
 
+## 2026-10-08 Spectral/POD matched-parameter study
+
+- New54-fit development-only protocol in SPECTRAL_POD_V1.md. Historical sources/results unchanged. Two encoders share heads and exactly match nominal real parameter counts; rank16/32/64 basis uses representation400 only, correction600 fitting,dev200; three seeds.
+- CPU/CUDA resume, zero head, parameter matching and nested-basis tests passed (`-m unittest tests.test_spectral_pod -q`,3 tests). Real-data basis preflight succeeded for all3 tasks and ranks, preserving historical q16. No confirmation data loaded.
+- Source/plan committed before outcomes; run command `D:/miniconda3/envs/pytorch/python.exe scripts/run_spectral_pod.py run`. Checkpoints every50 steps; all54 fits and rank selections will be archived. Selection is development-adaptive, not unseen validation.
+
 ## 2026-09-22 — second audit and actual recovery implementation
 
 - Completed `python scripts/probe_coefficients.py`: four fixed-trunk supervised pilot runs,

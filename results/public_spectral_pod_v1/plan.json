@@ -1,0 +1,40 @@
+{
+  "parent": "32bed3bf2d6f4bbec2a65c2aa3d77a869e2029eaf7704c13a0c469cb5dfafb11",
+  "source": "1a1f3de341504b1e2f9289c1a987fc430a9c63e029ac3f239948731023917bf6",
+  "tasks": [
+    "burgers_original",
+    "burgers_independent",
+    "allen_cahn"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "ranks": [
+    16,
+    32,
+    64
+  ],
+  "architectures": [
+    "spectral_pod",
+    "local_pod"
+  ],
+  "steps": {
+    "burgers_original": 1500,
+    "burgers_independent": 1500,
+    "allen_cahn": 6000
+  },
+  "lr": 0.001,
+  "lr_min": 1e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 32,
+  "eval_every": 250,
+  "checkpoint_every": 50,
+  "mapping": "direct",
+  "penalty": 0.0,
+  "comparison": "four width32 GELU blocks; spectral16 complex modes + local1 vs periodic real kernel33; identical lift,24-bin pooling,zero POD head; exactly equal real parameter count per rank",
+  "basis": "representation400 only; preserve historical q16 exactly; nested orthogonal complement from representation POD; shared historical input normalization; correction600 fitting,development200",
+  "selection": "report all54 fits; fixed final step; select rank by mean development relativeL2 within encoder only; ties lower rank; no new confirmation",
+  "limits": "Repeated development reuse; three seeds; equal parameter count is not equal compute, initialization or receptive field. Budgets transferred from prior direct MLP choices, no per-architecture tuning. No novelty claim."
+}
