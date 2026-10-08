@@ -577,6 +577,14 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- Full regression67 tests passed58.003s. Same100-shot/time FNO16/32 controls registered
+  before confirmation (6 fits, fixed final, exact labeled batch sequence), not replacing
+  registered4 factorial contrasts. New FNO trajectory CPU/CUDA resume/shape test1
+  passed4.631s. Width16 rough capacity bracket only; all widths reported.
+- Confirmation profiles record synchronized host-inclusive network latency, total live
+  CUDA allocation AND incremental inference peak; no inference speed claims based on
+  concurrent training. No fresh target opened at this entry.
+
 - Stage3 all18 fits independently replayed;33256 params in both arms, full initial/
   batch pairing audited. Attention improves original/independent Burgers dev to
   0.288996/0.332460 vs gate0.376506/0.396253; Allen worse0.027256 vs0.022733.

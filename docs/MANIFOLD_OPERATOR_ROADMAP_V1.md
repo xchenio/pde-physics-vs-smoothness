@@ -94,6 +94,14 @@ Primary: trajectory-averaged relativeL2 over noninitial times, not extrapolation
 Command `D:/miniconda3/envs/pytorch/python.exe scripts/run_physics_token.py run`.
 This first physics pilot is ONE Burgers PDE; Allen-Cahn physics remains untested.
 
+Before confirmation, add6 same100-shot FNO controls: widths16/32,16 Fourier modes,
+four layers,5 known-time output heads. Same labels, normalized weighted objective,
+steps/seed batch sequence; no PDE derivatives, hence different compute. Width16 is
+a rough capacity bracket, not exact parameter matching. Retain both widths, no
+selection. Output256 only: no fabricated continuous-time or512 query capability.
+Family `results/fno_small_trajectory_v1`; plan/model hashes sealed with factorial.
+Command `D:/miniconda3/envs/pytorch/python.exe scripts/run_fno_small_trajectory.py run`.
+
 Same chosen data-only architecture, same labeled trajectories/time coverage, matched
 collocation sets and optimization budgets, physics weight0 versus registered nonzero
 weights. Smooth coordinate path, physical-unit chain factors, independent derivative
@@ -109,8 +117,9 @@ registered historical IDs (including synthetic IDs for extra conservatism). Regi
 artifacts/hashes are saved before extraction. No new reserved target has been opened.
 Four registered primary contrasts,10k paired trajectory bootstrap, Bonferroni4 CI,
 at least1% relative gain and upper difference interval<0. All4 arms will be locked
-and evaluated; no best-seed/weight selection. Final-time retained FNO600 is contextual
-only: not a matching100-shot/multitime training control. Before opening, commit all
+and evaluated; no best-seed/weight selection. Same100-shot FNO16/32 are additional
+descriptive strong controls, not additional registered primary hypothesis tests.
+Final-time retained FNO600 is contextual only. Before opening, commit all
 final model hashes/source/data hashes and seal. Results must explicitly consume IDs.
 
 Use a factorial attention on/off x physics on/off design, not only best combination

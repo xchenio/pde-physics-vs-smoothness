@@ -18,6 +18,8 @@ from scripts.run_incremental_modal import committed
 from scripts.manifold_reconstruction import score,metric_floors
 from scripts.run_public_benchmark import metrics
 from scripts.fno_projection_core import make_model as fno_model,output as fno_output
+from scripts.run_fno_small_trajectory import plan as small_plan,OUT as SMALL
+from scripts.fno_small_trajectory import make_model as small_model
 from src.public_benchmark import atomic_json,file_hash
 from src.resume import atomic_save
 
@@ -35,13 +37,22 @@ def seal(p):
                 if r['final_sha256']!=file_hash(cp) or r['identity']['context']['plan']!=digest(p):raise ValueError('model/context mismatch')
                 models[arm].append(dict(seed=seed,path=cp.relative_to(ROOT).as_posix(),sha256=file_hash(cp)))
                 artifacts[(folder/'result.json').relative_to(ROOT).as_posix()]=file_hash(folder/'result.json')
+    small=small_plan();small_audit=json.loads((SMALL/'audit.json').read_text())
+    if small_audit['checked_runs']!=6 or small_audit['plan']!=digest(small):raise ValueError('complete FNO100 audit required')
+    small_models=[]
+    for width in small['widths']:
+        for seed in small['seeds']:
+            folder=SMALL/f'w{width}_s{seed}';path=folder/'checkpoints/final.pt';r=json.loads((folder/'result.json').read_text())
+            if file_hash(path)!=r['final_sha256']:raise ValueError('FNO100 changed')
+            small_models.append(dict(seed=seed,width=width,path=path.relative_to(ROOT).as_posix(),sha256=file_hash(path)))
     fno_models=[]
     for seed in p['seeds']:
         folder=ROOT/'results/public_fno_projection_v1/burgers_original'/f'full_s{seed}'
         path=folder/'checkpoints/final.pt';r=json.loads((folder/'result.json').read_text())
         if file_hash(path)!=r['selected_sha256']:raise ValueError('historical FNO changed')
         fno_models.append(dict(seed=seed,path=path.relative_to(ROOT).as_posix(),sha256=file_hash(path)))
-    locked_json(OUT/'selection_lock.json',dict(plan=digest(p),models=models,fno_models=fno_models,artifacts=artifacts,
+    locked_json(OUT/'selection_lock.json',dict(plan=digest(p),models=models,fno_models=fno_models,small_fno_models=small_models,
+                small_plan=digest(small),small_audit_sha256=file_hash(SMALL/'audit.json'),artifacts=artifacts,
                 audit_sha256=file_hash(OUT/'audit.json'),summary_sha256=file_hash(OUT/'summary.json'),
                 confirm_source_sha256=file_hash(Path(__file__)),preseal_commit=git_commit(),
                 policy='all4 arms, no adaptive model/weight/seed selection;4 registered primary contrasts; bootstrap conditional on3 fitted seeds'))
@@ -82,7 +93,9 @@ def profile(model,x,coords,device):
     """Host-inclusive synchronized timings, same batch64/query grid; no concurrent trainer."""
     with torch.inference_mode():
         for _ in range(10):model(x,coords)
-        if device.type=='cuda':torch.cuda.synchronize();torch.cuda.reset_peak_memory_stats(device)
+        baseline=0
+        if device.type=='cuda':
+            torch.cuda.synchronize();baseline=int(torch.cuda.memory_allocated(device));torch.cuda.reset_peak_memory_stats(device)
         durations=[]
         for _ in range(50):
             begin=time.perf_counter();model(x,coords)
@@ -90,7 +103,8 @@ def profile(model,x,coords,device):
             durations.append(time.perf_counter()-begin)
     return dict(batch=len(x),query_points=len(coords),warmup=10,repeats=50,mean_ms=float(np.mean(durations)*1000),
                 median_ms=float(np.median(durations)*1000),peak_allocated_bytes=int(torch.cuda.max_memory_allocated(device)) if device.type=='cuda' else 0,
-                note='host-inclusive synchronized wall latency; inclusive live model/input/output allocation, not reserved VRAM')
+                baseline_allocated_bytes=baseline,incremental_peak_allocated_bytes=int(torch.cuda.max_memory_allocated(device))-baseline if device.type=='cuda' else 0,
+                note='host-inclusive synchronized wall latency; total is inclusive process-live evaluation allocations, incremental peak isolates added inference allocation; not reserved/whole-device VRAM')
 
 
 def confirm(p,device):
@@ -99,7 +113,8 @@ def confirm(p,device):
     if lock['audit_sha256']!=file_hash(OUT/'audit.json') or lock['summary_sha256']!=file_hash(OUT/'summary.json'):raise ValueError('development audit changed')
     for name,h in lock['artifacts'].items():
         if file_hash(ROOT/name)!=h:raise ValueError('sealed result changed')
-    for entry in [e for entries in lock['models'].values() for e in entries]+lock['fno_models']:
+    if lock['small_plan']!=digest(small_plan()) or lock['small_audit_sha256']!=file_hash(SMALL/'audit.json'):raise ValueError('FNO100 audit/plan changed')
+    for entry in [e for entries in lock['models'].values() for e in entries]+lock['fno_models']+lock['small_fno_models']:
         if file_hash(ROOT/entry['path'])!=entry['sha256']:raise ValueError('sealed checkpoint changed')
     resultpath=OUT/'confirmation.json'
     if resultpath.exists():
@@ -133,6 +148,22 @@ def confirm(p,device):
             row=dict(identity=identity,seed=entry['seed'],scores=scores,pde_rms=pde,profiles=timing)
             atomic_json(path,row);rows.append(row);print('CONFIRMED',arm,entry['seed'],scores['256']['primary'],flush=True)
         records[arm]=rows
+    small_records={}
+    for entry in lock['small_fno_models']:
+        path=OUT/'confirmation_runs'/f"fno_w{entry['width']}_s{entry['seed']}.json";identity=dict(lock=lockhash,model=entry['sha256'],data_sha256=file_hash(DATA/'confirmation.pt'))
+        if path.exists():
+            row=json.loads(path.read_text())
+            if row['identity']!=identity:raise ValueError('FNO100 partial result changed')
+        else:
+            cp=torch.load(ROOT/entry['path'],map_location='cpu',weights_only=False);model=small_model(entry['width'],entry['seed'],device);model.load_state_dict(cp['model']);model.eval()
+            raw=np.asarray(a['x'],dtype=float);norm=cp['normalization'];x=torch.tensor((raw-norm['mean'])/norm['std'],dtype=torch.float32,device=device)
+            native=torch.tensor(a['grid256'],dtype=torch.float32,device=device)
+            with torch.no_grad():pred=torch.cat([model(b,native) for b in x.split(64)]).cpu().numpy().astype(float)*cp['scale']+raw.mean(1)[:,None,None]
+            e=trajectory_errors(pred,a['y256'])
+            timing=profile(lambda inputs,unused:model(inputs,native),x[:64],grid(a['grid256'],a['times'],device),device)
+            row=dict(identity=identity,width=entry['width'],seed=entry['seed'],primary=float(e[:,1:].mean()),by_time=e.mean(0).tolist(),per_sample=e[:,1:].mean(1).tolist(),profile=timing)
+            atomic_json(path,row);print('CONFIRMED FNO100',entry['width'],entry['seed'],row['primary'],flush=True)
+        small_records.setdefault(str(entry['width']),[]).append(row)
     means={arm:np.mean([r['scores']['256']['per_sample'] for r in rows],axis=0) for arm,rows in records.items()}
     comparisons={name:contrast(means[left],means[right]) for name,left,right in (
         ('attention_without_physics','attention_p0','gate_p0'),('physics_without_attention','gate_p0.01','gate_p0'),
@@ -155,7 +186,9 @@ def confirm(p,device):
     summary={arm:{str(res):dict(mean=float(np.mean([r['scores'][str(res)]['primary'] for r in rows])),seed_sd=float(np.std([r['scores'][str(res)]['primary'] for r in rows],ddof=1))) for res in (256,512)} for arm,rows in records.items()}
     interaction=float(np.mean((means['attention_p0.01']-means['attention_p0'])-(means['gate_p0.01']-means['gate_p0'])))
     r=dict(lock=lockhash,plan=digest(p),consumed=True,confirmation_ids=p['confirmation_ids'],records=records,summary=summary,comparisons=comparisons,
-           interaction_difference_descriptive=interaction,fno_context=fno,bootstrap='10k trajectories, Bonferroni4; conditional on3 fixed fits, no seed uncertainty bootstrap',
+           interaction_difference_descriptive=interaction,fno_context=fno,small_fno_records=small_records,
+           small_fno_summary={w:dict(mean=float(np.mean([v['primary'] for v in rows])),seed_sd=float(np.std([v['primary'] for v in rows],ddof=1))) for w,rows in small_records.items()},
+           bootstrap='10k trajectories, Bonferroni4; conditional on3 fixed fits, no seed uncertainty bootstrap',
            limitations='one PDE100-shot;all evaluation times supervised;output query transfer with fixed input256;no noise/time extrapolation/full sensor transfer/universal superiority claim')
     atomic_json(resultpath,r);print('CONFIRMATION COMPLETE',summary,comparisons,flush=True);return r
 

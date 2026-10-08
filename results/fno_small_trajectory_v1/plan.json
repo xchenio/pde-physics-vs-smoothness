@@ -1,0 +1,25 @@
+{
+  "parent": "2a11d399dc54c2beca63d692b417d5b2fdeee088b282aa7a567391baa1c5df3f",
+  "source": "ad68bf5ab23c36225a7bdf48d2329898f475e6446ed04744b87caaf719652db0",
+  "widths": [
+    16,
+    32
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "steps": 1500,
+  "lr": 0.001,
+  "lr_min": 1e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 16,
+  "collocation": 32,
+  "eval_every": 250,
+  "checkpoint_every": 50,
+  "data": "exact same100 trajectories,5 supervised time slices,train-only scalar normalization/scale/weights and minibatch sequence as physics factorial",
+  "architecture": "FNO16modes4layers,width16 or32,pointwise head5 known-time channels,zero initialized; output256 only",
+  "selection": "all6 fits reported,fixed final;source/widths locked before confirmation;no model tuning",
+  "limits": "width16 is a rough capacity bracket,not exact parameter matching. Same labels/steps but FNO does not compute PDE derivatives,so unequal FLOPs/time. Discrete time heads cannot extrapolate/query512 without another policy. Descriptive strong controls,not additional registered primary hypothesis tests."
+}
