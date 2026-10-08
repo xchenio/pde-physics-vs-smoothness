@@ -16,11 +16,11 @@ def main():
     latency=[np.mean([r['profiles']['256']['mean_ms'] for r in c['records'][a]]) for a in arms]+[np.mean([r['profile']['mean_ms'] for r in c['small_fno_records'][w]]) for w in ('16','32')]
     colors=['#6c8599','#397ea6','#d69c55','#be772b','#457f4a','#205d2a'];fig,axs=plt.subplots(1,2,figsize=(10.7,4.1))
     y=np.arange(6);axs[0].barh(y,means,xerr=sd,color=colors,capsize=3);axs[0].set_yticks(y,labels);axs[0].invert_yaxis()
-    axs[0].set_xlabel('Mean trajectory relative L2 (lower is better)');axs[0].set_title('Fresh500: same100 training trajectories')
-    axs[1].barh(y,latency,color=colors);axs[1].set_yticks(y,labels);axs[1].invert_yaxis();axs[1].set_xlabel('Synchronized batch64 network latency (ms)');axs[1].set_title('Five256-point fields per input')
+    axs[0].set_xlabel('Mean trajectory relative L2 (lower is better)');axs[0].set_title('Fresh 500: same 100 training trajectories')
+    axs[1].barh(y,latency,color=colors);axs[1].set_yticks(y,labels);axs[1].invert_yaxis();axs[1].set_xlabel('Synchronized batch 64 network latency (ms)');axs[1].set_title('Five 256-point fields per input')
     for ax in axs:ax.grid(axis='x',alpha=.2);ax.set_axisbelow(True)
-    fig.text(.5,.025,'Error bars: SD of3 fitted seeds, not confidence intervals. Same labels/steps; parameters/compute differ.\n'
-             'One Burgers100-shot pilot;500 confirmation trajectories now consumed; no temporal or full-sensor extrapolation.',ha='center',fontsize=8.5)
+    fig.text(.5,.025,'Error bars: SD of 3 fitted seeds, not confidence intervals. Same labels/steps; parameters/compute differ.\n'
+             'One Burgers 100-shot pilot; 500 confirmation trajectories now consumed; no temporal or full-sensor extrapolation.',ha='center',fontsize=8.5)
     fig.tight_layout(rect=(0,.12,1,1));folder=ROOT/'paper/figures'
     for ext in ('png','svg'):fig.savefig(folder/f'physics_token_confirmation_20261008.{ext}',dpi=180)
     plt.close(fig)

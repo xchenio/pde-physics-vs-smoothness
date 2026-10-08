@@ -13,6 +13,8 @@ def report():
            'These IDs are now CONSUMED. No model, physics weight, seed or checkpoint retuned.',
            'All models use100 training trajectories, five time labels, same labeled minibatch',
            'sequence/1500 steps. Primary is trajectory-average relativeL2 over noninitial times.',
+           '100 is the parameter-fitting label budget, not total research label access: earlier',
+           'architecture/hyperparameter development used larger existing splits and reused dev.',
            'Gate/attention have exactly33256 active parameters; FNO width16 is a rough, not exact,',
            'capacity bracket. FNO uses five discrete known-time heads, no physics or query512.',
            '','| Model | Parameters | Confirm256 | Seed SD | Confirm512 | New512 query positions |',

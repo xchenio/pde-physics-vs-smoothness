@@ -110,11 +110,12 @@ fields into inference branch. Choose one primary stress condition before outcome
 (small data OR noise OR time generalization), not post-hoc best of all three.
 Report data and PDE metrics separately and gradient norms of composite objectives.
 
-## Stage 5: sealed combination confirmation (reserved, not opened)
+## Stage 5: sealed combination confirmation (completed,500 NOW CONSUMED)
 
 The stage4 immutable plan reserves500 IDs disjoint from a conservative union of7829
 registered historical IDs (including synthetic IDs for extra conservatism). Registry
-artifacts/hashes are saved before extraction. No new reserved target has been opened.
+artifacts/hashes were saved before extraction. Seal05b8153 preceded label extraction;
+all500 are now consumed. PHYSICS_TOKEN_V1_CONFIRMATION.md records audited outcomes.
 Four registered primary contrasts,10k paired trajectory bootstrap, Bonferroni4 CI,
 at least1% relative gain and upper difference interval<0. All4 arms will be locked
 and evaluated; no best-seed/weight selection. Same100-shot FNO16/32 are additional

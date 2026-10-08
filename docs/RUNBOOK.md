@@ -1,5 +1,32 @@
 # Resumable experiment runbook
 
+## Spatial latent/operator first round (2026-10-08)
+
+Five new standalone immutable scientific runners resume automatically from their
+latest atomic checkpoints; rerun the SAME `run` command, without `--resume`:
+
+```powershell
+Set-Location 'F:\Desktop\temp\pinode_align'
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_manifold_reconstruction.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_spatial_deeponet.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_token_operator.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_physics_token.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_fno_small_trajectory.py run
+```
+
+Completed runs skip training. Model/optimizer/step/RNG/history checkpoints every50;
+evaluation every250. Config/source/environment mismatches fail rather than silently
+mixing results. Never delete local `results/**/checkpoints`: Git tracks source and
+result evidence but intentionally excludes model/optimizer binary weights; back them
+up separately if moving computers. Preserve the validated pytorch environment.
+
+The first round is COMPLETE (126 fits,68 tests). Fresh confirmation500 IDs are NOW
+CONSUMED. Never reseal/retune this family or call those IDs untouched. For interrupted
+confirmation only, rerun `scripts/confirm_physics_token.py confirm`: it verifies the
+committed seal and skips saved per-model results; completed confirmation skips entirely.
+No new confirmation label extraction or new training is needed to read the results.
+See docs/PHYSICS_TOKEN_V1_CONFIRMATION.md and the spatial-latent paper follow-up.
+
 The machine may sleep at any time. Long jobs must therefore be *configuration-resumable*, not
 dependent on a live terminal.
 

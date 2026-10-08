@@ -359,9 +359,17 @@ Primary sources checked 2026-09-24; versions are given without guessing later jo
    Generalization Gap and Sharp Minima*. ICLR 2017. https://arxiv.org/abs/1609.04836
 # 2026-10-08 spatial latent follow-up
 
+Five-stage first round completed:126 new fits audited, then500 fresh Burgers
+trajectories evaluated after seal05b8153 (now consumed). Attention+physics improves
+the matched100-shot gate baseline9.104%, with four registered incremental contrasts
+passing adjusted intervals/effect gates. It remains worse than same100-shot near-size
+FNO16:0.442270 vs0.313237. No universal/competitive architecture or stacking-alone
+novelty claim; one-PDE physics and output-query-only512 limits apply. Full evidence
+and figures: [follow-up](FOLLOWUP_SPATIAL_LATENT_20261008.md).
+
 See [spatial latent study](FOLLOWUP_SPATIAL_LATENT_20261008.md) for the new ordered
 CNN/Transformer/physics research hypothesis.81 reconstruction fits support physical
 neighborhood alignment within a paired CNN control, but not universal superiority
 over POD; field reconstruction improvements can accompany worse derivatives.
-These are reused-development representation diagnostics, not unseen operator or
-physics confirmation. Strong POD and full-field FNO baselines remain mandatory.
+Representation stages are reused-development diagnostics; separate100-shot Burgers
+physics confirmation is reported above. Strong POD and full-field FNO remain mandatory.

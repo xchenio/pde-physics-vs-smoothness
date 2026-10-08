@@ -85,3 +85,14 @@ completed configuration keys.
   uniformly beat POD. Allen-Cahn field/curvature trade-off prevents physics claims.
 - Registered9 fixed-time CNN DeepONet fits e1402c3 and18 matched attention/gate fits
   0072261; their outcomes pending at this entry. Stages4/5 not yet executed.
+# 2026-10-08 final spatial latent/token/physics first-round evidence
+
+- 126 new fits completed/audited:81 representation +9CNN/trunk +18token +12physics +6FNO100.
+- Seal05b8153 before fresh500 Burgers labels; all500 now consumed, zero recorded
+  historical-ID overlap.18 current100-shot confirmation models and4 adjusted decisions replayed.
+- Confirm gate0.486568,gateP0.458865,attention0.470762,attentionP0.442270;
+  same100-shot FNO16/32 0.313237/0.318333. Four registered incremental contrasts pass;
+  hybrid competitive superiority fails descriptively versus near-size FNO16.
+- Scalar-budget/POD/derivative limits, output-only512 transfer and one-PDE physics
+  evidence recorded. Training seconds not controlled; quiet inference/allocated-memory
+  profiles and visually verified figures archived.68 regression tests passed.

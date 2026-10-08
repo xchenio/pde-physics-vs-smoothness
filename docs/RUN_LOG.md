@@ -577,6 +577,23 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- Seal commit05b8153 preceded ANY fresh500 target extraction; confirmation_opened.json
+  marks consumed before extraction. All4 arms and6 same100-shot FNO fixed; no retuning.
+- Confirm gate0.486568→gateP0.458865;attention0.470762→attentionP0.442270;
+  registered gains3.249%/5.694%/6.052%/9.104%, all4 pass Bonferroni4 interval/effect gate.
+  Same100-shot FNO16/32 0.313237/0.318333; hybrid41.19% worse than near-size FNO16.
+- Independent confirmation replay18 primary models, per-trajectory and odd512-query
+  metrics, summaries and4 bootstrap decisions passed; original ID overlap0. These
+ 500 targets now consumed. No additional tuning/checkpoint/seed selection occurred.
+- Native512 output query transfer only, same256 input; no temporal extrapolation or
+  Allen-Cahn physics evidence.100 fitting labels does not count earlier larger-data
+  design/hyperparameter access. Conditional bootstrap on3 fits, not seed uncertainty.
+- Network latency10 warmup/50 synchronized repeats, batch64, five256/512-point fields;
+  incremental allocation and inclusive process peak reported separately. No project
+  trainer/test active during timings. Figures rendered and visually checked.
+- Commands: confirm_physics_token.py seal/confirm; audit_physics_confirmation.py;
+  report_physics_confirmation.py; plot_physics_confirmation.py. Source/CP hashes frozen.
+
 - All126 new fits complete (81 reconstruction +9CNN/trunk +18token +12physics +6FNO100).
 - Full regression68 tests passed64.876s. Physics12 final models independently replayed,
   initialization/parameter/labeled-batch AND collocation hashes independently regenerated.

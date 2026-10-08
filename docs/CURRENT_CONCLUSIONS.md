@@ -1,5 +1,23 @@
 # Current conclusions
 
+> Latest2026-10-08 spatial latent five-stage FIRST ROUND COMPLETE:126 new fits
+> audited (81 compression,9CNN/trunk,18attention,12physics,6matched-data FNO).
+> Seal05b8153 preceded500 new Burgers target extraction; all500 NOW CONSUMED.
+> Confirm100-shot primary gate0.486568,gate+P0.458865,attention0.470762,
+> attention+P0.442270. Registered gains3.249%/5.694%/6.052%/9.104%, all4 pass
+> >=1% and Bonferroni4 paired interval gates, conditional on3 fitted seeds.
+> Same100-shot FNO16/32:0.313237/0.318333. FNO16 has34261 params vs token33256;
+> best hybrid is41.19% worse than FNO16 in descriptive mean error. No competitive
+> architecture/combination-alone novelty or strong interaction claim (interaction-0.000788).
+> Native512 errors/extra query positions replayed at fixed256 input, not full input-grid
+> transfer; all eval times supervised; one-PDE physics only, Allen physics untested.
+> 100 labels refers to current parameter fitting, not total previous design/development access.
+> 68 tests pass;18 current confirmation models/4 contrast decisions independently replayed.
+> Timing/VRAM records and paper figures verified. Next PRIORITY: diagnose strong100-shot
+> FNO physics/generalization and separate PDE-specific effects from matched smoothness
+> regularization, before deeper stacks; additional independent split/PDE remains pending.
+> Tables: PHYSICS_TOKEN_V1_CONFIRMATION.md; paper/FOLLOWUP_SPATIAL_LATENT_20261008.md.
+
 > New2026-10-08 spatial latent stage1:81 AE fits independently replayed, POD fitted
 > on same representation400, reused dev200, no fresh confirmation. Local CNN beats
 > global MLP and exactly capacity/initialization-matched scrambled CNN in all9 mean
@@ -8,8 +26,8 @@
 > beat POD: field gains at independent Burgers/Allen rank16 only; POD better at32/64.
 > Allen rank16 field0.017695 vs POD0.025837, BUT curvature8.101366 vs0.506683.
 > Retain POD/FNO; field accuracy cannot certify physics or derivative quality.
-> Stage2 fixed-time CNN/smooth trunk running; stage3 paired attention/gate registered.
-> Stages4/5 pending; all old confirmation sets consumed. See
+> Stages2/3 and first Burgers100-shot stages4/5 subsequently completed (latest above).
+> All old confirmation sets remain consumed. See
 > MANIFOLD_RECONSTRUCTION_V1_RESULTS.md and paper/FOLLOWUP_SPATIAL_LATENT_20261008.md.
 
 > Latest2026-10-08 shared FNO encoder/pointwise-head ablation:36 paired fits complete.
