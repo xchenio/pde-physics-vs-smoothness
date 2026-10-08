@@ -1,5 +1,12 @@
 # Current conclusions
 
+> 2026-10-09 next experiment REGISTERED, not yet a performance result:
+> physics_stress_v1, same34209-parameter time FNO; sparse-time/noisy-label/combined
+> Burgers36 fits then new nonlinear Allen-Cahn12 fits. Independent observation-
+> only warm starts, transferred0.3 penalty-gradient strength, curvature/none controls.
+> Allen-Cahn data/residual solver QA passed;77 regression tests pass. No fresh
+> stress confirmation opened, and no second-PDE learned success claimed yet.
+
 > Latest strong-FNO follow-up COMPLETE:3 continuous-time baselines +30 paired
 > continuations;30 checkpoint/batch/collocation/selection replays passed.
 > Seal4d60f18 preceded a NEW500-trajectory extraction, disjoint from conservative

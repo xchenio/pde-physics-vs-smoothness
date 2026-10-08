@@ -1,5 +1,27 @@
 # Run log
 
+## 2026-10-08 Fixed-architecture sparse-time/noisy-label and second nonlinear PDE
+
+- User authorized fixed architecture, strong curvature baseline, sparse-time/noise
+  and a second nonlinear PDE. New familyphysics_stress_v1; do not edit old seals.
+- Register48 fits:3 Burgers conditions x12 fits, then Allen-Cahn dense-clean12.
+  Each condition own1500-step OBSERVATION-only warm start, none/PDE/curvature
+  paired750-step forks; transfer strength0.3 without per-condition retuning.
+- Sparse labels0/1 only; withheld0.1/0.25/0.5 primary. Noise only future labels,
+  fixed10% observed-label RMS. Inputs/IC clean; omitted labels cannot affect
+  corruption amplitude or fitting statistics (unit-tested). No dense warm leakage.
+- Nonlinear Allen-Cahn fresh train/dev IDs200000..200299, reserved500 not generated;
+  period2 and reaction5, dealiased cube. Dedicated numerical QA passes time/space/
+  independent DOP853/residual checks; existing synthetic generator reused with
+  new trajectories, no public dataset download or already-proven physics success.
+- Three new tests passed15.288s, covering analytic PDE signs/period/dealiasing,
+  observation/noise isolation, constant trajectories, CPU/CUDA exact warm/fork
+  resume and calibration pairing for both PDEs. Old confirmation sets consumed.
+- 2026-10-09: full regression77 tests passed48.218s before registered training.
+  Launch48-fit worker after committing source, immutable plan and solver QA;
+  hidden background worker writes persistent stdout/stderr, all models atomic
+  full checkpoints every50 steps. Resume same run command, one writer only.
+
 ## 2026-10-08 Strong FNO physics prerequisite (new versioned families)
 
 - After user interruption, process check found no remaining training worker;

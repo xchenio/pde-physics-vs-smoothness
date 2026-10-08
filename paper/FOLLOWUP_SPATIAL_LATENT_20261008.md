@@ -234,3 +234,21 @@ specific benefit from ordinary smoothing. The next falsifiable question is
 whether physics supplies information beyond the strongest smoothness control
 under sparse temporal supervision or noise, then on a second nonlinear PDE.
 No such stress-setting or second-PDE benefit is established here.
+
+## Registered stress and second nonlinear PDE follow-up (2026-10-09)
+
+The next fixed-architecture protocol compares none/PDE/curvature penalties at
+the transferred initial gradient ratio0.3, with no per-condition strength search.
+Burgers conditions are endpoint-only labels,10% future-label noise with five
+time labels, and endpoint-only plus noise. Noise amplitude uses observed training
+labels only; initial-field inputs and IC labels remain clean. Sparse-time primary
+errors use0.1/0.25/0.5, omitted in that fit but previously used in development.
+Each condition has its own1500-step observation-only warm start before paired
+750-step forks: no dense-clean pretrained weights or hidden-label normalization.
+
+The same network is also registered on newly generated nonlinear Allen-Cahn
+trajectories, u_t=0.01u_xx+5u(1-u^2),period2,T0.5. Numerical solver/refinement/
+independent ODE/residual QA passes on separate QA IDs, but there is no learned
+second-PDE success yet.48 fits are planned; all final results must be retained.
+No new independent confirmation labels are accessed by this development driver.
+This is synthetic-PDE evidence, not a newly downloaded public benchmark.

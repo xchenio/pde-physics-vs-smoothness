@@ -1,5 +1,25 @@
 # Resumable experiment runbook
 
+## Sparse-time/noisy-label and nonlinear Allen-Cahn pilot (2026-10-09)
+
+New48-fit familyphysics_stress_v1. Use exactly one worker; after shutdown rerun:
+
+```powershell
+Set-Location 'F:\Desktop\temp\pinode_align'
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_physics_stress.py run
+```
+
+Background stdout/stderr files are inresults/physics_stress_v1. If the hidden
+worker survives sleep, let it continue; do not launch a duplicate. Per-model
+progress and atomic full checkpoints persist every50 steps; the aggregate
+progress updates after each completed three-seed fork group. Completed model
+hashes/identities are verified and skipped. Backup checkpoint binaries separately
+from Git. No confirmation generation occurs in this runner. Once it completes:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_physics_stress.py --require-complete
+```
+
 ## Strong FNO physics/smoothness follow-up (2026-10-08)
 
 The continuous-time data-only baseline3/3 is complete and independently replayed.
