@@ -1,0 +1,73 @@
+{
+  "identity": {
+    "config": {
+      "width": 16,
+      "modes": 16,
+      "layers": 4,
+      "weight_decay": 0.0001,
+      "batch_size": 16,
+      "eval_every": 250,
+      "checkpoint_every": 50,
+      "resolved_max_mode": 16,
+      "pde": "allen_cahn",
+      "length": 2.0,
+      "diffusion": 0.01,
+      "reaction": 5.0,
+      "time_lower": 0.05,
+      "time_upper": 0.5,
+      "evaluation_columns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "seed": 1,
+      "kind": "curvature",
+      "strength": 0.3,
+      "steps": 750,
+      "lr": 0.0003,
+      "lr_min": 1e-05
+    },
+    "context": {
+      "plan": "97e938afaefe714cd0b0d7a544fc23ad9d5313bd72a724de6695e6b755eabe4c",
+      "task": "allen_cahn",
+      "condition": "dense_clean",
+      "data": {
+        "plan": "97e938afaefe714cd0b0d7a544fc23ad9d5313bd72a724de6695e6b755eabe4c",
+        "chunks": {
+          "allen_train_0000.pt": "aae3be961a470c32323078d435f8a74fcaa9ea66ed41ad467a16531bbb6c3355",
+          "allen_train_0050.pt": "f4f45cae62d191b27e454c3641c7de726643b7b532ef6a01ca6fdcd0ab54f79a",
+          "allen_val_0000.pt": "ea587d68fbc237e563602060ef6c8199f375472add0e623b12a6fd24c7830946",
+          "allen_val_0050.pt": "68f2546cdc8057ff774720ac14866ff30d500e0703ab19b05904caf544096171",
+          "allen_val_0100.pt": "0385790b80a9d904de34bd649ca8c3f992c32907224bd76012405dd618d44ce4",
+          "allen_val_0150.pt": "e48b10f67f336e9f12cf515e2d18e34b5d157ecef948458be87b336f6c8a3609"
+        },
+        "qa_sha256": "dc3ed0fd3bde0a693bb1832c48807ea160b6dbca8b7afd528138d8fc00f7bf37"
+      },
+      "observations": {
+        "observation_columns": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "noise_sigma": 0.0,
+        "noise_seed": 2026100810,
+        "input_noise": false,
+        "initial_label_noise": false,
+        "observation_sha256": "230aa1db4e9b67b5df99ffab4e16f3b3e531df4fe110b44bd1ce78984849ef86"
+      }
+    },
+    "warm_sha256": "9313ac88d52c3422bdae5aa3f764f35fecf3007dabdeee55a3cca6d97c3cccda",
+    "environment": {
+      "python": "3.11.16",
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "cuda": "13.0"
+    }
+  },
+  "status": "completed"
+}

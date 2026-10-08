@@ -1,5 +1,8 @@
 # Fixed-architecture physics stress protocol (2026-10-08)
 
+UPDATE2026-10-09:48/48 fits and independent replays COMPLETE, no worker remains.
+Results/limits: PHYSICS_STRESS_V1_RESULTS.md. No fresh confirmation opened.
+
 Hypothesis, not a conclusion: governing-equation information may exceed strong
 curvature smoothing when temporal supervision is sparse or labels are noisy.
 The previous clean100-shot confirmation found no unique PDE advantage. Both

@@ -3,6 +3,9 @@
 ## Sparse-time/noisy-label and nonlinear Allen-Cahn pilot (2026-10-09)
 
 New48-fit familyphysics_stress_v1. Use exactly one worker; after shutdown rerun:
+UPDATE:48/48 completed and independently replayed. No background worker remains;
+do not restart or change the completed training budget. Commands below are only
+for recovery of incomplete local copies, not new experiment initiation.
 
 ```powershell
 Set-Location 'F:\Desktop\temp\pinode_align'

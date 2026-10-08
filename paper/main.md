@@ -393,3 +393,13 @@ comparison procedure. Thus the clean100-shot evidence supports regularization,
 not a unique physical-loss advantage. The new500 is now consumed, and12 model
 predictions/five decisions were replayed. See the follow-up report for intervals,
 selection limitations and the proposed sparse-time/noise/second-PDE tests.
+
+The subsequent fixed-architecture stress protocol completed48 fits after seal
+600273d. In Burgers sparse-time/noisy-label/combined conditions, PDE improves
+data-only predictions but remains worse than curvature smoothing. Newly generated
+nonlinear Allen-Cahn gives data/PDE/curvature development0.043007/0.042646/0.043966;
+PDE gain versus data only is0.839%, not independent second-PDE confirmation.
+All48 checkpoints/observations/paired streams/summaries were replayed; no fresh
+confirmation labels were opened. Allen-Cahn second-derivative errors~3.7 also
+preclude inferring physical fidelity from its small field error. Full limits and
+tables are in the spatial follow-up and PHYSICS_STRESS_V1_RESULTS.md.

@@ -252,3 +252,41 @@ independent ODE/residual QA passes on separate QA IDs, but there is no learned
 second-PDE success yet.48 fits are planned; all final results must be retained.
 No new independent confirmation labels are accessed by this development driver.
 This is synthetic-PDE evidence, not a newly downloaded public benchmark.
+
+### Completed stress development evidence (2026-10-09)
+
+All48 registered fits completed after source/protocol seal600273d:12 independent
+observation-budget warm starts and36 paired continuations. Independent replay
+verified all48 predictions, observation/noise identities, labeled/query streams,
+warm starts/calibrations and summaries. No additional strength search or final
+checkpoint selection was performed. No new confirmation labels were opened.
+
+| Condition | Data only | PDE | Curvature |
+|---|---:|---:|---:|
+| Burgers endpoint-only labels | 0.644463 | 0.603849 | 0.589233 |
+| Burgers10% noisy future labels | 0.273533 | 0.270520 | 0.267287 |
+| Burgers endpoint-only + noise | 0.648667 | 0.611887 | 0.599397 |
+| Nonlinear Allen-Cahn dense clean | 0.043007 | 0.042646 | 0.043966 |
+
+The Burgers stress conditions do not reverse the previous clean conclusion:
+PDE improves unregularized predictions but still does not beat strong curvature
+smoothing. The new nonlinear Allen-Cahn experiment favors PDE in all three
+paired seeds against both controls, but the mean gain against data only is
+0.839% on development. The curvature strength is transferred, not tuned for
+Allen-Cahn; this does not establish universal or independently confirmed PDE
+superiority. This second nonlinear PDE is synthetic, with new train/dev IDs and
+solver/residual QA, not a second public benchmark. Its reserved500 is untouched.
+
+Sparse primary averages omitted intermediate fitting times; noisy/dense primary
+averages all four future times. The noisy-label draw is fixed across model seeds,
+and inputs/IC are clean. Results are conditional on the fixed corruption and
+strength; do not claim noisy-input robustness or temporal extrapolation. The
+Burgers development IDs/times were used in previous design.
+
+Exploratory full-grid spectral diagnostics show Allen-Cahn gradient errors
+0.210859/0.210184/0.213937 and second-derivative errors3.694110/3.704976/3.699850
+for data/PDE/curvature. Denominator protection uses clean TRAIN INITIAL derivative
+RMS only. These secondary diagnostics were added during execution, not primary
+selection tests; they highlight that low field error does not certify multiscale
+physical structure. Frequency-resolved and time-derivative diagnosis is needed
+before proposing another mechanism or spending a new confirmation set.

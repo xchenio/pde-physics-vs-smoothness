@@ -1,5 +1,14 @@
 # Experiment ledger
 
+2026-10-09 PHYSICS_STRESS_V1:48 fits complete (12 own-observation warm starts,
+36 none/PDE/curvature forks), seal600273d; all48 independent replays passed.
+Same34209-param FNO,2250 total steps,100 trajectories, fixed transferred0.3.
+Burgers sparse0.644463/0.603849/0.589233; noisy dense0.273533/0.270520/0.267287;
+noisy sparse0.648667/0.611887/0.599397 (none/PDE/curvature). Curvature wins all.
+Fresh nonlinear synthetic Allen-Cahn0.043007/0.042646/0.043966, PDE gain0.839%
+vs none; development-only, reserved500 not generated. Gradient/curvature QA
+diagnostics reveal field/derivative mismatch. No new confirmation consumed.
+
 2026-10-08 FNO_PHYSICS_RESOLUTION_V1: training-only100 trajectories, native1024/
 512/256 and centraldt0.01/0.02; resolved0..16 gate passed (median1.8%-4.2%),
 almost-full coarse residual25%-51%.20 diagnostic snapshots per training trajectory

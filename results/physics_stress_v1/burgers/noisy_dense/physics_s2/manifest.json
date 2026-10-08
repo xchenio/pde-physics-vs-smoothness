@@ -1,0 +1,65 @@
+{
+  "identity": {
+    "config": {
+      "width": 16,
+      "modes": 16,
+      "layers": 4,
+      "weight_decay": 0.0001,
+      "batch_size": 16,
+      "eval_every": 250,
+      "checkpoint_every": 50,
+      "resolved_max_mode": 16,
+      "pde": "burgers",
+      "length": 1.0,
+      "diffusion": 0.0003183098861837907,
+      "reaction": 0.0,
+      "time_lower": 0.1,
+      "time_upper": 1.0,
+      "evaluation_columns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "seed": 2,
+      "kind": "physics",
+      "strength": 0.3,
+      "steps": 750,
+      "lr": 0.0003,
+      "lr_min": 1e-05
+    },
+    "context": {
+      "plan": "97e938afaefe714cd0b0d7a544fc23ad9d5313bd72a724de6695e6b755eabe4c",
+      "task": "burgers",
+      "condition": "noisy_dense",
+      "data": {
+        "plan": "2a11d399dc54c2beca63d692b417d5b2fdeee088b282aa7a567391baa1c5df3f",
+        "data_sha256": "43d838bb40737afb1431f8188f56701ae9ba2af84bd258f237d81f57f655d25b"
+      },
+      "observations": {
+        "observation_columns": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "noise_sigma": 0.070270270468,
+        "noise_seed": 2026100810,
+        "input_noise": false,
+        "initial_label_noise": false,
+        "observation_sha256": "253a3e7912c5d4528ca8a1a2e8bab1c3c43a7edc2d725f4005c808a09c499451"
+      }
+    },
+    "warm_sha256": "7df308febd78023433193c61b9749d05676884d8a906153b6c918e5f6dfec874",
+    "environment": {
+      "python": "3.11.16",
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "cuda": "13.0"
+    }
+  },
+  "status": "completed"
+}

@@ -1,6 +1,20 @@
 # Current conclusions
 
-> 2026-10-09 next experiment REGISTERED, not yet a performance result:
+> Latest2026-10-09 physics_stress_v1 COMPLETE:48 fits,48 independent checkpoint/
+> label/batch/query/fork/summary replays. Fixed architecture and transferred0.3.
+> Burgers sparse none/PDE/curvature0.644463/0.603849/0.589233;
+> noisy dense0.273533/0.270520/0.267287; noisy sparse0.648667/0.611887/0.599397.
+> PDE helps vs none but does NOT beat curvature in any Burgers stress condition.
+> NEW nonlinear synthetic Allen-Cahn dense clean0.043007/0.042646/0.043966:
+> PDE beats both in all3 seeds, but only0.839% benefit versus none on development;
+> not second-PDE independent confirmation or fully tuned optimal smoothing.
+> Allen-Cahn second-derivative errors~3.7 despite field errors~0.043; cannot
+> claim physically faithful reconstruction from field loss alone. Both prior500
+> consumed; new Allen-Cahn reserved500 not generated. No fresh confirmation opened.
+> Next: development-only frequency/time-derivative diagnosis before new rules/
+> independent confirmation, not additional architecture stacking.
+
+> Earlier2026-10-09 protocol snapshot BEFORE training:
 > physics_stress_v1, same34209-parameter time FNO; sparse-time/noisy-label/combined
 > Burgers36 fits then new nonlinear Allen-Cahn12 fits. Independent observation-
 > only warm starts, transferred0.3 penalty-gradient strength, curvature/none controls.

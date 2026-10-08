@@ -21,6 +21,22 @@
   Launch48-fit worker after committing source, immutable plan and solver QA;
   hidden background worker writes persistent stdout/stderr, all models atomic
   full checkpoints every50 steps. Resume same run command, one writer only.
+- Source seal600273d; worker40956 launched hidden, stdout/stderr recorded in new
+  result family.48/48 finished without errors; process check confirms no writer.
+- Independent audit48/48 verifies final weights/identities, development predictions,
+  observation/noise isolation, regenerated labeled/query streams, paired warm
+  states/calibrations and summary means. Added exploratory full-grid spectral
+  gradient/curvature diagnostics with train INITIAL-only denominator floor.
+- Burgers sparse none/PDE/curvature0.644463/0.603849/0.589233; noisy dense
+  0.273533/0.270520/0.267287; noisy sparse0.648667/0.611887/0.599397.
+  PDE helps none but never beats curvature in these transferred-strength tests.
+- Allen-Cahn new nonlinear dense-clean0.043007/0.042646/0.043966. PDE improves
+  both controls in all3 paired seeds but gain vs-none only0.839% on development.
+  No fresh confirmation opened; reserved synthetic500 not generated; prior two
+  Burgers500 sets remain consumed. Full-grid Allen curvature errors~3.7 warn
+  against field-only physical-fidelity claims. No posthoc strength search.
+- Next proposed work: develop frequency/time-derivative diagnosis before spending
+  further confirmation; stronger smoothing/physics scale controls remain required.
 
 ## 2026-10-08 Strong FNO physics prerequisite (new versioned families)
 
