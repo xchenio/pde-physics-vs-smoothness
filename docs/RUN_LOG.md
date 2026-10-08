@@ -7,6 +7,7 @@
 - Preflight: gradient/subspace equivalence, CPU/CUDA exact resume, matching initialization/batch hashes, full-arm bitwise equivalence to historical training core. Source and immutable plan to be committed before formal training.
 - Source seal3cac70a; full regression57 tests passed (46.908s). Original Burgers12 fits completed/replay-audited. Full0.195846; training-POD16/32/64:0.191759/0.188328/0.190009; paired full-training post-hoc POD:0.192454/0.192368/0.194286. Historical full final tensors match bitwise for all3 seeds. Initialization and all1500 batch hashes agree across arms. Differences remain exploratory reused-development evidence.
 - Independent Burgers12 fits completed/audit24 total. Full0.220706; training-POD16/32/64:0.218613/0.216032/0.215583; post-hoc0.217435/0.218254/0.218886. Rank16 training projection slightly worsens mean post-hoc comparison;32 mixed seed signs;64 improves all3 seeds. All six full-arm checkpoints match historical tensors bitwise. Allen-Cahn12 fits remain in progress.
+- Interim30/36 completed: Allen-Cahn full0.003315 ±0.000286, POD16 0.026170 ±0.000049. Archived these6 completed runs before high-rank completion. Full/POD32/POD64 comparisons and final audit pending; no protocol changes.
 
 ## 2026-10-08 Spectral/POD matched-parameter study
 
