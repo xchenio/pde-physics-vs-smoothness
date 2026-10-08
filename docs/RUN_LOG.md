@@ -1,5 +1,11 @@
 # Run log
 
+## 2026-10-08 Shared FNO pointwise head and output projection
+
+- Added FNO_PROJECTION_V1 protocol:36 paired fits, full/POD16/32/64,3 tasks,3 seeds; identical136481-parameter encoder/head, optimizer, initialization and batches. No new confirmation data.
+- Coefficient loss equals projected-field squared loss up to a fixed target projection constant. Raw projected-arm fields outside the POD subspace are diagnostic only. Saved initialization and rolling batch hashes make pairing auditable.
+- Preflight: gradient/subspace equivalence, CPU/CUDA exact resume, matching initialization/batch hashes, full-arm bitwise equivalence to historical training core. Source and immutable plan to be committed before formal training.
+
 ## 2026-10-08 Spectral/POD matched-parameter study
 
 - New54-fit development-only protocol in SPECTRAL_POD_V1.md. Historical sources/results unchanged. Two encoders share heads and exactly match nominal real parameter counts; rank16/32/64 basis uses representation400 only, correction600 fitting,dev200; three seeds.

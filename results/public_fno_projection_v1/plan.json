@@ -1,0 +1,43 @@
+{
+  "parent": "ca3ed46b8a527af0645f61b327cd4609807922186ce0f364bc92c25ea9f97097",
+  "source": "449779bf64f8eb6a669e7c6b12a8ac2489cf1c517ed4d6cfc30f47ab38223e53",
+  "tasks": [
+    "burgers_original",
+    "burgers_independent",
+    "allen_cahn"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "output_ranks": [
+    0,
+    16,
+    32,
+    64
+  ],
+  "evaluation_ranks": [
+    16,
+    32,
+    64
+  ],
+  "steps": {
+    "burgers_original": 1500,
+    "burgers_independent": 1500,
+    "allen_cahn": 6000
+  },
+  "lr": 0.001,
+  "lr_min": 1e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 32,
+  "eval_every": 250,
+  "checkpoint_every": 50,
+  "architecture": "unchanged FNO32width16modes4layers, shared pointwise32->32->1 head;136481 real parameters in every arm",
+  "objective": "full normalized field squared error or normalized POD coefficient squared error; projected field loss differs by fixed target projection constant; same divisor256",
+  "pairing": "seed-identical full state initialization, optimizer, minibatch sequence, cosine schedule; record initial and rolling batch hashes",
+  "data": "reuse existing nested basis64 and normalization; representation400 only,correction600 fit,development200",
+  "readout": "raw field z from common head; arm0 uses z+input mean; armr uses (z Qr) Qr.T+input mean in training/output; raw projected-arm field is diagnostic only and out-of-subspace output is unconstrained by data loss",
+  "selection": "all36 fits; fixed final step, no rank/arm selection for confirmation; compare projected-training armr vs post-hoc rankr projection of paired full-training arm, then previous pooled coefficient head at same rank",
+  "limits": "Repeated development use; three seeds; changing projection changes gradient/objective and output constraint together. Pooled head is a previous contextual control with different parameters. No new confirmation data or novelty claim."
+}
