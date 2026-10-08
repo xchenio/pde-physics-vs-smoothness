@@ -1,0 +1,39 @@
+{
+  "parent": "e921c59213306d58f9253c29a94d018d881b5a04235e5b18a9be4d1e26485e08",
+  "source": "37048e4cb65e1e7d19d8e51ddec765d7e186d5e65266dda4f32711100b9a2a9f",
+  "tasks": [
+    "burgers_original",
+    "burgers_independent",
+    "allen_cahn"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "rank": 64,
+  "steps": {
+    "burgers_original": 1500,
+    "burgers_independent": 1500,
+    "allen_cahn": 6000
+  },
+  "lr": 0.001,
+  "lr_min": 1e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 32,
+  "eval_every": 250,
+  "checkpoint_every": 50,
+  "encoder": "periodic CNN32 stride4/4,16positions x4channels=64 scalars, linear64->64 branch head",
+  "trunk": "physical x,t; periodic sin/cos frequencies1..16 plus normalized time; tanh33->64->64->64; inner product/sqrt64",
+  "data": "historical correction600 train, development200; same normalization, input sample mean offset and guarded weighted field loss as FNO",
+  "selection": "all18 fits reported; fixed final step; rank64 and all hyperparameters transferred unchanged; no selection or fresh confirmation",
+  "grid": "Burgers true retained cell centers(4i+0.5)/1024,t1; Allen-Cahn2i/256,t0.5",
+  "comparison": "retained full-field FNO136481 params, same seeds/batches/loss/steps; different params and readout, contextual baseline only",
+  "limits": "Fixed-time development-only. Difference isolates registered attention-vs-gate interaction, not all possible nonattention mixers. Equal parameters/steps not equal FLOPs/time. Temporary hidden expansion not counted as compressed bottleneck; all token memory reported separately in future profiles.",
+  "arms": [
+    "gate",
+    "attention"
+  ],
+  "architecture": "same CNN64/trunk64;16x4 bottleneck tokens expanded to32 channels during mixing and reduced back to16x4; periodic positions; pre-LN32,QKV32->96,projection32,FFN32->64->32",
+  "control": "four-head attention vs pointwise v*sigmoid(q+k); identical active trainable tensors/count/init, all layers used; same seeds/minibatches/steps. Gate does not mix tokens inside block; shared final branch head mixes globally."
+}

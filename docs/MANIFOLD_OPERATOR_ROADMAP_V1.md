@@ -59,7 +59,18 @@ time slices; register generator versions and discretization QA. No new data requ
 for these initial studies. Cross-resolution labels must be native higher resolution
 or independently verified solver data, not upsampled256 predictions.
 
-## Stage 3: attention-only ablation (pending)
+## Stage 3: attention-only ablation (registered, training after stage2)
+
+Family `results/token_operator_v1`,18 fixed-time fits:3tasks x2arms x3seeds.
+Same CNN64/trunk64 and training as stage2.16x4 scalar bottleneck, shared temporary
+lift to width32, periodic position features, pre-LN,QKV32->96,projection32,
+FFN32->64->32, lower back to16x4 and same branch head. Four-head attention versus
+pointwise gated QKV `v*sigmoid(q+k)` control. Every control tensor actively used;
+identical parameter count, initialization, batches and budgets tested. The gate
+does not mix tokens INSIDE the block; final branch head combines spatial tokens
+in both arms. This tests this specific attention-vs-gate contrast, not superiority
+over every nonattention mixer. No physics objective in either arm.
+Command `D:/miniconda3/envs/pytorch/python.exe scripts/run_token_operator.py run`.
 
 Keep multiple spatial tokens; compare attention with no attention using matched
 trainable parameter count and steps, report actual time/VRAM. Include spatial

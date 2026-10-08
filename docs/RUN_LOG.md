@@ -577,6 +577,13 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- Stage1 all81 runs completed; full replay audit starting. Full regression62 tests
+  passed50.673s after stage2 implementation.
+- Stage3 exact-capacity token interaction registered before training:18 fits, same
+  CNN/trunk, attention versus active QKV gate, fixed64-scalar endpoint bottleneck.
+  Tests2 passed8.746s: all identical initial tensors/count, every parameter gradient
+  active, CPU/CUDA exact resume. No physics/temporal confirmation in stage3.
+
 - While stage1 runs, register fixed rank64 CNN/smooth periodic-trunk DeepONet
   baseline (spatial_deeponet_v1),9 fits queued sequentially after stage1. No attention
   or physics; same600 correction rows,200 dev, guarded field loss/batches/budgets as FNO.
