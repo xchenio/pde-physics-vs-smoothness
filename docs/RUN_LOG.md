@@ -575,3 +575,18 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Added exploratory post-hoc FNO→same-POD diagnostic after seeing outcomes: direct projected dev0.192454/0.217435/0.026098 vs full0.195846/0.220706/0.003315. Not a separately trained candidate; not preregistered evidence. Burgers advantage remains in same output space; Allen-Cahn becomes rank-limited.
 - Updated manuscript, conclusions, ledger, publication assessment and full data-only Markdown tables. No confirmation IDs opened. All binary checkpoints remain local/ignored by Git; JSON histories, plans and summaries are versioned. Resume is exact at latest atomic checkpoint, at most49 unsaved updates after an abrupt interruption; not a claim of automatic process restart.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
+# 2026-10-08 manifold/token operator roadmap and representation stage
+
+- User authorized five ordered stages; register them in MANIFOLD_OPERATOR_ROADMAP_V1.md.
+- New stage1 family manifold_reconstruction_v1,81 AE fits:3tasks x3ranks x3arms x3seeds;
+  train representation400, evaluate reused development200 only. Independent POD per rank.
+- Local/permuted-local exact parameter/initial-trainable-state/batch controls; global
+  MLP is same scalar bottleneck but different capacity. No physics/attention claim yet.
+- HDF5 metadata read:1024 cell centers0.00048828125..0.99951171875,periodic length1;
+  t-coordinate202 entries while tensor has201 slices (alignment must be separately
+  resolved BEFORE spatiotemporal stage2). Existing fixed_t1 convention retained here.
+- Tests3 passed including analytic spectral derivatives, Parseval bands, latent
+  shapes/parameter pairing and bitwise CPU/CUDA interruption-resume (22.091s).
+  Full regression60 tests passed54.721s before registered training. Checkpoints50.
+- Commands: python -m unittest tests.test_manifold_reconstruction -q;
+  python scripts/run_manifold_reconstruction.py plan/run (conda pytorch interpreter).
