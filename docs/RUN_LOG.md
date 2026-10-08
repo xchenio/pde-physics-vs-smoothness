@@ -577,6 +577,17 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- All126 new fits complete (81 reconstruction +9CNN/trunk +18token +12physics +6FNO100).
+- Full regression68 tests passed64.876s. Physics12 final models independently replayed,
+  initialization/parameter/labeled-batch AND collocation hashes independently regenerated.
+  Dev gate0.463866→0.441088, attention0.454306→0.426508 with physical loss0.01.
+- FNO100 width16/32dev0.287190/0.286988, both substantially below token/physics pilot;
+  same labels/times/steps/batches,34261/136613 parameters. All6 retained before holdout.
+- Training seconds are raw workstation observations: some late physics runs overlapped
+  FNO/regression jobs, so NOT isolated efficiency evidence. Confirmation network profiling
+  will run after all project trainers/tests stop, with warmed/synchronized timing.
+- Next: commit audits/artifacts, seal every final model, commit seal, THEN fresh500 read.
+
 - Full regression67 tests passed58.003s. Same100-shot/time FNO16/32 controls registered
   before confirmation (6 fits, fixed final, exact labeled batch sequence), not replacing
   registered4 factorial contrasts. New FNO trajectory CPU/CUDA resume/shape test1

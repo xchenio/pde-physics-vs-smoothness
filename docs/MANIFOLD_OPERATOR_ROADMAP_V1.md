@@ -77,7 +77,7 @@ trainable parameter count and steps, report actual time/VRAM. Include spatial
 permutation/global-vector controls if stage1 supports their diagnostic value.
 Coordinate and position information explicit. No physics loss in this stage.
 
-## Stage 4: physics-only ablation (registered100-shot Burgers pilot)
+## Stage 4: physics-only ablation (12 pilot +6 FNO fits completed/audited)
 
 Family `results/physics_token_v1`,12 fits: gate/attention x physics weight0/.01 x
 three seeds. A separate trajectory experiment, not fixed-time stage3 retraining.
