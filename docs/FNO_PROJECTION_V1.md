@@ -1,5 +1,14 @@
 # Shared FNO output projection experiment
 
+Completed36/36; source seal3cac70a. Tables:FNO_PROJECTION_V1_RESULTS.md.
+Audit: `D:/miniconda3/envs/pytorch/python.exe scripts/audit_fno_projection.py --require-complete`.
+All36 predictions/identities/projection closures/parameter counts/pairing fingerprints pass;
+all9 full final checkpoints match historical tensors bitwise;57 tests passed. Repeat driver skips36.
+Paper figure:paper/figures/fno_projection_20261008.png and.svg, visually inspected.
+No new confirmation consumed. Training projection improves some Burgers arms; Allen-Cahn
+post-hoc projection is slightly better at every rank/seed. Shared readout closes much of the
+prior coefficient-head gap; prior-model differences prevent a uniquely causal pooling claim.
+
 2026-10-08. 36 paired development fits:3 tasks ×4 output arms(full, POD16, POD32, POD64) ×3 seeds. Historical136481-real-parameter FNO encoder and shared32→32→1 pointwise head are unchanged in every arm. Initial full states, minibatch sequences and optimizer/schedule settings are paired; their fingerprints are saved.
 
 Full arm optimizes normalized squared field error. POD arm optimizes squared coefficient error `(z Qr − target_coeff)^2` using a fixed basis. This is equivalent to squared projected-field error up to the target's fixed projection-error constant. Both use the same spatial divisor256, target scale and guarded training-energy weights. Float32 projection is differentiable; final metrics use exact stored float64 bases. In all arms the input spatial mean is added after output reconstruction.

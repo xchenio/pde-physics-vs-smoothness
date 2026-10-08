@@ -1,5 +1,15 @@
 # Experiment ledger
 
+2026-10-08 FNO_PROJECTION_V1:36 paired fits, full/POD16/32/64,3 tasks,3 seeds;
+source seal3cac70a. Same136481-parameter FNO encoder/pointwise head; paired initial states
+and independently regenerated batch hashes. Full dev0.195846/0.220706/0.003315;
+training-POD32 0.188328/0.216032/0.003653. Allen-Cahn post-hoc32 0.003552 is better;
+post-hoc is stronger than training projection at every Allen-Cahn rank/seed. Shared readout
+largely closes prior pooled-head gap; prior parameter/initialization differences remain.
+Audit36 predictions/closures/groups,9 bitwise historical full reproductions;57 tests.
+Tables:FNO_PROJECTION_V1_RESULTS.md; paper figure:fno_projection_20261008.png/.svg.
+No new confirmation labels opened; no confirmed method novelty or efficiency claim.
+
 2026-10-08 SPECTRAL_POD_V1:54 fits (3 tasks ×3 ranks ×2 encoders ×3 seeds), source seal
 de5cc93, direct coefficients, matched nominal real parameter count per rank. Best spectral
 0.273799/0.302838/0.006762; best local0.373109/0.380088/0.004215. Both Burgers tasks choose16;

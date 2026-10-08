@@ -1,7 +1,7 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
 **2026-10-08 shared-head output ablation:** [FNO full versus training-time POD projection](FOLLOWUP_FNO_PROJECTION_20261008.md).
-Original Burgers projected-training outputs approach or slightly improve the paired full-field baseline while substantially outperforming the prior pooled coefficient head. Other tasks are in progress. All evidence is development-only; projection changes the objective and gradients together.
+All36 paired fits are complete. Shared-pointwise projected outputs substantially outperform prior pooled coefficient heads. Training projection has small task/rank-dependent Burgers gains; Allen-Cahn is slightly better with full training followed by projection at every tested rank/seed. All current arms have136481 parameters, paired initialization and batches;9 full checkpoints reproduce historical tensors bitwise. These are development observations. Next confirmation must retain post-hoc projection as a strong control and use genuinely unused data.
 
 **2026-10-08 completed follow-up (54 fits):** [parameter-matched spectral/POD and rank controls](FOLLOWUP_SPECTRAL_POD_20261008.md).
 Both Burgers partitions favor spectral over matched convolutional encoding and rank16. Allen-Cahn favors convolution and rank64, with most rank benefit from16 to32. None exceeds the prior direct full-field FNO. Exact projection/coefficient error decomposition supports task-dependent bottlenecks, not a universal architecture advantage. This is development-only evidence, with no new confirmation data opened.

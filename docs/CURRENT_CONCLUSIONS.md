@@ -1,5 +1,19 @@
 # Current conclusions
 
+> Latest2026-10-08 shared FNO encoder/pointwise-head ablation:36 paired fits complete.
+> Full/POD16/POD32/POD64 dev L2: original0.195846/0.191759/0.188328/0.190009;
+> independent0.220706/0.218613/0.216032/0.215583;
+> Allen-Cahn0.003315/0.026170/0.003653/0.003207. All136481 parameters; paired initial
+> states and batches independently audited;9 full checkpoints reproduce old tensors bitwise.
+> Allen-Cahn post-hoc projections0.026098/0.003552/0.003182 beat training projection
+> in every rank/seed. Extra training-projection benefit is task/rank-dependent.
+> The fixed POD output constraint alone cannot explain old pooled-head deficits; same-space
+> shared pointwise outputs are much stronger. Prior pooled comparisons also change parameter
+> count and initialization ordering, so head geometry is not a uniquely isolated cause.
+> Next: seal full/post-hoc/training-projection controls before unused confirmation, retaining
+> post-hoc projection as a strong baseline. No new confirmation opened here.57 tests pass;
+> tables:FNO_PROJECTION_V1_RESULTS.md; manuscript:paper/FOLLOWUP_FNO_PROJECTION_20261008.md.
+
 > Latest2026-10-08 matched-parameter spectral/POD study:54 new fits complete/audited.
 > Best spectral: Burgers original rank16 0.273799, independent rank16 0.302838,
 > Allen-Cahn rank64 0.006762. Best matched local convolution:0.373109/0.380088/0.004215.
