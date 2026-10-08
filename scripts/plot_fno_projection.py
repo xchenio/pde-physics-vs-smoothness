@@ -37,6 +37,7 @@ def main():
         ax.set_xlabel('POD rank');ax.set_title(title);ax.grid(axis='y',alpha=.2)
     axes[0].set_ylabel('Mean per-sample relative L2')
     fig.suptitle('Shared pointwise FNO head: output projection ablation',fontsize=13,y=.99)
+    fig.text(.5,.91,'Reused development sets | 3 seeds | Shading: seed standard deviation',ha='center',fontsize=9)
     handles,labels=axes[0].get_legend_handles_labels()
     fig.legend(handles,labels,loc='lower center',ncol=3,fontsize=9,bbox_to_anchor=(.5,-.03),frameon=False)
     fig.subplots_adjust(left=.065,right=.99,bottom=.23,top=.85,wspace=.3)
