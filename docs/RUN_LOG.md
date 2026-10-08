@@ -7,6 +7,7 @@
 - Source/plan committed before outcomes; run command `D:/miniconda3/envs/pytorch/python.exe scripts/run_spectral_pod.py run`. Checkpoints every50 steps; all54 fits and rank selections will be archived. Selection is development-adaptive, not unseen validation.
 - Source seal de5cc93. Full regression55 tests passed (37.685s). Original Burgers18 fits completed/replay-audited: spectral ranks16/32/64 dev0.273799/0.288870/0.296425; local matched0.373109/0.393550/0.398890. Both select16. Nominal real parameters147696/160000/184608. Increasing rank improves training/projection floor but worsens final development error; all tested spectral models remain weaker than old direct full FNO0.195846.
 - Independent Burgers18 fits completed; checkpoint audit36 total. Spectral ranks16/32/64 dev0.302838/0.318006/0.322749; local matched0.380088/0.391903/0.394451. Both select16. Old full FNO0.220706 remains stronger. Allen-Cahn18 fits now running, with no protocol changes or new confirmation opening.
+- Interim48/54 completed: Allen-Cahn rank16 spectral0.027097/local0.026244; rank32 spectral0.006965/local0.004486. Archived these12 completed runs before rank64 finishes. Their final replay audit awaits completed task summary. Local control is stronger here, unlike Burgers; no universal spectral superiority claim.
 
 ## 2026-09-22 — second audit and actual recovery implementation
 
