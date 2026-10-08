@@ -22,6 +22,10 @@ def audit(complete=False):
         if not summary_path.exists():continue
         arrays,anchors,context=task_data(p,task);summary=json.loads(summary_path.read_text())
         assert summary['context']==context
+        for rank in p['ranks']:
+            q=anchors[rank]['q']
+            np.testing.assert_array_equal(q,anchors[64]['q'][:,:rank])
+            np.testing.assert_allclose(q.T@q,np.eye(rank),atol=1e-12,rtol=0)
         for label,g in summary['groups'].items():
             runs=[];errors=[]
             for seed in p['seeds']:

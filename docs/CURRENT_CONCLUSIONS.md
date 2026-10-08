@@ -1,5 +1,18 @@
 # Current conclusions
 
+> Latest2026-10-08 matched-parameter spectral/POD study:54 new fits complete/audited.
+> Best spectral: Burgers original rank16 0.273799, independent rank16 0.302838,
+> Allen-Cahn rank64 0.006762. Best matched local convolution:0.373109/0.380088/0.004215.
+> Spectral wins all tested Burgers ranks; local wins all Allen-Cahn ranks. More rank
+> worsens Burgers generalization, while Allen-Cahn benefits mostly from16→32.
+> No new model beats old full-field FNO0.195846/0.220706/0.003315. Rank64 has184608
+> parameters vs FNO136481, so parameter efficiency is not established either.
+> Exact squared Frobenius decomposition is audited, not inferred from captured energy.
+> Next: identical FNO backbone/shared pointwise head, full output vs fixed POD projection
+> during training, to isolate output restriction from pooled coefficient-head differences.
+> That is proposed, not performed or established novelty. No new confirmation opened;
+> reused development does not certify independent generalization. Tables:SPECTRAL_POD_V1_RESULTS.md.
+
 > Latest architecture diagnosis:108 development-only fits completed and replay-audited.
 > Direct FNO dev relative L2: original Burgers0.195846, independent0.220706,
 > synthetic Allen-Cahn0.003315. Best MLP residual:0.363701/0.402240/0.287272.

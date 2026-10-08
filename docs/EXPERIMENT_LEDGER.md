@@ -1,5 +1,12 @@
 # Experiment ledger
 
+2026-10-08 SPECTRAL_POD_V1:54 fits (3 tasks ×3 ranks ×2 encoders ×3 seeds), source seal
+de5cc93, direct coefficients, matched nominal real parameter count per rank. Best spectral
+0.273799/0.302838/0.006762; best local0.373109/0.380088/0.004215. Both Burgers tasks choose16;
+Allen-Cahn chooses64. Old full-field FNO remains stronger on all tasks. All54 checkpoint
+replays and exact squared Frobenius decompositions pass;55 tests; all54 skip on rerun.
+Protocol/results:SPECTRAL_POD_V1.md / SPECTRAL_POD_V1_RESULTS.md. No new confirmation IDs.
+
 2026-09-30 architecture stages:72 MLP fitting controls +18 CNN/POD +18 full-field FNO,
 three seeds, three nonlinear tasks, development only. Selections sealed8192e38 before
 architecture transfer. Direct FNO0.195846/0.220706/0.003315; post-hoc same-POD projection

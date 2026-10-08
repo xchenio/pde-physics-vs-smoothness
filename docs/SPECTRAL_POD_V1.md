@@ -1,5 +1,11 @@
 # Spectral/POD controlled development study
 
+Completed54/54; source seal de5cc93. Full tables: SPECTRAL_POD_V1_RESULTS.md.
+Audit command: `D:/miniconda3/envs/pytorch/python.exe scripts/audit_spectral_pod.py --require-complete`.
+All54 predictions/identities/parameter counts/rank selections replayed;55 regression tests passed; repeat driver skips all54.
+Both Burgers tasks select16 and favor spectral; Allen-Cahn selects64 and favors local convolution.
+Prior full-field FNO remains stronger on all3 tasks. No new confirmation consumed.
+
 Protocol date:2026-10-08 (user timezone Asia/Shanghai). Previous108-run architecture study remains unchanged.
 
 54 new fits:3 tasks ×3 nested POD ranks(16,32,64) ×2 encoders ×3 seeds. Direct coefficient prediction only, zero head initialization, guarded normalized squared objective, AdamW0.001→0.00001, weight decay0.0001,batch32. Fixed final steps1500 for both Burgers partitions,6000 for synthetic Allen-Cahn, transferred from previous direct MLP selections. No early stopping or extra hyperparameter search. All ranks reported; best rank by mean development relative L2 per encoder, lower-rank tie break. No new confirmation data.
