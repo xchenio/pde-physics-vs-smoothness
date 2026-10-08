@@ -1,9 +1,16 @@
 import unittest
 import numpy as np
 from scripts.field_derivative_diagnostics import band_errors,lowpass,nonlinear_coefficients,residual_summary
+from scripts.diagnose_physics_stress_v2 import safe_band_errors
+import json
 
 
 class DiagnosticTests(unittest.TestCase):
+    def test_float32_diagnostic_json_compatibility(self):
+        x=np.arange(256)/256;true=np.sin(2*np.pi*x)[None,None,:].astype('float32')
+        value=safe_band_errors(true+.001,true,true[:,0],1.,[0])
+        self.assertEqual(json.loads(json.dumps(value,allow_nan=False)),value)
+
     def test_parseval_derivative_band_and_lowpass(self):
         x=np.arange(256)/256;true=np.sin(2*np.pi*x)[None,None,:]
         pred=true+.001*np.cos(2*np.pi*90*x)[None,None,:]

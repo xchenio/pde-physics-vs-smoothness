@@ -16,6 +16,11 @@
   extrapolation success, additional training labels or prior500 reuse.
 - Two new analytic diagnostics tests passed0.172s; source/rules committed before
   execution. Old checkpoints/results/seals remain unchanged.
+- V1 seal8d2d62e;9 Allen-Cahn records persisted before float32 NumPy floor scalar
+  caused JSON serialization failure on first Burgers result. No training/model
+  affected. Preserve sealedv1 and partial artifacts; newv2 scalar-only adapter
+  delegates unchanged numerics with new output/cache roots and source fingerprints.
+  Add float32 JSON compatibility regression; do not modify sealed numerical files.
 
 ## 2026-10-08 Fixed-architecture sparse-time/noisy-label and second nonlinear PDE
 
