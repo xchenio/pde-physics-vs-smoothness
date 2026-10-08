@@ -45,7 +45,13 @@ def audit(complete=False):
                         if split=='val':errors.append((np.linalg.norm(pred-v['y'],axis=1)/np.maximum(np.linalg.norm(v['y'],axis=1),1e-12)).tolist())
                 count+=1
             actual=group(runs);assert actual['metrics']==g['metrics'];assert actual['parameters_real']==g['parameters_real']
-            records[f'{task}/{label}']=dict(**g,development_errors=errors)
+            field_sq=float(np.mean([r['metrics']['val']['prediction']['relative_fro']**2 for r in runs]))
+            projection_sq=runs[0]['metrics']['val']['oracle']['relative_fro']**2
+            coefficient_sq=float(np.mean([r['metrics']['val']['coefficient_relative_fro']**2 for r in runs]))
+            assert abs(field_sq-projection_sq-coefficient_sq)<1e-10
+            records[f'{task}/{label}']=dict(**g,development_errors=errors,
+                squared_fro_decomposition=dict(field=field_sq,projection=projection_sq,coefficient=coefficient_sq,
+                                                coefficient_fraction=coefficient_sq/field_sq))
         for rank in p['ranks']:
             pair=[summary['groups'][f'{a}_r{rank}']['parameters_real'] for a in p['architectures']];assert pair[0]==pair[1]
         for architecture in p['architectures']:
