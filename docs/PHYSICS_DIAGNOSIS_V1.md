@@ -1,5 +1,9 @@
 # Development-only derivative/consistency diagnosis (2026-10-09)
 
+UPDATE: sealedv1 stopped after nine persisted records due to NumPy float32 JSON
+compatibility. V1 is preserved; scalar-onlyv2 repair completed all36 models.
+Results: PHYSICS_DIAGNOSIS_V2_RESULTS.md. Usev2 runner for recovery, notv1.
+
 No architecture changes, training or new confirmation access. All36 final
 stress models (three arms x three seeds x four conditions) remain frozen.
 Existing200 development fields quantify Fourier error; fixed FIRST32 existing
@@ -36,7 +40,7 @@ lowpass reconstruction, independent NumPy Burgers residual and cubic dealiasing.
 Source and immutable diagnostic rules must be committed before running.
 
 ```powershell
-& 'D:\miniconda3\envs\pytorch\python.exe' scripts/diagnose_physics_stress.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/diagnose_physics_stress_v2.py run
 ```
 
 Each model's diagnostic result is atomic and skipped on valid rerun. Native

@@ -290,3 +290,38 @@ RMS only. These secondary diagnostics were added during execution, not primary
 selection tests; they highlight that low field error does not certify multiscale
 physical structure. Frequency-resolved and time-derivative diagnosis is needed
 before proposing another mechanism or spending a new confirmation set.
+
+### Frozen-model diagnosis: periodic-seam and temporal-reference limitations
+
+All36 final stress models were diagnosed without retraining or new confirmation.
+At Allen-Cahn, data-only second-derivative error3.694110 has90.17% squared error
+energy in modes65..128 and98.25% at the eight boundary-adjacent nodes (3.125%
+of the grid). Denominator protection is inactive in all scored cases. PDE and
+curvature arms share the same pattern. A fixed diagnostic mode16 projection
+reduces curvature error to0.324997 while field error changes0.043007 to0.042723;
+this is an exploratory counterfactual, not a selected model or holdout gain.
+The linear coordinate/local paths are plausible periodic-seam contributors,
+but a controlled encoding/periodicity intervention is required for causation.
+Burgers boundary concentration is only~3.5%-3.7%, so its high-frequency errors
+cannot be explained by the same observed seam localization.
+
+Time JVP agrees with the model's own finite differences to~5e-5..2.3e-4 mean
+relative error. Allen-Cahn prediction time-derivative errors remain
+0.325175/0.321884/0.327393 (none/PDE/curvature), despite native reference FD
+versus semidiscrete RHS discrepancy1.17e-6. The implementation is numerically
+consistent, but temporal dynamics are not learned accurately.
+
+For Burgers, native FD h0.02 versus0.01 differs44.40% full-field and12.34% in
+native modes0..16. Large full-band PDE residual persists at1024 as well as256;
+it does NOT isolate spatial target inconsistency because temporal undersampling
+is confounded. This qualifies the earlier coarse full-spectrum enforcement
+caution: measured FD residuals should not be attributed solely to coarse space.
+Allen-Cahn resolved/almost-full residual~1e-6 at all grids and negligible nonlinear
+closure gap cannot account for its learned curvature artifacts. Numerical and
+learned-model consistency must be separated before designing a physical correction.
+
+Extra adjacent frames were accessed only on32 existing development trajectories
+per PDE, including numerical probes just beyond the final supervised time; this
+is diagnostic access, not temporal extrapolation validation or new fitting data.
+Fourier/time diagnostics are exploratory; fixed projections are not selected.
+Full evidence and denominator/reference details: PHYSICS_DIAGNOSIS_V2_RESULTS.md.

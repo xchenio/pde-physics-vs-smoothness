@@ -1,5 +1,14 @@
 # Experiment ledger
 
+2026-10-09 PHYSICS_DIAGNOSIS_V1/V2: source seal8d2d62e, scalar-only repaircf149dc;
+36 frozen models diagnosed, zero new fits. V1 preserves9 Allen records before
+NumPyfloat32 JSON failure;v2 reproduces9 exactly, completes36. Diagnostic-only
+adjacent frames on32 existingdev IDs,200-case Fourier bands/boundary metrics.
+Allen curvature~3.7 driven by high frequencies/boundary concentration, not floor;
+JVP implementation numerically consistent, learned u_t stillpoor. Burgers native
+FD sensitivity confounds full-band space/PDE attribution.80 regression tests pass.
+No confirmation IDs opened, no output filter selected or architecture changed.
+
 2026-10-09 PHYSICS_STRESS_V1:48 fits complete (12 own-observation warm starts,
 36 none/PDE/curvature forks), seal600273d; all48 independent replays passed.
 Same34209-param FNO,2250 total steps,100 trajectories, fixed transferred0.3.

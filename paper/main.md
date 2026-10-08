@@ -403,3 +403,11 @@ All48 checkpoints/observations/paired streams/summaries were replayed; no fresh
 confirmation labels were opened. Allen-Cahn second-derivative errors~3.7 also
 preclude inferring physical fidelity from its small field error. Full limits and
 tables are in the spatial follow-up and PHYSICS_STRESS_V1_RESULTS.md.
+
+Frozen-model diagnosis now localizes Allen-Cahn curvature artifacts:90.17% error
+energy in highest modes and98.25% at eight boundary-adjacent nodes, with no
+denominator-floor activation. JVP implementation agrees with its own FD, but
+learned time dynamics remain inaccurate. Burgers temporal-reference sensitivity
+(44.40% full-field FD width disagreement) prevents assigning all measured PDE
+residual to spatial inconsistency. No new training, output-rule selection or
+confirmation access occurred; see PHYSICS_DIAGNOSIS_V2_RESULTS.md.

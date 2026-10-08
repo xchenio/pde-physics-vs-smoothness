@@ -21,6 +21,27 @@
   affected. Preserve sealedv1 and partial artifacts; newv2 scalar-only adapter
   delegates unchanged numerics with new output/cache roots and source fingerprints.
   Add float32 JSON compatibility regression; do not modify sealed numerical files.
+- JSON-onlyv2 sealcf149dc;36 final model diagnostics complete, ninev1 Allen records
+  reproduce exactly. Audit36 source/model/output identities, energy shares and
+  native FD sensitivity passed; no training or fresh confirmation.
+- Allen data-only curvature3.6941:90.17% error energy in modes65..128,98.25% at
+  first/last4 grid nodes, denominator floor never active. Fixed cutoff16 diagnostic
+  reduces curvature0.3250 with field0.04272 vs0.04301; NOT selected validation gain.
+  Linear coordinate/local paths are candidate causes, not proved by this diagnosis.
+- Model JVP/own FD mean differences5e-5..2.3e-4, but Allen time derivative error
+  0.3252/0.3219/0.3274 (none/PDE/curvature); native reference RHS disagreement1.17e-6.
+- Burgers native FD h0.02 versus0.01 disagreement44.40% full,12.34% resolved;
+  do not call full prediction-vs-FD~95%-99% a certified physical derivative error.
+  Large full-band residual even at1024 confounds temporal and spatial effects.
+- New evidence changes prior interpretation: coarse full residual alone does NOT
+  identify spatial inconsistency; resolved nonlinear closure RMS0.03739 vs native
+  FD residual0.94883 is not dominant here. Allen reference residual~1e-6 on all
+  grids rules out target inconsistency as an explanation for its seam curvature.
+- Final full regression80 tests passed55.497s. Diagnostic artifact/source/model/
+  share invariants and nine unchanged scalar-repair records audited; not claimed
+  as a second independent replay of all36 temporal predictions. No background
+  diagnostic/training worker remains; numerical reference and all final checkpoints
+  retained. Paper/current assessment updated to distinguish temporal/spatial effects.
 
 ## 2026-10-08 Fixed-architecture sparse-time/noisy-label and second nonlinear PDE
 

@@ -1,5 +1,18 @@
 # Current conclusions
 
+> Latest2026-10-09 diagnosis COMPLETE,36 frozen final models,80 tests pass.
+> Allen-Cahn data-only curvature3.694:90.17% error energy at modes65..128,
+> 98.25% at first/last4 nodes; denominator floor0% active. Periodic-seam artifact
+> is strongly localized, but linear-coordinate causation is not established.
+> Fixed cutoff16 counterfactual curvature0.325 with field0.042723 vs0.043007;
+> NOT selected model, training gain or independent filter verification.
+> Time JVP/own FD agrees~5e-5..2.3e-4, yet Allen u_t error~32%; reference RHS
+> disagreement~1e-6. Learned dynamics, not derivative-code failure, is implicated.
+> Burgers native FD width sensitivity44.40% full/12.34% resolved; do not attribute
+> all full-PDE residual to space error or report sampled FD as exact derivative gold.
+> No retraining/new module/fresh confirmation. Next periodicity/full-band smoothing
+> control on development, then reliable time-constraint diagnosis; keep strong baselines.
+
 > Latest2026-10-09 physics_stress_v1 COMPLETE:48 fits,48 independent checkpoint/
 > label/batch/query/fork/summary replays. Fixed architecture and transferred0.3.
 > Burgers sparse none/PDE/curvature0.644463/0.603849/0.589233;
