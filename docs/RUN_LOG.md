@@ -1,5 +1,22 @@
 # Run log
 
+## 2026-10-09 Frequency artifacts, time derivative and discretization diagnosis
+
+- User requests diagnosis only, no extra network modules. Newphysics_diagnosis_v1
+  freezes all36 final stress models; no new training, architecture or confirmation.
+- Register actual Fourier error bands0..4/5..16/17..64/65..128, Nyquist-correct
+  Parseval closure, boundary8 energy concentration and denominator-floor activity.
+  Fixed cutoff16/32/64 are counterfactual diagnostics, not selected output models.
+- Temporal checks: JVP versus own FD0.001/0.0005 and numerical native truth on
+  fixed first32 EXISTING development IDs. Discretization grids1024/512/256,
+  native FD0.01/0.02 Burgers and0.0005/0.001 Allen-Cahn; residual band16/full.
+  Compare raw/filtered coarse targets and exact nonlinear-closure coefficient gap.
+- Extra adjacent development snapshots, including immediately after final label,
+  explicitly disclosed and diagnostic-only. Not unseen trajectory validation,
+  extrapolation success, additional training labels or prior500 reuse.
+- Two new analytic diagnostics tests passed0.172s; source/rules committed before
+  execution. Old checkpoints/results/seals remain unchanged.
+
 ## 2026-10-08 Fixed-architecture sparse-time/noisy-label and second nonlinear PDE
 
 - User authorized fixed architecture, strong curvature baseline, sparse-time/noise
