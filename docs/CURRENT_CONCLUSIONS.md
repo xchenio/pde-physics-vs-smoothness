@@ -1,5 +1,15 @@
 # Current conclusions
 
+> Follow-up2026-10-08: training-only FNO physics discretization audit passed for
+> FIXED modes0..16 (median resolved residual1.8%-4.2%), but almost-full256 band
+> remains25%-51%. This supports testing a resolved constraint, NOT full-grid
+> physics enforcement or a performance claim. A new continuous-time data-only
+> FNO baseline is complete: development mean0.277170 vs historical0.287190;
+> this is an architecture/control result, not a physical-loss or fresh-test gain.
+> Historical five discrete heads do not define u_t. Thirty paired regularization
+> continuations are registered, with training-only gradient calibration.
+> No new confirmation targets opened; previous500 remain consumed.
+
 > Latest2026-10-08 spatial latent five-stage FIRST ROUND COMPLETE:126 new fits
 > audited (81 compression,9CNN/trunk,18attention,12physics,6matched-data FNO).
 > Seal05b8153 preceded500 new Burgers target extraction; all500 NOW CONSUMED.

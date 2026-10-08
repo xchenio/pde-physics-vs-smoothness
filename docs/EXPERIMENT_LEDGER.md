@@ -1,5 +1,16 @@
 # Experiment ledger
 
+2026-10-08 FNO_PHYSICS_RESOLUTION_V1: training-only100 trajectories, native1024/
+512/256 and centraldt0.01/0.02; resolved0..16 gate passed (median1.8%-4.2%),
+almost-full coarse residual25%-51%. Extra20 snapshots per training trajectory
+diagnostic-only; no fresh confirmation or development targets. Seal08ddfd2.
+TIME_FNO_BASELINE_V1:3 seeds of continuous-time data-only FNO, same100x5 fitting
+labels and paired historical batch stream,1500 steps; seal7e4aa56. Complete,
+development0.277170 +/-0.006826,34209 parameters;3 checkpoint/batch replays pass.
+FNO_REGULARIZATION_V1:30 registered paired2250-total-step models (1500 shared
+data warm start +750 continuation), none/PDE/gradient/curvature on fixed0..16
+band, train-gradient strengths0.03/0.1/0.3; development-only pilot, no new holdout.
+
 2026-10-08 FNO_PROJECTION_V1:36 paired fits, full/POD16/32/64,3 tasks,3 seeds;
 source seal3cac70a. Same136481-parameter FNO encoder/pointwise head; paired initial states
 and independently regenerated batch hashes. Full dev0.195846/0.220706/0.003315;

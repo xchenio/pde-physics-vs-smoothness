@@ -1,0 +1,50 @@
+{
+  "parent_plan_sha256": "da1238c2fce906d0d50345f78339482c65ffbde70c222ed825ad586797841480",
+  "parent_summary_sha256": "ad3a06532b3e45ad14ceb537498f20674e4fee5d5dd150e79abfacfd12286958",
+  "source": {
+    "scripts/run_fno_regularization.py": "a4257e303d6c998401058c01e3240f17e65cb438ee613af8c959f27057cf542d",
+    "scripts/fno_regularization_core.py": "1a80d3ee0a0ed49a1b8fa94a057721039648ac62234ba4b762c487c4cf0e4ba9",
+    "scripts/time_fno_baseline.py": "c2e8a8eb66e4dd78f244b8d734431f5f008dc8e8cade5a9c68eb596782100f35",
+    "src/time_fno.py": "298b5ccb3f0e83d7a32c9970616b1442cf09651aa854091f62316b28ba598c46",
+    "src/fno.py": "6d5c0883bb1661b60c117d0b365bfe10ee867de13c0322de6c903f74d6bef29f"
+  },
+  "warm_checkpoints": {
+    "0": "ff800ad9885ef337e839c8d69dd324af4f0c118de03bf8cb2047dae11c4b69a6",
+    "1": "b082207bfb55fe1c7abd9de22d91193eebd9335cc56bfa27608710cd029369c4",
+    "2": "b1194c6a4b47bb883ac9c58ea98158d67488ecb686b415b2b28013b130dc7a2d"
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "kinds": [
+    "physics",
+    "gradient",
+    "curvature"
+  ],
+  "strengths": [
+    0.03,
+    0.1,
+    0.3
+  ],
+  "steps": 750,
+  "width": 16,
+  "modes": 16,
+  "layers": 4,
+  "lr": 0.0003,
+  "lr_min": 1e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 16,
+  "eval_every": 250,
+  "checkpoint_every": 50,
+  "diffusion": 0.0003183098861837907,
+  "resolved_max_mode": 16,
+  "pairing": "Each seed forks its SAME1500-step data-only model+optimizer+minibatch RNG; all arms including no-penalty control continue750 steps with common cosine LR restart. Separate shared collocation RNG, time uniform0.1..1 for labeled batch trajectories. All compute same penalty forwards, but backward cost differs.",
+  "calibration": "Training-only first16 IDs, fixed linspace0.1..1; each penalty weight=strength*||grad Ldata||/||grad Lpenalty|| at warm start, held fixed. Complex parameters counted by real components. Effective later ratios diagnostic only.",
+  "controls": "Resolved modes0..16 for PDE, gradient and curvature alike; this is a matched-band smoothness comparison, not optimally tuned full-band regularization. Losses are in physical units divided by target scale squared.",
+  "primary": "Same reused development200, relativeL2 trajectory avg4 noninitial times, average3 seeds. Every grid result retained, fixed final2250 total steps, no validation checkpoint selection.",
+  "selection": "Within each penalty family choose lowest three-seed development mean, tie by smallest strength. Compare selected physics to none and both selected smoothness controls; development selection is exploratory, not confirmation.",
+  "confirmation": "No fresh IDs selected/opened here. Select/seal all rules/models before a separate fresh-ID confirmation protocol; previous500 already consumed.",
+  "limitation": "Same100 trajectories x5 fitting labels; development reused in many prior designs. No noise/extrapolation/second-PDE claim. Time-conditioned architecture differs from historical five-head FNO."
+}

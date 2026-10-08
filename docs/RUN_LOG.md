@@ -1,5 +1,43 @@
 # Run log
 
+## 2026-10-08 Strong FNO physics prerequisite (new versioned families)
+
+- User: continue. Preserve previous126 fits and consumed500 confirmation IDs.
+- Added continuous-time FNO, query-time JVP and periodic spectral conservative
+  residual; do not infer temporal derivatives from historical five output heads.
+- Source/gate seal08ddfd2 before training-only resolution audit.100 existing
+  training IDs,20 neighboring time frames diagnostic-only, no development or
+  confirmation extraction. Diffusion0.001/pi, exact retained cell centers.
+- Registered resolved modes0..16 passed feasibility gate: median relative
+  residual0.042138/0.036492/0.031825/0.018282 at four times; almost-full spectrum
+  medians0.507245/0.511209/0.421037/0.254306. This is scale-limited evidence;
+  full-frequency residual enforcement is not supported by this diagnostic.
+- Three derivative/dealiasing/JVP tests passed4.058s, including CPU/CUDA parameter
+  gradients; one additional CPU/CUDA exact-resume/identity test passed3.714s.
+- Seal7e4aa56 before time_fno_baseline_v1 training:3 seeds, same100 trajectories,
+  same5 labels per batch,1500 fixed steps, atomic full checkpoints every50.
+  Development continuation gate<=1.10*historical FNO16 mean0.2871897, fixed before
+  outcomes. No physical loss yet; training-only PDE probes descriptive.
+- Commands: pytorch python -m unittest tests.test_time_fno -q;
+  -m unittest tests.test_time_fno_baseline -q;
+  scripts/audit_fno_physics_resolution.py plan/run;
+  scripts/run_time_fno_baseline.py plan/run. Re-run the last command to resume;
+  completed identities/checkpoint hashes are checked before skipping.
+- Time FNO3/3 complete: dev0.277170 +/-seedSD0.006826, per-seed
+  0.269737/0.283157/0.278617,34209 real parameters. Gate passed; no physics used.
+  Independent audit3/3 predictions and regenerated rolling batches passed;
+  batches equal historical matched100-shot FNO16. Source seal7e4aa56.
+- Register fno_regularization_v1:30 paired750-step continuations of frozen1500
+  warm starts; data-only versus resolved PDE/gradient/curvature strengths
+  0.03/0.1/0.3, training-only gradient-norm calibration. Common optimizer/labels/
+  query times/LR restart; all penalty forwards, different backward cost. Fixed
+  final checkpoints only; per-family mean-of3 development selection, all grid
+  entries preserved. No fresh confirmation or second-PDE claim.
+- New continuation test passed7.296s: CPU/CUDA bitwise resume for all4 families,
+  calibrated initial gradient ratios and paired starts/batches/collocations.
+- Full regression73 tests passed40.976s before continuation training. Resume
+  command: pytorch python scripts/run_fno_regularization.py run. No --resume flag.
+
 ## 2026-10-08 Shared FNO pointwise head and output projection
 
 - Added FNO_PROJECTION_V1 protocol:36 paired fits, full/POD16/32/64,3 tasks,3 seeds; identical136481-parameter encoder/head, optimizer, initialization and batches. No new confirmation data.

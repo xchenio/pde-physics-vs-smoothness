@@ -164,3 +164,35 @@ Related frameworks already exist: [DeepONet](https://www.nature.com/articles/s42
 [physics-informed DeepONet](https://arxiv.org/abs/2103.10974), and
 [latent DeepONet](https://www.nature.com/articles/s41467-024-49411-w).
 Their combination alone is not a novelty claim.
+
+## Follow-up prerequisite: resolved physics for the strong FNO
+
+The historical matched-data FNO predicts five discrete time heads, so a temporal
+derivative cannot be inferred by automatic differentiation of its output-head
+index. A separately controlled, time-conditioned FNO is required. Spatial
+derivatives use periodic Fourier differentiation; input-sensor derivatives are
+not interpreted as physical derivatives.
+
+A predeclared training-only audit uses100 existing training trajectories and20
+neighboring diagnostic time snapshots each, not additional fitting labels. At
+256 retained sensors, median normalized conservative residual on fixed Fourier
+modes0..16 is0.042138/0.036492/0.031825/0.018282 at0.1/0.25/0.5/1.0; almost-full
+band medians are0.507245/0.511209/0.421037/0.254306. The residual is normalized
+by root-sum-square time, conservative-flux and diffusion term magnitudes.
+This scale-dependent mismatch motivates a resolved weak constraint, but does
+not establish any predictive gain. No development/confirmation labels are
+accessed for this audit. The time-conditioned data-only baseline and matched
+physics-versus-smoothness controls remain separate experiments. Physical loss
+for FNO follows existing [PINO](https://arxiv.org/abs/2111.03794) principles and is
+not claimed as an architectural novelty.
+
+The continuous-time data-only FNO (34209 real parameters) completed three
+1500-step fits using the same100 trajectories and five registered labels;
+development mean relativeL2 is0.277170 (seedSD0.006826), versus0.287190 for the
+historical34261-parameter five-head model. Both use identical labeled minibatch
+streams. The change is descriptive on reused development data, not a physical
+loss effect or confirmation result. All three checkpoint predictions and batch
+streams were replayed. Thirty paired750-step continuations are now registered
+from these frozen warm starts: no penalty, or resolved PDE/gradient/curvature
+penalties at three training-gradient-calibrated strengths. Their final total
+budget is2250 steps and must be compared within that continuation factorial.
