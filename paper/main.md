@@ -381,5 +381,15 @@ constraint, not full-spectrum PDE enforcement. A separately controlled query-tim
 FNO reaches development0.277170 +/-seedSD0.006826 without physics (three1500-step
 fits). Thirty paired physics-versus-gradient/curvature continuations are registered
 with equal2250-total-step fitting budgets and training-only gradient calibration.
-They remain development experiments; no new confirmation or second-PDE evidence
-is claimed. Details and access accounting are in the follow-up report.
+At that prerequisite stage they were development experiments. The subsequent
+locked confirmation is reported below; second-PDE evidence remains absent.
+Details and access accounting are in the follow-up report.
+
+UPDATE: all30 strong-FNO continuations completed and independently replayed;
+new500 confirmation after seal4d60f18 gives data-only0.290253, PDE0.286260,
+gradient0.286076, curvature0.282820. All penalties improve data only, but PDE
+does not beat either selected smoothness control under the registered five-
+comparison procedure. Thus the clean100-shot evidence supports regularization,
+not a unique physical-loss advantage. The new500 is now consumed, and12 model
+predictions/five decisions were replayed. See the follow-up report for intervals,
+selection limitations and the proposed sparse-time/noise/second-PDE tests.

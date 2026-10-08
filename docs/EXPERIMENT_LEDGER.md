@@ -10,7 +10,11 @@ labels and paired historical batch stream,1500 steps; seal7e4aa56. Complete,
 development0.277170 +/-0.006826,34209 parameters;3 checkpoint/batch replays pass.
 FNO_REGULARIZATION_V1:30 registered paired2250-total-step models (1500 shared
 data warm start +750 continuation), none/PDE/gradient/curvature on fixed0..16
-band, train-gradient strengths0.03/0.1/0.3; development-only pilot, no new holdout.
+band, train-gradient strengths0.03/0.1/0.3; COMPLETE,30 independent replays.
+FNO_REGULARIZATION_CONFIRMATION_V1: NEW500 after seal4d60f18, disjoint8329
+historical IDs;12 models/five registered contrasts replayed. None0.290253,
+PDE0.286260,gradient0.286076,curvature0.282820; all three vs-none pass, both
+physics-vs-smoothing superiority gates fail. New500 NOW CONSUMED. No retuning.
 
 2026-10-08 FNO_PROJECTION_V1:36 paired fits, full/POD16/32/64,3 tasks,3 seeds;
 source seal3cac70a. Same136481-parameter FNO encoder/pointwise head; paired initial states

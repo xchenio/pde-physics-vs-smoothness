@@ -3,8 +3,10 @@
 ## Strong FNO physics/smoothness follow-up (2026-10-08)
 
 The continuous-time data-only baseline3/3 is complete and independently replayed.
-Do not rerun completed training to change its budget. The continuation grid is
-new and resumes automatically, including full optimizer and both RNG streams:
+The continuation grid30/30 and fresh500 confirmation are NOW COMPLETE; all12
+confirmation predictions/five decisions replayed. Do not restart completed
+training, change its budget, or reseal the consumed confirmation. The following
+command is only for restoring incomplete copies from their atomic checkpoints:
 
 ```powershell
 Set-Location 'F:\Desktop\temp\pinode_align'

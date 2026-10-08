@@ -88,6 +88,13 @@ seed selection. No confirmation IDs are selected or opened in this pilot.
 The next family must snapshot CURRENT historical IDs, seal rules/checkpoints,
 and only then extract truly unused trajectories. This is not second-PDE validation.
 
+UPDATE:30/30 complete and independently replayed; fresh500 confirmation was
+sealed at4d60f18 and evaluated (now consumed). Selected PDE/gradient/curvature
+confirmation errors0.286260/0.286076/0.282820 versus no-penalty0.290253. All
+improve the no-penalty control, but PDE has no unique gain over gradient and is
+worse than curvature. Full intervals/access accounting and next research decision
+are in `docs/FNO_REGULARIZATION_V1_RESULTS.md`. No jobs remain to resume.
+
 Resume command (automatically skips completed models):
 
 ```powershell

@@ -15,6 +15,20 @@
   predeclared contrasts,10000 paired trajectory bootstrap, Bonferroni5 intervals,
   >=1%gain AND upper<0. No new target extraction until seal committed.
 - Confirmation effect-gate/reproducibility/pairing unit test passed0.036s.
+- Seal4d60f18 committed before fresh500 extraction. New500 disjoint from8329
+  conservative history (previous500 included); NOW CONSUMED from first extraction.
+- Confirm none0.290253, PDE0.286260, gradient0.286076, curvature0.282820;
+  gains1.376%/1.439%/2.561%. Five predeclared Bonferroni5 bootstrap contrasts:
+  all three vs-none pass; PDE-vs-gradient fails (interval contains zero);
+  PDE-vs-curvature fails (PDE worse, interval wholly positive).
+- Independent confirmation audit replays all12 predictions and all five decisions.
+  No post-confirmation weight search/model selection. Follow-up priority changes
+  to retain curvature as the strong control and examine sparse-time/noise settings,
+  then a second nonlinear PDE. These are proposals, not new demonstrated results.
+- Final full regression74 tests passed40.445s after confirmation; no training or
+  confirmation worker remains. Paper/main/follow-up, current conclusions,
+  publication assessment, ledger and runbook synchronized to the negative
+  physics-specific result. All binary warm/continuation checkpoints remain local.
 
 - User: continue. Preserve previous126 fits and consumed500 confirmation IDs.
 - Added continuous-time FNO, query-time JVP and periodic spectral conservative

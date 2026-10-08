@@ -196,3 +196,41 @@ streams were replayed. Thirty paired750-step continuations are now registered
 from these frozen warm starts: no penalty, or resolved PDE/gradient/curvature
 penalties at three training-gradient-calibrated strengths. Their final total
 budget is2250 steps and must be compared within that continuation factorial.
+
+## Strong-FNO regularization confirmation: physics is not uniquely beneficial
+
+All30 continuation runs completed and independently replayed. Per-family
+development selection chose initial gradient ratio0.3 for PDE, gradient and
+curvature, the upper searched boundary. These are matched-band controls, not
+fully optimized full-band regularization. The four frozen families (12 fitted
+models) and five comparisons were sealed in commit4d60f18 BEFORE new500-target
+extraction. A new conservative historical-ID registry excludes8329 IDs, including
+the previous consumed500, leaving1671 available at sealing. This fresh500 is
+now consumed; none of its outcomes was used for additional tuning.
+
+| Family | Fresh500 trajectory relativeL2 | Improvement versus none |
+|---|---:|---:|
+| Data only,2250 total steps | 0.290253 | — |
+| Resolved PDE | 0.286260 | 1.376% |
+| Resolved gradient smoothing | 0.286076 | 1.439% |
+| Resolved curvature smoothing | 0.282820 | 2.561% |
+
+Each penalty passes the predeclared>=1% improvement and negative-upper-bound
+gate versus data only, using10000 paired trajectory bootstrap draws and
+Bonferroni5 two-sided intervals, conditional on the three fitted seeds. The
+PDE-minus-gradient difference is+0.000184 with adjusted interval
+[-0.000086,+0.000440]; the PDE-minus-curvature difference is+0.003440 with interval
+[+0.002879,+0.004032]. The PDE superiority gates therefore both fail. Curvature
+beats PDE in every paired seed. All12 model predictions and five comparison
+decisions were replayed. This does not prove all physics-informed methods are
+inferior, but it rules out claiming a unique governing-equation benefit from
+these clean100-shot/seen-time field-error results.
+
+The fixed training probe also has lower resolved PDE penalty under curvature
+smoothing than under PDE training (8.644 versus9.077, data-only12.411), a
+descriptive reused-training observation rather than an independent mechanism
+test. Reducing a measured PDE residual alone does not distinguish an equation-
+specific benefit from ordinary smoothing. The next falsifiable question is
+whether physics supplies information beyond the strongest smoothness control
+under sparse temporal supervision or noise, then on a second nonlinear PDE.
+No such stress-setting or second-PDE benefit is established here.

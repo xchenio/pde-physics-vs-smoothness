@@ -1,6 +1,21 @@
 # Current conclusions
 
-> Follow-up2026-10-08: training-only FNO physics discretization audit passed for
+> Latest strong-FNO follow-up COMPLETE:3 continuous-time baselines +30 paired
+> continuations;30 checkpoint/batch/collocation/selection replays passed.
+> Seal4d60f18 preceded a NEW500-trajectory extraction, disjoint from conservative
+> historical8329 (including previous consumed500). This new500 is NOW CONSUMED.
+> Confirmation none0.290253, PDE0.286260, gradient0.286076, curvature0.282820.
+> All three penalties pass registered>=1%gain/Bonferroni5 intervals versus none;
+> PDE-vs-gradient fails (interval crosses0), PDE-vs-curvature fails (PDE worse).
+> Curvature gain2.561%, PDE1.376%: no unique physical-loss predictive advantage.
+> All12 confirmation model predictions/five decisions replayed. Fixed2250-step
+> budget/34209 params/100x5 labels; one PDE, seen times,256 sensors only.
+> Keep curvature smoothing as a strong baseline; next test sparse-time/noisy
+> supervision and a second nonlinear PDE. Do not justify adding blocks from this
+> evidence or equate existing PINO ingredients with novelty.
+
+> Earlier prerequisite snapshot (BEFORE new confirmation): training-only FNO
+> physics discretization audit passed for
 > FIXED modes0..16 (median resolved residual1.8%-4.2%), but almost-full256 band
 > remains25%-51%. This supports testing a resolved constraint, NOT full-grid
 > physics enforcement or a performance claim. A new continuous-time data-only
