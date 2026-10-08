@@ -63,6 +63,25 @@ def run(family,require_complete):
             old=json.loads((ROOT/f'results/fno_small_trajectory_v1/w16_s{seed}/result.json').read_text())
             if old['batch_hash']!=bh:raise ValueError('historical pairing mismatch')
         evidence.append(dict(run=folder.name,final_sha256=result['final_sha256'],batch_replayed=True,predictions_replayed=True))
+    if len(paths)==expected:
+        summary=json.loads((out/'summary.json').read_text())
+        if continuation:
+            groups={}
+            for path in paths:
+                r=json.loads(path.read_text());c=r['identity']['config']
+                name=f"{c['kind']}_r{c['strength']:g}"
+                groups.setdefault(name,[]).append((c['seed'],r['metrics']['val']['primary']))
+            for name,rows in groups.items():
+                rows.sort();values=[v for _,v in rows]
+                np.testing.assert_allclose(summary['groups'][name]['per_seed'],values,rtol=1e-11,atol=1e-12)
+                np.testing.assert_allclose(summary['groups'][name]['development_mean'],np.mean(values),rtol=1e-11,atol=1e-12)
+                np.testing.assert_allclose(summary['groups'][name]['development_seed_sd'],np.std(values,ddof=1),rtol=1e-11,atol=1e-12)
+            selected={k:min([n for n in groups if summary['groups'][n]['kind']==k],key=lambda n:(summary['groups'][n]['development_mean'],summary['groups'][n]['strength'])) for k in plan['kinds']}
+            if selected!=summary['selected']:raise ValueError('selection replay mismatch')
+        else:
+            mean=np.mean([json.loads(p.read_text())['metrics']['val']['primary'] for p in paths])
+            np.testing.assert_allclose(summary['development_mean'],mean,rtol=1e-11,atol=1e-12)
+            if summary['gate_passed']!=(mean<=1.1*summary['historical_discrete_head_development_mean']):raise ValueError('gate replay mismatch')
     atomic_json(out/'checkpoint_audit.json',dict(completed_runs=len(paths),expected_runs=expected,complete=len(paths)==expected,evidence=evidence,confirmation_opened=False))
     print(f'AUDIT {family}: {len(paths)}/{expected} prediction and batch replays passed',flush=True)
 

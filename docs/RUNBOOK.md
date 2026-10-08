@@ -1,5 +1,31 @@
 # Resumable experiment runbook
 
+## Strong FNO physics/smoothness follow-up (2026-10-08)
+
+The continuous-time data-only baseline3/3 is complete and independently replayed.
+Do not rerun completed training to change its budget. The continuation grid is
+new and resumes automatically, including full optimizer and both RNG streams:
+
+```powershell
+Set-Location 'F:\Desktop\temp\pinode_align'
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_fno_regularization.py run
+```
+
+Run only ONE copy. If a process survived computer sleep, let it continue; do not
+start a duplicate writer. After shutdown, rerun the command; at most<50 unsaved
+steps of the current arm are repeated. Completed result/checkpoint hashes are
+checked before skipping. Progress files: `results/fno_regularization_v1/progress.json`
+for completed groups, and each arm's `progress.json` for its latest saved step.
+All30 planned final models use2250 total steps, not the baseline1500-step budget.
+No confirmation IDs are selected/opened by this runner. After training stops:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_time_fno_runs.py fno_regularization_v1 --require-complete
+```
+
+Git does NOT include binary checkpoints; back up the local `checkpoints` folders
+to preserve trained weights. Do not edit sealed core/protocol files in place.
+
 ## Spatial latent/operator first round (2026-10-08)
 
 Five new standalone immutable scientific runners resume automatically from their

@@ -373,3 +373,13 @@ neighborhood alignment within a paired CNN control, but not universal superiorit
 over POD; field reconstruction improvements can accompany worse derivatives.
 Representation stages are reused-development diagnostics; separate100-shot Burgers
 physics confirmation is reported above. Strong POD and full-field FNO remain mandatory.
+
+The strong-FNO follow-up first audits physical residual consistency on TRAINING
+trajectories only. Fixed resolved modes0..16 give1.8%-4.2% median relative residual,
+versus25%-51% on the almost-full coarse spectrum; this motivates a resolved
+constraint, not full-spectrum PDE enforcement. A separately controlled query-time
+FNO reaches development0.277170 +/-seedSD0.006826 without physics (three1500-step
+fits). Thirty paired physics-versus-gradient/curvature continuations are registered
+with equal2250-total-step fitting budgets and training-only gradient calibration.
+They remain development experiments; no new confirmation or second-PDE evidence
+is claimed. Details and access accounting are in the follow-up report.

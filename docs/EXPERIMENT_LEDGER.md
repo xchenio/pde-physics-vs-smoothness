@@ -2,8 +2,9 @@
 
 2026-10-08 FNO_PHYSICS_RESOLUTION_V1: training-only100 trajectories, native1024/
 512/256 and centraldt0.01/0.02; resolved0..16 gate passed (median1.8%-4.2%),
-almost-full coarse residual25%-51%. Extra20 snapshots per training trajectory
-diagnostic-only; no fresh confirmation or development targets. Seal08ddfd2.
+almost-full coarse residual25%-51%.20 diagnostic snapshots per training trajectory
+(16 additional to the five fitting labels); no fresh confirmation or development
+targets. Seal08ddfd2.
 TIME_FNO_BASELINE_V1:3 seeds of continuous-time data-only FNO, same100x5 fitting
 labels and paired historical batch stream,1500 steps; seal7e4aa56. Complete,
 development0.277170 +/-0.006826,34209 parameters;3 checkpoint/batch replays pass.

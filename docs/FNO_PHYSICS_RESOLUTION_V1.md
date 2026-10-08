@@ -41,6 +41,12 @@ relative residual at0.1/0.25/0.5/1.0 is0.042138/0.036492/0.031825/0.018282
 are0.507245/0.511209/0.421037/0.254306. Full-grid residual minimization is thus
 not justified by these target-discretization diagnostics. Passing low-mode
 consistency still does not establish that physics improves prediction.
+Resolved residual tails are appreciable (some trajectories exceed20%); native
+1024 dt0.01 medians are1.0%-1.9%, while dt0.02 medians are4.2%-7.4%. Finite
+time differencing and sensor reduction both contribute; the audit is not a
+certificate of zero target residual. The20 diagnostic snapshots include four
+already-supervised future times:16 additional time slices per training trajectory
+are accessed beyond the five fitting labels; none becomes a fitting target.
 
 `time_fno_baseline_v1` registers three seeds of the new time-conditioned FNO,
 same100 trajectories and five labels, width16/modes16/layers4,1500 fixed steps,

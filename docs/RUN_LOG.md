@@ -6,7 +6,7 @@
 - Added continuous-time FNO, query-time JVP and periodic spectral conservative
   residual; do not infer temporal derivatives from historical five output heads.
 - Source/gate seal08ddfd2 before training-only resolution audit.100 existing
-  training IDs,20 neighboring time frames diagnostic-only, no development or
+  training IDs,20 diagnostic time frames (16 additional to fitting labels), no development or
   confirmation extraction. Diffusion0.001/pi, exact retained cell centers.
 - Registered resolved modes0..16 passed feasibility gate: median relative
   residual0.042138/0.036492/0.031825/0.018282 at four times; almost-full spectrum
