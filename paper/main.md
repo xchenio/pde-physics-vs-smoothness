@@ -1,5 +1,8 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
+**2026-10-08 ongoing follow-up:** [parameter-matched spectral/POD and rank controls](FOLLOWUP_SPECTRAL_POD_20261008.md).
+Both Burgers partitions favor spectral over matched convolutional encoding, but increasing POD rank worsens development error and full-field FNO remains stronger. Allen-Cahn results are pending. This is development-only evidence.
+
 **Evidence-audited research draft v2 — 2026-09-24. Not a submitted manuscript.**
 
 **Completed architecture diagnosis (108 development-only fits):** [fitting and architecture follow-up](FOLLOWUP_ARCHITECTURE_20260930.md).
