@@ -1,5 +1,17 @@
 # Current conclusions
 
+> New2026-10-08 spatial latent stage1:81 AE fits independently replayed, POD fitted
+> on same representation400, reused dev200, no fresh confirmation. Local CNN beats
+> global MLP and exactly capacity/initialization-matched scrambled CNN in all9 mean
+> field/gradient/curvature comparisons. This is registered neighborhood alignment,
+> not universal global-vector inferiority. Nonlinear compression does NOT uniformly
+> beat POD: field gains at independent Burgers/Allen rank16 only; POD better at32/64.
+> Allen rank16 field0.017695 vs POD0.025837, BUT curvature8.101366 vs0.506683.
+> Retain POD/FNO; field accuracy cannot certify physics or derivative quality.
+> Stage2 fixed-time CNN/smooth trunk running; stage3 paired attention/gate registered.
+> Stages4/5 pending; all old confirmation sets consumed. See
+> MANIFOLD_RECONSTRUCTION_V1_RESULTS.md and paper/FOLLOWUP_SPATIAL_LATENT_20261008.md.
+
 > Latest2026-10-08 shared FNO encoder/pointwise-head ablation:36 paired fits complete.
 > Full/POD16/POD32/POD64 dev L2: original0.195846/0.191759/0.188328/0.190009;
 > independent0.220706/0.218613/0.216032/0.215583;

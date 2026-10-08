@@ -357,3 +357,11 @@ Primary sources checked 2026-09-24; versions are given without guessing later jo
    ICLR 2017. https://arxiv.org/abs/1608.03983
 7. Nitish Shirish Keskar et al. *On Large-Batch Training for Deep Learning:
    Generalization Gap and Sharp Minima*. ICLR 2017. https://arxiv.org/abs/1609.04836
+# 2026-10-08 spatial latent follow-up
+
+See [spatial latent study](FOLLOWUP_SPATIAL_LATENT_20261008.md) for the new ordered
+CNN/Transformer/physics research hypothesis.81 reconstruction fits support physical
+neighborhood alignment within a paired CNN control, but not universal superiority
+over POD; field reconstruction improvements can accompany worse derivatives.
+These are reused-development representation diagnostics, not unseen operator or
+physics confirmation. Strong POD and full-field FNO baselines remain mandatory.

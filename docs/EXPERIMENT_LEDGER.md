@@ -76,3 +76,12 @@ Every new experiment directory must contain a `manifest.json` before training, a
 running, and receive a terminal `completed`, `interrupted`, or `failed`
 status. A result is never silently overwritten; resumed work uses the same manifest and skips
 completed configuration keys.
+# 2026-10-08 spatial latent representation study
+
+- Family results/manifold_reconstruction_v1, protocol seal f1939ea,81 completed fits.
+- All final checkpoint outputs replayed; POD9 controls, seed batch regeneration,
+  local/permuted-local parameter/initialization pairing and Parseval closure passed.
+- Reused development; local helps over tested global/permuted controls, does not
+  uniformly beat POD. Allen-Cahn field/curvature trade-off prevents physics claims.
+- Registered9 fixed-time CNN DeepONet fits e1402c3 and18 matched attention/gate fits
+  0072261; their outcomes pending at this entry. Stages4/5 not yet executed.

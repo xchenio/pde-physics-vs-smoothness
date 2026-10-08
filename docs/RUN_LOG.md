@@ -577,6 +577,13 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- Stage1 audit complete:81 final models replayed,9 POD controls checked, regenerated
+  batch hashes, model initialization and exact local/scrambled trainable parameter
+  pairing; train/dev means and per-sample band Parseval closure passed.
+- Figures generated/visually inspected; one plotting keyword syntax error corrected
+  before generation. PNG/SVG and full metric table agree with replay audit.
+- Stage2 training launched after stage1 replay. No new confirmation opened.
+
 - Stage1 all81 runs completed; full replay audit starting. Full regression62 tests
   passed50.673s after stage2 implementation.
 - Stage3 exact-capacity token interaction registered before training:18 fits, same

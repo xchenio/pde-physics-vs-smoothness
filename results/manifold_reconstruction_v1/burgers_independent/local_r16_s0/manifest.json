@@ -1,0 +1,32 @@
+{
+  "identity": {
+    "config": {
+      "steps": 1500,
+      "lr": 0.001,
+      "lr_min": 1e-05,
+      "weight_decay": 0.0001,
+      "batch_size": 32,
+      "eval_every": 250,
+      "checkpoint_every": 50,
+      "kind": "local",
+      "rank": 16,
+      "seed": 0,
+      "length": 1.0
+    },
+    "context": {
+      "plan": "99907f47b3c35e6e57becaf5162ebf9b2798f5f9d4f9349cbbeb0949c3690de6",
+      "task": "burgers_independent",
+      "train_sha256": "c76c8d7a87f210a3cd2ff25ca449537c3dab86c18bd051e2ff18066c604a5097",
+      "val_sha256": "04c200f83d710e05432d5cfc056b2dc0dfb3a563191d888b385cf6749eaa9642"
+    },
+    "environment": {
+      "python": "3.11.16",
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "cuda": "13.0"
+    }
+  },
+  "status": "completed"
+}
