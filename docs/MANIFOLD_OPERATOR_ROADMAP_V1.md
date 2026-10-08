@@ -77,7 +77,22 @@ trainable parameter count and steps, report actual time/VRAM. Include spatial
 permutation/global-vector controls if stage1 supports their diagnostic value.
 Coordinate and position information explicit. No physics loss in this stage.
 
-## Stage 4: physics-only ablation (pending)
+## Stage 4: physics-only ablation (registered100-shot Burgers pilot)
+
+Family `results/physics_token_v1`,12 fits: gate/attention x physics weight0/.01 x
+three seeds. A separate trajectory experiment, not fixed-time stage3 retraining.
+Only first100 registered correction rows supervised, times0/.1/.25/.5/1,256 native
+retained centers. No output representation400 labels or pretrained AE. Scalar
+normalization from these100 only. Field loss includes IC; periodic smooth trunk
+encodes BC. Physical derivatives use differentiable JVP in original x,t units;
+diffusion0.001/pi confirmed against generator.32 uniform collocation points, batch16,
+1500 steps, transferred lr/cosine/wd. Physics-off also computes residual diagnostics
+for matched cost; all arms share initialized state, labeled batches/collocation.
+Record separate losses and gradient norms; checkpoints50/eval250. Native512 output
+query transfer at FIXED256 input sensors is secondary, not input-resolution transfer.
+Primary: trajectory-averaged relativeL2 over noninitial times, not extrapolation.
+Command `D:/miniconda3/envs/pytorch/python.exe scripts/run_physics_token.py run`.
+This first physics pilot is ONE Burgers PDE; Allen-Cahn physics remains untested.
 
 Same chosen data-only architecture, same labeled trajectories/time coverage, matched
 collocation sets and optimization budgets, physics weight0 versus registered nonzero
@@ -87,7 +102,16 @@ fields into inference branch. Choose one primary stress condition before outcome
 (small data OR noise OR time generalization), not post-hoc best of all three.
 Report data and PDE metrics separately and gradient norms of composite objectives.
 
-## Stage 5: sealed combination confirmation (pending)
+## Stage 5: sealed combination confirmation (reserved, not opened)
+
+The stage4 immutable plan reserves500 IDs disjoint from a conservative union of7829
+registered historical IDs (including synthetic IDs for extra conservatism). Registry
+artifacts/hashes are saved before extraction. No new reserved target has been opened.
+Four registered primary contrasts,10k paired trajectory bootstrap, Bonferroni4 CI,
+at least1% relative gain and upper difference interval<0. All4 arms will be locked
+and evaluated; no best-seed/weight selection. Final-time retained FNO600 is contextual
+only: not a matching100-shot/multitime training control. Before opening, commit all
+final model hashes/source/data hashes and seal. Results must explicitly consume IDs.
 
 Use a factorial attention on/off x physics on/off design, not only best combination
 versus a weak baseline. Keep FNO and strongest data-only control. Register full

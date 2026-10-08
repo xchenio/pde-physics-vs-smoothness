@@ -577,6 +577,15 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- Stage2 all9 runs audited: devCNN0.383864/0.405222/0.023343 vs fullFNO
+  0.195846/0.220706/0.003315; CNN24356 params, FNO136481. No superiority/capacity-isolated
+  attribution. Full results SPATIAL_DEEPONET_V1_RESULTS.md. Stage3 launched afterward.
+- Stage4/5 registered: one-PDE Burgers100-shot multitime factorial,12 fits; physical
+  JVP derivative tests2 passed5.821s, including differentiable analytic u_x/u_t/u_xx,
+  correct Nu/pi, full model/optimizer/RNG CPU/CUDA bitwise resume and collocation hashes.
+- Conservative historical-ID audit7829 IDs; reserved500 have zero overlap. No new
+  target read. Physics stage uses ONLY training100 and historical development200.
+
 - Stage1 audit complete:81 final models replayed,9 POD controls checked, regenerated
   batch hashes, model initialization and exact local/scrambled trainable parameter
   pairing; train/dev means and per-sample band Parseval closure passed.

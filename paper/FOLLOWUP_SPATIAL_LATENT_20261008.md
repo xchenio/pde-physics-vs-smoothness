@@ -58,6 +58,16 @@ token width expansion is distinct from the64-scalar bottleneck. Both stages are
 fixed-time data-only diagnostics and retain full-field FNO as a strong contextual
 baseline. Outcomes will be appended after completed replay audits.
 
+## Stage2: fixed-time operator baseline
+
+All9 CNN64/smooth-trunk fits completed and independently replayed. Parameters24356
+versus retained full FNO136481. Same600 fitting rows, normalized weighted field loss,
+minibatches/seeds and1500/6000 step budgets. CNN DeepONet development relativeL2:
+original Burgers0.383864, independent0.405222, Allen-Cahn0.023343, all worse than
+FNO0.195846/0.220706/0.003315. Therefore continuous coordinate decoding does not by
+itself close the encoder/readout gap. Capacity and architecture both differ, so this
+does not uniquely identify the cause or establish an optimized DeepONet limit.
+
 Stage4 needs trajectory supervision and tested physical-unit u_t/u_x/u_xx; constant
 time training is insufficient. Periodic boundary conditions, initial condition,
 data/PDE objective gradient scales, and native-resolution targets must be checked.
