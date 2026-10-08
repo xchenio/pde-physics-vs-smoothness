@@ -33,6 +33,24 @@ needed. Keep historical discrete-head FNO as a contextual strong control, report
 continuous-time baseline quality, and seal selection before opening new IDs.
 No claim of novelty from PINO or adding physics regularization alone is made.
 
+## Audit result and next prerequisite
+
+The registered feasibility gate passed. At raw256 and dt0.01, median resolved
+relative residual at0.1/0.25/0.5/1.0 is0.042138/0.036492/0.031825/0.018282
+(see audit.json for exact values). The corresponding almost-full-band medians
+are0.507245/0.511209/0.421037/0.254306. Full-grid residual minimization is thus
+not justified by these target-discretization diagnostics. Passing low-mode
+consistency still does not establish that physics improves prediction.
+
+`time_fno_baseline_v1` registers three seeds of the new time-conditioned FNO,
+same100 trajectories and five labels, width16/modes16/layers4,1500 fixed steps,
+all five labels per batch, checkpoints every50 steps. Temporal JVP PDE values
+are training-probe diagnostics only, NOT loss terms in this prerequisite.
+The continuation gate is the three-seed development mean<=1.10 times the
+historical discrete-head FNO16 mean0.2871897. It is a predeclared engineering
+gate, NOT an independent scientific test. A failed gate requires reporting
+the architecture/optimization penalty before attempting physics gains.
+
 Commands (pytorch interpreter):
 
 ```powershell
