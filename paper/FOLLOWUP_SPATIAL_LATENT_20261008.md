@@ -68,6 +68,32 @@ FNO0.195846/0.220706/0.003315. Therefore continuous coordinate decoding does not
 itself close the encoder/readout gap. Capacity and architecture both differ, so this
 does not uniquely identify the cause or establish an optimized DeepONet limit.
 
+## Stage3: matched attention-versus-gate operator control
+
+18 fits completed and replayed,33256 active parameters each; exactly matching
+initial tensors and minibatch sequences. Original Burgers gate0.376506 versus
+attention0.288996; independent0.396253 versus0.332460, consistent with useful
+token interaction on these repeated-development tasks. Allen-Cahn gate0.022733
+versus attention0.027256; no universal gain. All remain worse than full FNO.
+The contrast isolates the registered attention/gated-QKV block, not every possible
+nonattention mixer. Equal capacity/steps does not establish equal compute or speed.
+Full table and per-seed replay: docs/TOKEN_OPERATOR_V1_RESULTS.md.
+
+## Stage4/5: registered100-shot physics/attention factorial
+
+One Burgers PDE,12 fits, supervised100 trajectories at0/.1/.25/.5/1. Main outcome
+is mean per-trajectory relativeL2 over noninitial times. Same32 continuous collocation
+points and initial states/batches across gate/attention x physics weight0/.01.
+No tuning of weight or checkpoints. Input256 fixed; native512 output queries secondary,
+and newly queried odd512 positions will be reported separately in confirmation.
+Physics-off also computes residuals for diagnostic cost matching. All four arms
+will be sealed and committed before500 freshly reserved trajectory labels are read.
+The conservative historical registry7829 IDs is disjoint from the reserved500.
+Four registered primary contrasts use paired trajectory bootstrap10k, Bonferroni4
+intervals and at least1% gain. Interactions are descriptive; uncertainty conditional
+on three fits, not a full training-seed uncertainty model. Retained FNO600 final-time
+control is contextual, not a matching100-shot/multitime baseline.
+
 Stage4 needs trajectory supervision and tested physical-unit u_t/u_x/u_xx; constant
 time training is insufficient. Periodic boundary conditions, initial condition,
 data/PDE objective gradient scales, and native-resolution targets must be checked.

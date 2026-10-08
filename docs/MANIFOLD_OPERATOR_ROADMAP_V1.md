@@ -5,7 +5,7 @@ budget, spatially organized latent tokens may preserve derivatives and scales be
 than a global latent vector; physics-informed training may then improve small-data
 or cross-resolution prediction. Each clause requires a separate control.
 
-## Stage 1: representation diagnostic (locked before training)
+## Stage 1: representation diagnostic (81 fits completed and audited)
 
 Run `D:/miniconda3/envs/pytorch/python.exe scripts/run_manifold_reconstruction.py run`.
 Family `results/manifold_reconstruction_v1`; immutable source/data identities.
@@ -35,7 +35,7 @@ These are finite-grid structure diagnostics, not continuum/PDE residual certific
 All ranks and seeds reported. Repeated development; no new confirmation opened.
 Full optimizer/model/random/step/history checkpoints every50; eval every250.
 
-## Stage 2: data-only operator baseline (registered, training after stage1)
+## Stage 2: data-only operator baseline (9 fits completed and audited)
 
 Retain historical full-field FNO and its post-hoc projection. New registered family
 `results/spatial_deeponet_v1`: CNN branch plus smooth coordinate trunk DeepONet;
@@ -59,7 +59,7 @@ time slices; register generator versions and discretization QA. No new data requ
 for these initial studies. Cross-resolution labels must be native higher resolution
 or independently verified solver data, not upsampled256 predictions.
 
-## Stage 3: attention-only ablation (registered, training after stage2)
+## Stage 3: attention-only ablation (18 fits completed and audited)
 
 Family `results/token_operator_v1`,18 fixed-time fits:3tasks x2arms x3seeds.
 Same CNN64/trunk64 and training as stage2.16x4 scalar bottleneck, shared temporary

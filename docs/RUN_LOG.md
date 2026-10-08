@@ -577,6 +577,15 @@ manifest before launching and the FNO job checkpoints every 25 steps.
 - Completed this three-stage round. Next proposed work, not executed: parameter-matched spectral/POD encoder controls, rank16/32/64 and efficiency/sample-size curves, then lock rules before new confirmation. Existing strong shrinkage/all-mode history retained.
 # 2026-10-08 manifold/token operator roadmap and representation stage
 
+- Stage3 all18 fits independently replayed;33256 params in both arms, full initial/
+  batch pairing audited. Attention improves original/independent Burgers dev to
+  0.288996/0.332460 vs gate0.376506/0.396253; Allen worse0.027256 vs0.022733.
+  All remain worse than full FNO. TOKEN_OPERATOR_V1_RESULTS.md records full table.
+- Stage4 launched only after stage3 replay. All100-shot labels drawn from registered
+  training rows; time and native coordinate metadata verified; no confirmation read.
+- Confirmation tooling tests1 passed0.030s (effect threshold, adjusted interval gates),
+  with checkpoint/context/source sealing, partial per-model resume and consumed marker.
+
 - Stage2 all9 runs audited: devCNN0.383864/0.405222/0.023343 vs fullFNO
   0.195846/0.220706/0.003315; CNN24356 params, FNO136481. No superiority/capacity-isolated
   attribution. Full results SPATIAL_DEEPONET_V1_RESULTS.md. Stage3 launched afterward.
