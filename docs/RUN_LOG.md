@@ -2,6 +2,20 @@
 
 ## 2026-10-08 Strong FNO physics prerequisite (new versioned families)
 
+- After user interruption, process check found no remaining training worker;
+  saved progress and summary show30/30 complete. No duplicate training started.
+  Complete independent replay:30 checkpoints, predictions, batches, collocations,
+  same starts/calibrations and family-selection rule all passed.
+- Development none0.270949, physics0.267574, gradient0.267647, curvature0.265248;
+  all selected strengths0.3 (upper searched boundary). Relative improvements
+  1.246%/1.219%/2.104%. Physics does NOT show an advantage over smoothing here.
+- Archive commitc392f39 preserves all30 fits. A NEW confirmation registry excludes
+  conservative8329 historical IDs, explicitly including previous consumed500.
+  New500 selected from1671 available, seed2026100808;12 frozen models, five
+  predeclared contrasts,10000 paired trajectory bootstrap, Bonferroni5 intervals,
+  >=1%gain AND upper<0. No new target extraction until seal committed.
+- Confirmation effect-gate/reproducibility/pairing unit test passed0.036s.
+
 - User: continue. Preserve previous126 fits and consumed500 confirmation IDs.
 - Added continuous-time FNO, query-time JVP and periodic spectral conservative
   residual; do not infer temporal derivatives from historical five output heads.
