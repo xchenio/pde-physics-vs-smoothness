@@ -8,6 +8,16 @@
   all83 tests passed in85.464s. Protocol/source/plan committed before formal fitting.
 - Training remains development-only; all48 fits and18 historical tensor matches
   must finish before reporting comparative conclusions. No confirmation opened.
+- Source/protocol seal `0f2c912`. Hidden persistent worker PID29572 launched with
+  `D:/miniconda3/envs/pytorch/python.exe scripts/run_periodic_curvature.py run`;
+  stdout/stderr: results/periodic_curvature_v1/worker_20261010_001.*.log.
+- Initial live check:2/48 fits completed (Burgers linear warm seeds0/1), no stderr.
+  Seed0 saved1500-step checkpoint includes model, optimizer, step, random states,
+  history and calibration; final trainable tensors exactly match historical
+  time_fno_baseline_v1/s0. This is one control check, NOT the final18-control audit.
+- Remaining fits run in background. Do not start a duplicate writer after sleep.
+  After process termination, repeat the same run command (NO --resume flag).
+  Final comparison/paper conclusions await48-run completion and full audit.
 
 ## 2026-10-09 Paired periodic-position and low/full curvature controls
 

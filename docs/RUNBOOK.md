@@ -83,6 +83,20 @@ dependent on a live terminal.
 
 ## Rules
 
+Current periodic-curvature study (2026-10-10): use its versioned, full-state
+resumable runner directly; the generic `--resume` rule below does NOT apply.
+Check for an existing `run_periodic_curvature.py run` process first. If absent:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_periodic_curvature.py run
+```
+
+Protocol: docs/PERIODIC_CURVATURE_V1.md. Results/checkpoints/logs:
+results/periodic_curvature_v1. Every50 steps saves model, optimizer and RNG states.
+After48 fits, run `scripts/audit_periodic_curvature.py --require-complete` with
+the same interpreter before updating comparative conclusions. No confirmation
+dataset is accessed by this experiment.
+
 1. Use the experiment runner introduced in `scripts/experiment_runner.py`, not an ad-hoc shell
    loop.
 2. The runner writes `manifest.json` before the first command and emits one JSON event per state
