@@ -1,5 +1,24 @@
 # Run log
 
+## 2026-10-10 Fixed midpoint/short-interval diagnosis registration
+
+- User requests no temporal loss yet; frozen36 models/same32 existing dev IDs,
+  NEW development times explicitly disclosed, no fitting labels/reserve access.
+- Register INTERVAL_DIAGNOSIS_V1.md:4 fixedmidpoints+1 secondary latepoint,
+  two windows, Allen refined native/space references, Burgers native .01 snapshots.
+  All intervals within supervised range, no invented Burgers continuous truth.
+- Report trueincrement and integral-RHS errors, exact signed-cross identity,
+  numerical convergence and oracle diagnostics. Extra fixed gamma1 low-mode
+  endpoint repair is counterfactual, not new deployed predictor or training.
+- Independent review: weak/integral/midpoint ideas have prior art; future continuous
+  TRAIN-internal reliability weighting is an unvalidated research hypothesis.
+  Do not refeed evolved states as native semigroup validation this round.
+- Six targeted tests passed0.228s, full94-test regression passed63.898s. Independent
+  code review caught two pre-execution issues: Burgers emptycoarse dictionary guard
+  and relative-RHS normalization; fix to the SAME nativeincrement denominator,
+  add regression assertions, repeat6 targeted tests. Unexecuted preflight plans
+  retained with explicit filenames, finalplan regenerated BEFORE references/run.
+
 ## 2026-10-10 Frozen temporal diagnosis complete
 
 - ActiveV2 run exited0 with36 frozen model rows. V3 numerical audit exited0 with
