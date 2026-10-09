@@ -21,6 +21,18 @@
   widened its test-only h to.02. Formal trained-model probes stay.002/.001/.0005.
   Attempted whole-model float64 conversion is invalid for complex FNO weights;
   discarded before sealing. No old source or historical result modified.
+- V1 seal74a5bcd completed18 Allen records, stopped at first Burgers parent-field
+  comparison: old trajectory_errors uses float32 target norm versus new float64
+  diagnostic; maxdiff1.62573123e-8. Preserve source/plan/partial rows. NewV2 uses
+  ORIGINAL trajectory_errors for parent gate, leaves all output metrics unchanged;
+  require exact18-pilot reproduction. Add dedicated dtype distinction regression.
+- V2 preflight plan had not been executed; preserve it as
+  plan.preflight_without_metric_dependency.json, then add unchanged original
+  physics_token_core.py metric dependency hash and register executable plan.
+  No consumed plan changed or prior result deleted.
+- V2 four targeted tests passed3.897s; complete87-test regression passed85.564s.
+  V2 runner/auditor compile;11 source dependencies verified against registered
+  plan before execution. No tolerance relaxed for parent metric precision repair.
 
 ## 2026-10-10 Periodic-curvature family complete and audited
 

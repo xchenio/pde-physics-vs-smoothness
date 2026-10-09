@@ -5,9 +5,19 @@ from scripts.temporal_after_periodic_core import score_coefficients,temporal_sco
 from scripts.field_derivative_diagnostics import coefficients
 from src.periodic_position_fno import PositionTimeFNO1d
 from src.time_fno import time_fields
+from scripts.physics_token_core import trajectory_errors
 
 
 class TemporalAfterPeriodicTests(unittest.TestCase):
+    def test_parent_float32_metric_is_not_float64_diagnostic(self):
+        rng=np.random.default_rng(3)
+        truth=rng.normal(size=(2,4,256)).astype('float32');pred=truth.astype(float)+.01
+        parent=trajectory_errors(pred,truth).mean(1)
+        original=np.linalg.norm(pred-truth,axis=2)/np.linalg.norm(truth,axis=2)
+        np.testing.assert_array_equal(parent,original.mean(1))
+        diagnostic=np.array(temporal_score(pred,truth)['per_sample'])
+        self.assertGreater(float(np.max(abs(diagnostic-parent))),1e-11)
+
     def test_native_projection_avoids_aliasing_and_nyquist(self):
         x=np.arange(1024)/1024
         native=(np.sin(2*np.pi*3*x)+.3*np.cos(2*np.pi*253*x))[None,None,:]

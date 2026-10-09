@@ -1,5 +1,11 @@
 # Frozen time-dynamics diagnosis after periodic-position control (2026-10-10)
 
+Active execution is V2. V1 preserves18 Allen pilot rows; Burgers stopped because
+historical float32 target norm differs from new float64 diagnostic norm (~1.6e-8).
+V2 changes ONLY the parent-field replay gate to original trajectory_errors; all
+reported float64 and temporal numerical rules unchanged. Require18 exact pilot
+reproductions in the V2 audit. Original sources/plan/pilot records retained.
+
 No training, new network module, physical loss, confirmation, new ID or new
 time snapshot. All36 final periodic_curvature_v1 models, same existing first32
 development cases/four supervised future times. Hash and reuse native1024/512/256
@@ -36,10 +42,10 @@ register a fixed existing-development midpoint/short-interval test before
 training a temporal constraint. No reserve access until model/rule locked.
 
 ```powershell
-& 'D:\miniconda3\envs\pytorch\python.exe' scripts/diagnose_temporal_after_periodic.py run
-& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_temporal_after_periodic.py
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/diagnose_temporal_after_periodic_v2.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_temporal_after_periodic_v2.py
 ```
 
 Per-model JSON atomically saved, resume SAME command without --resume; skip only
-identity-matched finished rows, one writer. Results: results/temporal_after_periodic_v1.
+identity-matched finished rows, one writer. Results: results/temporal_after_periodic_v2.
 No optimizer/checkpoint needed for frozen inference; original checkpoints unchanged.
