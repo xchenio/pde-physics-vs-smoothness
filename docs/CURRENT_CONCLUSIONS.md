@@ -1,5 +1,15 @@
 # Current conclusions
 
+> Latest2026-10-10 periodic_curvature_v1 COMPLETE:48 fits,83 tests pass,
+> audit48 prediction/RNG/fork replays and18 historical exact tensor matches.
+> Allen periodic/no smoothing field.037159 vs linear.043007 (-13.60%),
+> curvature.336740 vs3.694110 (-90.88%), boundary energy2.57% vs98.25%.
+> One seed worsens field; mean gain is not all-seed or independent success.
+> Additional smoothing worsens Allen periodic field; Burgers linear/low remains
+> best field. No architecture modules/new confirmation/time-generalization test.
+> Next diagnose remaining time dynamics under artifact-reduced strong controls.
+> Full table/cost/limitations: PERIODIC_CURVATURE_V1_RESULTS.md.
+
 > Latest2026-10-09 diagnosis COMPLETE,36 frozen final models,80 tests pass.
 > Allen-Cahn data-only curvature3.694:90.17% error energy at modes65..128,
 > 98.25% at first/last4 nodes; denominator floor0% active. Periodic-seam artifact

@@ -1,5 +1,14 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
+**2026-10-10 completed periodic-position control:** 48 fits with unchanged34209-
+parameter continuous FNO;48 prediction/RNG/fork replays and18 historical tensor
+matches pass. Allen-Cahn periodic/data-only mean field.037159 versus.043007,
+curvature.336740 versus3.694110; one field seed worsens and extra smoothing hurts
+mean field accuracy. Burgers retains linear/low curvature as best field control.
+The single sine feature changes positional information, not only the seam; this
+supports a coordinate-path diagnostic, not unique causation, new architecture,
+improved dynamics or independent validation. [Full paired results and cost limits](../docs/PERIODIC_CURVATURE_V1_RESULTS.md).
+
 **2026-10-08 shared-head output ablation:** [FNO full versus training-time POD projection](FOLLOWUP_FNO_PROJECTION_20261008.md).
 All36 paired fits are complete. Shared-pointwise projected outputs substantially outperform prior pooled coefficient heads. Training projection has small task/rank-dependent Burgers gains; Allen-Cahn is slightly better with full training followed by projection at every tested rank/seed. All current arms have136481 parameters, paired initialization and batches;9 full checkpoints reproduce historical tensors bitwise. These are development observations. Next confirmation must retain post-hoc projection as a strong control and use genuinely unused data.
 

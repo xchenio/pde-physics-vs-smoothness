@@ -1,5 +1,14 @@
 # Experiment ledger
 
+2026-10-10 PERIODIC_CURVATURE_V1:48 fits complete, source seal0f2c912;
+83 tests pass85.464s; audit48 prediction/observation/RNG/fork/summary replays and
+18 historical exact tensor matches pass. Allen periodic/none field.037159,
+curvature.336740 vs linear/none.043007/3.694110; one field seed worsens.
+Extra smoothing not field-beneficial on periodic Allen; Burgers linear/low best
+field. No fresh confirmation or extra module. Training segment sum921.28s,
+recorded final-segment CUDA peaks95.94..98.97MiB; no inference cost benchmark.
+
+
 2026-10-09 PHYSICS_DIAGNOSIS_V1/V2: source seal8d2d62e, scalar-only repaircf149dc;
 36 frozen models diagnosed, zero new fits. V1 preserves9 Allen records before
 NumPyfloat32 JSON failure;v2 reproduces9 exactly, completes36. Diagnostic-only

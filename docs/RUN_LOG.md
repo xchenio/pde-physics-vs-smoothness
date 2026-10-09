@@ -1,5 +1,21 @@
 # Run log
 
+## 2026-10-10 Periodic-curvature family complete and audited
+
+- Background worker29572 completed all48 fits and exited; stderr empty.
+- `D:/miniconda3/envs/pytorch/python.exe scripts/audit_periodic_curvature.py
+  --require-complete` exited0:48 predictions/observation identities/RNG/forks/
+  summary replays and18 historical linear tensor matches passed.
+- Allen periodic/none improves mean field13.60%, curvature90.88%, removes boundary
+  concentration; field improves in2/3 seeds only. Additional low/full smoothing
+  worsens its field mean. Burgers old linear/low still best field, none meets its
+  predeclared curvature screen. No fresh confirmation opened or rule exported.
+- Sum saved training timings921.28s excluding eval/I/O; final-segment allocated
+  CUDA peaks95.94..98.97MiB. No measured inference-time or end-to-end cost claim.
+- Sync all12 final arm means, seam/frequency evidence, cost caveats and next
+  dynamics diagnosis to PERIODIC_CURVATURE_V1_RESULTS.md, current conclusions,
+  publication assessment, ledger and paper. Preserve all old/sealed results.
+
 ## 2026-10-10 Resume periodic-curvature task
 
 - No existing training/test worker found. Prior interrupted regression session output

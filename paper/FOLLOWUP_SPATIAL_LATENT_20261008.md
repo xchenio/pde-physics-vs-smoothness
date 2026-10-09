@@ -1,5 +1,19 @@
 # Spatial latent tokens: staged hypothesis and development diagnostics
 
+## 2026-10-10: completed paired periodicity and curvature-band controls
+
+Same FNO layers34209 parameters, two coordinate encodings x three smoothing arms
+x three seeds x two PDEs:48 fits including warm starts. Audit48 replayed results
+and18 exact historical controls pass;83 tests pass. Allen periodic/data-only
+field.037159 vs linear/data-only.043007 and curvature.336740 vs3.694110;
+boundary curvature-error concentration2.57% vs98.25%. One field seed worsens,
+and added curvature smoothing harms periodic-model field accuracy. Burgers
+linear/low remains best mean field. No independent confirmation/new module.
+Single periodic sine is non-injective, not a hard smooth-periodicity guarantee;
+the intervention changes position information and cannot isolate a unique cause.
+Next inspect remaining learned time derivatives before proposing new modules.
+Full tables/cost caveats: ../docs/PERIODIC_CURVATURE_V1_RESULTS.md.
+
 This is a new exploratory line, not a demonstrated method contribution. Full
 protocol: docs/MANIFOLD_OPERATOR_ROADMAP_V1.md. All old confirmation sets remain
 consumed. Reconstruction and fixed-time operator results must not be conflated.
