@@ -1,5 +1,17 @@
 # Experiment ledger
 
+2026-10-10 INTERVAL_DIAGNOSIS_V1: source584b5bf, auditor0b7d524;36 frozenmodels,
+360intervals,8referencechunks/16solverstages,2160 independent SciPy checks,
+alternateAD/forward/identity/energy/summary replay pass.94 tests63.898s;
+6 post-preflight targeted tests.222s. No training/loss/module/confirmation.
+NEW diagnostic midpoint/interval snapshots on32sameDevIDs disclosed forever.
+Allen periodic/none increment.192823; fixedrepair endpoint.030853->.029247
+(5.204% mean, all3seedmeans), earlycenter.025 worsens. Burgers linear/low
+.262542->.318389 (21.272% worse). Both strictscreens FAIL22/24 each.
+Candidate Allen jointinterval pilot only, not universal/unique temporalcause;
+continuous TRAIN-internal reliability weighting remains unvalidatednovelty.
+
+
 2026-10-10 TEMPORAL_AFTER_PERIODIC_V1/V2:36 frozen models, no new fits/data.
 V1 seal74a5bcd preserves18 Allen pilot rows before historical float32 metric gate
 failure; V2 seald61c886 original-metric replay repair, reproduces18 exactly.

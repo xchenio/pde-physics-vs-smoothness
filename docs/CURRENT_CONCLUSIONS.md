@@ -1,5 +1,18 @@
 # Current conclusions
 
+> Latest2026-10-10 interval_diagnosis_v1 COMPLETE:36 models/360 windows,
+> 2160 independent Simpson checks,8 referencechunks/16 stages and full audit pass.
+> New diagnostic times on SAME32dev IDs, zero training/modules/loss/confirmation.
+> Allen periodic/none midpointfield.030986, resolvedut.192852, increment.192823;
+> late.475 resolvedut.599472. Interval mismatch exceeds reliable reference errors.
+> Fixed local integral repair improves mean endpointfield5.204% (all3 seed means),
+> BUT earliest center.025 worsens both windows. Burgers strongcontrol degrades
+> 21.272% under same repair; error cancellation/reference limitations persist.
+> BOTH strict allcenter/window/seed screens FAIL (22/24 each), no threshold retune.
+> Allen joint-interval exploratory pilot worth considering, not pure time loss or
+> universal repair; Burgers defer. No trained constraint/deployed new predictor.
+> Full evidence/novelty limits: INTERVAL_DIAGNOSIS_V1_RESULTS.md.
+
 > Latest2026-10-10 frozen time diagnosis:36 models, same existing32 dev cases,
 > V3 alternate-AD audit36 replays/18 exact pilot matches passed; original
 > elementwise numerical QA failure/probe retained, not retroactively passed.

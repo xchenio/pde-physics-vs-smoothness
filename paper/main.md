@@ -1,5 +1,15 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
+**2026-10-10 fixed-midpoint/interval follow-up:** 36 frozen models/360 windows
+audited with2160 independent quadrature checks. New diagnostic times on the SAME
+32 development trajectories, no training/temporal loss or confirmation. Allen
+periodic/data-only increment error.192823; fixed local integral repair improves
+mean endpoint field5.204% but early intervals worsen. Burgers strongcontrol field
+degrades21.272% under the same repair. Both strict all-center/window/seed screens
+fail (22/24 each); no retroactive threshold change. This supports at most a NEW
+exploratory Allen joint-interval trial, not a unique time-cause, universal method,
+independent gain or novelty from known integral losses. [All arms and limits](../docs/INTERVAL_DIAGNOSIS_V1_RESULTS.md).
+
 **2026-10-10 frozen temporal diagnosis after artifact removal:** 36 models on32
 existing development trajectories, no new training/snapshots/confirmation.
 Allen periodic/data-only native-resolved time derivative error.289333 (late.5:

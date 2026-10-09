@@ -83,6 +83,19 @@ dependent on a live terminal.
 
 ## Rules
 
+Completed midpoint/interval diagnosis (2026-10-10), no temporal loss/training:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_interval_diagnosis.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_interval_diagnosis.py
+```
+
+Check no surviving interval worker first. References resume8-case/stage chunks;
+finishedmodel rows skip by identity; no --resume. Plan/results interval_diagnosis_v1,
+binary references external_data/interval_diagnosis_v1. Both predeclared strict
+screens failed; no follow-up constraint is currently trained. New intermediate
+development timestamps must not later be presented as untouched validation.
+
 Completed frozen temporal diagnosis (2026-10-10): source protocol
 docs/TEMPORAL_AFTER_PERIODIC_V1.md, active results temporal_after_periodic_v2.
 No training or reference regeneration. Repeating the command below skips

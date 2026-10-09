@@ -1,5 +1,32 @@
 # Run log
 
+## 2026-10-10 Midpoint and interval diagnosis completed
+
+- Sealed584b5bf before references/results. Hiddenworker17236 completed36 models
+  and exited, stderr empty. Allen stagecheckpoint8casefine/coarse/512 saves worked;
+  native and old supervised labels agree. Newdev time access explicitly recorded.
+- Auditor0b7d524 sealed before execution. `python scripts/audit_interval_diagnosis.py`
+  exited0:36forward/alternate-AD replays,360intervals,8chunks/16solverstages,
+  2160 independent SciPy quadrature checks, coefficient/energy/oracle identities
+  and exact independent group/screen recomputation pass. No independent solver
+  claim: step/space differences replay cached newly refined references.
+- Allen periodic/none midpointut.192852, increment.192823, late.475ut.599472;
+  empirical reference uncertainty tiny; temporal mismatch persists between labels.
+  Fixed gamma1 localintegralrepair endpoint.030853->.029247,5.204% mean benefit,
+  all3seed averages improve BUT earliestcenter.025 worsens bothwindows.
+- Burgers linear/low repair.262542->.318389,21.272% worse, all3seed averages.
+  Numerical closure and errorcancellation prevent blindly enforcing physicaldefect.
+- Both strict allcenter/window/seed gates FAIL22/24, retain threshold/window failures.
+  No new loss/train/module/export or confirmation. Candidate Allen-only JOINT
+  interval pilot is futureexploratory judgment, not qualification by passed screen.
+- Sync complete12arms, counterexamples, limitations and prospectiveinnovation
+  (continuousTRAIN-internal reliabilityweights vsuniformintegral+curvature) to
+  paper/currentassessment/ledger/resultsreport. Priorart primarypapers checked;
+  no novelty claim from weakintegral/midpoint combination.
+- SAME runner repeated after completion: exit0, zero new model computations,
+  summary SHA unchanged. No surviving intervalworker. Full36/360/2160 evidence
+  invariants verified before final archive; checkpoints/oldsealedfiles untouched.
+
 ## 2026-10-10 Fixed midpoint/short-interval diagnosis registration
 
 - User requests no temporal loss yet; frozen36 models/same32 existing dev IDs,

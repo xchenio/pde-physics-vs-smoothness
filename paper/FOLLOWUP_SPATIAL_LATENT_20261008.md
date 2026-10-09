@@ -1,5 +1,20 @@
 # Spatial latent tokens: staged hypothesis and development diagnostics
 
+## 2026-10-10: midpoint and interval consistency complete
+
+36 fixed models/360 windows on32 same development cases with NEW intermediate
+snapshots (never fitting labels). Audit2160 independent Simpson checks, source/
+reference/model/alternateAD/energy/summary identities pass; no module/loss/train.
+Allen periodic/none intervalincrement.192823, reliable references. Fixed local
+low-mode integral endpoint repair averages5.204% field benefit across3 seeds,
+but earliest center.025 worsens. Burgers averages21.272% field degradation.
+Both strict all-window screens FAIL22/24; do not retune to pass or delete early
+windows. Potential next Allen jointinterval study is exploratory judgment, not
+screen-qualified proof. Train-internal reliability-weighted continuous constraints
+need uniform-integral/curvature controls and unused confirmation; integral/midpoint
+physics are existing ideas, not enough for novelty. Full evidence/priorart:
+../docs/INTERVAL_DIAGNOSIS_V1_RESULTS.md. New diagnostic times remain development.
+
 ## 2026-10-10: frozen temporal follow-up
 
 All36 models checked on existing32 dev cases/four supervised future times, using
