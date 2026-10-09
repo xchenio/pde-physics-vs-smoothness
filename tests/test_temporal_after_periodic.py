@@ -6,9 +6,17 @@ from scripts.field_derivative_diagnostics import coefficients
 from src.periodic_position_fno import PositionTimeFNO1d
 from src.time_fno import time_fields
 from scripts.physics_token_core import trajectory_errors
+from scripts.audit_temporal_after_periodic_v3 import derivative_precision
 
 
 class TemporalAfterPeriodicTests(unittest.TestCase):
+    def test_scale_aware_ad_guard_records_small_near_zero_difference(self):
+        a=np.ones((2,4,256));a[0,0,0]=.0008
+        b=a.copy();b[0,0,0]+=.00000012
+        checked=derivative_precision(b,a)
+        self.assertEqual(checked['original_elementwise_failures'],1)
+        with self.assertRaises(ValueError):derivative_precision(a+.001,a)
+
     def test_parent_float32_metric_is_not_float64_diagnostic(self):
         rng=np.random.default_rng(3)
         truth=rng.normal(size=(2,4,256)).astype('float32');pred=truth.astype(float)+.01

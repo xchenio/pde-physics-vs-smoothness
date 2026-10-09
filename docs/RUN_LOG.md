@@ -33,6 +33,18 @@
 - V2 four targeted tests passed3.897s; complete87-test regression passed85.564s.
   V2 runner/auditor compile;11 source dependencies verified against registered
   plan before execution. No tolerance relaxed for parent metric precision repair.
+- V2 diagnosis36 complete, all18 pilot metric dictionaries exactly reproduced.
+- Original alternate-AD audit stopped on a near-zero element (1.1845e-7 absolute
+  difference). Preserve failed v2 auditor. Source-hashed all36 precision probe:
+  raw659/1179648 elements fail old absolute check; maxglobal relativeRMS1.3269e-7.
+  ALL primary temporal/field scores pass old tolerance.28 own-FD case/time leaves
+  across15 Burgers models differ when subtracting alternate AD from tiny FD error;
+  worstdifference3.1824e-7. Aggregate own-FD scores pass; failures retained.
+- Register separate v3 numerical QA policy AFTER precision failure/probe: global
+  RMSrelative<=1e-6, peak/signalRMS<=1e-5, maxcase-timeRMSrelative<=1e-5.
+  Not predictive screening, certified rounding bound or pre-outcome protocol.
+  Primary temporal tolerances unchanged; own-FD scores replay against ORIGINAL
+  reverse-AD reference, not silently redefined by alternate-AD precision.
 
 ## 2026-10-10 Periodic-curvature family complete and audited
 

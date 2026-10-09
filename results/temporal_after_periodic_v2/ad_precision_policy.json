@@ -1,0 +1,14 @@
+{
+  "audit_source_sha256": "6662e81221081e70a3097cdede602c78e1112f927c58668664c0e8de59b5b992",
+  "probe_sha256": "14b361586961b49549ee2c77f968971c31ebbbed56e4f8a8acfc5e3235fde57d",
+  "guards": {
+    "relative_rms": 1e-06,
+    "max_absolute_over_signal_rms": 1e-05,
+    "maximum_case_time_relative_rms": 1e-05
+  },
+  "primary_metric_tolerance_unchanged": {
+    "rtol": 2e-05,
+    "atol": 1e-07
+  },
+  "policy": "Post-failure numerical QA only, not predictive screening. Preserve raw elementwise failures; replay own FD using its original reverse-AD reference; alternative-AD primary temporal scores unchanged. Not a certified float error bound."
+}
