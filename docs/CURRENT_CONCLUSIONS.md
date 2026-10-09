@@ -1,5 +1,18 @@
 # Current conclusions
 
+> Latest2026-10-10 frozen time diagnosis:36 models, same existing32 dev cases,
+> V3 alternate-AD audit36 replays/18 exact pilot matches passed; original
+> elementwise numerical QA failure/probe retained, not retroactively passed.
+> no training/modules/new snapshots/confirmation. Allen periodic/none resolved
+> ut error.289333 vs linear.324480; late observedtime.5 error.716034 remains.
+> Common normalized time energy.200847 vs state-RHS.573608; only1/3 seeds has
+> time dominance. Registered all3 dominance screen FAILS, not a primary causal
+> time-bottleneck proof. Both errors matter; don't add a global time loss yet.
+> Next fixed midpoint/short-interval diagnosis under same frozen strong controls.
+> Burgers low-mode native FD sensitivity12.34%, full44.40%; do not force full
+> derivative gold. All results exploratory, no independent verification.
+> Full evidence/precision audit revisions: TEMPORAL_AFTER_PERIODIC_V2_RESULTS.md.
+
 > Latest2026-10-10 periodic_curvature_v1 COMPLETE:48 fits,83 tests pass,
 > audit48 prediction/RNG/fork replays and18 historical exact tensor matches.
 > Allen periodic/no smoothing field.037159 vs linear.043007 (-13.60%),

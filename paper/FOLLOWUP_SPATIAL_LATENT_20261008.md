@@ -1,5 +1,17 @@
 # Spatial latent tokens: staged hypothesis and development diagnostics
 
+## 2026-10-10: frozen temporal follow-up
+
+All36 models checked on existing32 dev cases/four supervised future times, using
+hashed original references, no new fit/data access. Allen periodic/none native-
+resolved ut error.289333 and late.5 .716034 despite seam artifact removal.
+Time energy.200847 vs state-RHS.573608 in a COMMON normalization; time dominance
+only1/3 seeds, so registered3-seed screen fails. Oracle replacements reduce Allen
+residual but are not corrected models or field-causal allocations. Burgers has
+negative cross/cancellation and uncertain temporal FD reference. No temporal
+constraint adopted: first register midpoint/short-interval development diagnosis.
+Full table/precision repairs: ../docs/TEMPORAL_AFTER_PERIODIC_V2_RESULTS.md.
+
 ## 2026-10-10: completed paired periodicity and curvature-band controls
 
 Same FNO layers34209 parameters, two coordinate encodings x three smoothing arms

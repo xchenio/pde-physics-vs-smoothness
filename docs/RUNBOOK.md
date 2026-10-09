@@ -83,6 +83,19 @@ dependent on a live terminal.
 
 ## Rules
 
+Completed frozen temporal diagnosis (2026-10-10): source protocol
+docs/TEMPORAL_AFTER_PERIODIC_V1.md, active results temporal_after_periodic_v2.
+No training or reference regeneration. Repeating the command below skips
+identity-matched completed model records; audit_v3.json is the active audit.
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/diagnose_temporal_after_periodic_v2.py run
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_temporal_after_periodic_v3.py
+```
+
+Keep V1 pilot and failed V2 alternate-AD precision checks; V3 numerical policy
+is an explicitly post-failure engineering QA revision, not predictive tuning.
+
 Current periodic-curvature study (2026-10-10): use its versioned, full-state
 resumable runner directly; the generic `--resume` rule below does NOT apply.
 Check for an existing `run_periodic_curvature.py run` process first. If absent:

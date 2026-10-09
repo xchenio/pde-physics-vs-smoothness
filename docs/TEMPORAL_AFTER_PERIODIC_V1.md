@@ -43,9 +43,14 @@ training a temporal constraint. No reserve access until model/rule locked.
 
 ```powershell
 & 'D:\miniconda3\envs\pytorch\python.exe' scripts/diagnose_temporal_after_periodic_v2.py run
-& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_temporal_after_periodic_v2.py
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_temporal_after_periodic_v3.py
 ```
 
 Per-model JSON atomically saved, resume SAME command without --resume; skip only
 identity-matched finished rows, one writer. Results: results/temporal_after_periodic_v2.
 No optimizer/checkpoint needed for frozen inference; original checkpoints unchanged.
+
+Active audit is V3 numerical-quality revision: V2's absolute raw-AD check failed
+near zero; preserve all failures. Post-probe scale-aware guards documented in
+ad_precision_policy.json, primary-score tolerances unchanged; own-FD replay uses
+its ORIGINAL reverse-AD reference. Not a pre-outcome predictive screening rule.

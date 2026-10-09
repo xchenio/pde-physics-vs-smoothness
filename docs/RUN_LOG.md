@@ -1,5 +1,27 @@
 # Run log
 
+## 2026-10-10 Frozen temporal diagnosis complete
+
+- ActiveV2 run exited0 with36 frozen model rows. V3 numerical audit exited0 with
+  36 direct alternate-AD primary replays, exact18 pilot reproductions, strict
+  parent field replay and independent stored-summary/screen aggregation.
+  Artifact results/temporal_after_periodic_v2/audit_v3.json; old failed v2 raw
+  precision criterion remains a failure. Full87 tests plus appended5 targeted
+  tests4.424s pass. No numerical/model-selection criterion silently weakened.
+- Allen periodic/none resolvedut.289333 vs linear.324480 (-10.83%), late.5
+  .716034. TrueutRMS.6890, absolute errorRMS.4142 at.5, floors inactive.
+  Time/state-RHS common energies.200847/.573608; dominance only1/3 seeds,
+  registered all3 screen FAILS. Both temporal and state errors matter.
+- Burgers native FD time uncertainty12.34% low/44.40% full and negative residual
+  cross term prevent exact temporal-causal claims; keep old linear/low control.
+- Decision: do NOT immediately add global time loss; next fixed existing-dev
+  midpoint/short-interval diagnostic, then a matched temporal/integral-loss pilot
+  only if justified. No new observation/ID/time access or training this turn.
+- Sync full12group table, failed hypothesis, reference/precision limits and
+  next-step decision to results report, paper, current assessment and ledger.
+- Repeat SAME activeV2 run command: exit0, zero new model computations, summary
+  SHA unchanged. Resumable skip verified;36 audited/18 repair matches confirmed.
+
 ## 2026-10-10 Frozen temporal diagnosis after periodic artifact control
 
 - User requests time-bottleneck diagnosis before deciding on a temporal loss;

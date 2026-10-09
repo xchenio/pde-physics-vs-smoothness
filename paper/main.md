@@ -1,5 +1,15 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
+**2026-10-10 frozen temporal diagnosis after artifact removal:** 36 models on32
+existing development trajectories, no new training/snapshots/confirmation.
+Allen periodic/data-only native-resolved time derivative error.289333 (late.5:
+.716034); common normalized time/state-RHS energies.200847/.573608. The registered
+all-three-seed time-dominance screen fails. Large temporal error is not evidence
+that it is the unique field bottleneck or that a temporal loss improves fields.
+Burgers retains significant reference timestep sensitivity and error cancellation.
+Next diagnose fixed interior time/interval consistency before training a constraint.
+[All groups, oracle limits and numerical-audit revisions](../docs/TEMPORAL_AFTER_PERIODIC_V2_RESULTS.md).
+
 **2026-10-10 completed periodic-position control:** 48 fits with unchanged34209-
 parameter continuous FNO;48 prediction/RNG/fork replays and18 historical tensor
 matches pass. Allen-Cahn periodic/data-only mean field.037159 versus.043007,

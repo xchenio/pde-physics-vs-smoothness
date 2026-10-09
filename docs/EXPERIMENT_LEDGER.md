@@ -1,5 +1,19 @@
 # Experiment ledger
 
+2026-10-10 TEMPORAL_AFTER_PERIODIC_V1/V2:36 frozen models, no new fits/data.
+V1 seal74a5bcd preserves18 Allen pilot rows before historical float32 metric gate
+failure; V2 seald61c886 original-metric replay repair, reproduces18 exactly.
+87 regression tests pass85.564s, appended5 targeted tests pass4.424s.
+Allen periodic/none native-resolved ut.289333, late.5 .716034; time/state-RHS
+common energies.200847/.573608, registered all3 dominance screen FAILS.
+Burgers native FD uncertainty remains; residual cancellation prohibits simple
+time-causal attribution. Next midpoint/interval diagnostic, no temporal loss yet.
+V2alternate-AD strict elementwise audit fails; full36 precision probe preserved,
+post-failure numerical QAv3 registered275fcea; primary metric tolerances unchanged.
+V3 completes all36 alternate-AD temporal/field/fork-identity/energy/aggregate
+replays and18 exact pilot repair matches; no training/confirmation.
+
+
 2026-10-10 PERIODIC_CURVATURE_V1:48 fits complete, source seal0f2c912;
 83 tests pass85.464s; audit48 prediction/observation/RNG/fork/summary replays and
 18 historical exact tensor matches pass. Allen periodic/none field.037159,
