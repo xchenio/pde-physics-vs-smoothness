@@ -1,5 +1,27 @@
 # Run log
 
+## 2026-10-10 Frozen temporal diagnosis after periodic artifact control
+
+- User requests time-bottleneck diagnosis before deciding on a temporal loss;
+  fixed36 final models, no training/modules/new observations/confirmation.
+- Register TEMPORAL_AFTER_PERIODIC_V1.md: existing32 dev IDs/native cache hashes,
+  Allen semidiscrete RHS versus FD references; Burgers FD width sensitivity;
+  native-coefficient low modes (not sampled-then-projected). All arms retained.
+- Resolved time/state-RHS errors, signed cross term and oracle residuals use a
+  common reference norm; descriptive3-seed gate, not causal allocation.
+- Independent scientific review agrees with identity/reference design; highlights
+  observed-time slopes do not establish between-label interpolation consistency.
+- Three targeted tests passed10.675s; full regression86 tests passed86.383s.
+  New tests cover native projection versus sampled aliasing, Nyquist weighting,
+  analytic temporal/RHS oracle identity and CPU/CUDA alternate-AD agreement.
+- Development QA found float32 constant-offset rounding in JVP primal would
+  differ~1e-8 from parent field evaluation; use original16-case/all5time forward
+  batches and float64 rescaling for field replay. Derivative remains unchanged.
+- Synthetic float32 tiny-output FD test initially suffered cancellation at h.002;
+  widened its test-only h to.02. Formal trained-model probes stay.002/.001/.0005.
+  Attempted whole-model float64 conversion is invalid for complex FNO weights;
+  discarded before sealing. No old source or historical result modified.
+
 ## 2026-10-10 Periodic-curvature family complete and audited
 
 - Background worker29572 completed all48 fits and exited; stderr empty.
