@@ -1,5 +1,29 @@
 # Run log
 
+## 2026-10-10 Resume periodic-curvature task
+
+- No existing training/test worker found. Prior interrupted regression session output
+  unavailable; reran full regression rather than claiming an unobserved success.
+- `D:/miniconda3/envs/pytorch/python.exe -m unittest discover -s tests -q`:
+  all83 tests passed in85.464s. Protocol/source/plan committed before formal fitting.
+- Training remains development-only; all48 fits and18 historical tensor matches
+  must finish before reporting comparative conclusions. No confirmation opened.
+
+## 2026-10-09 Paired periodic-position and low/full curvature controls
+
+- User authorizes controlled retraining, no added modules. Newperiodic_curvature_v1
+  factorial2 encodings x3 smoothing choices x3 seeds x2 dense-clean PDE tasks;
+  12 own-encoding warm starts +36 shared-state final forks,48 fits planned.
+- Replace only scalar coordinate with grid-statistic-matched periodic sine;
+  same3 lift channels and34209 real parameters, trainable initial tensors paired.
+  Single feature is not injective fullsin/cos or a hard periodic-output guarantee.
+- None/low0..16/full0..128 curvature at TRAIN-only calibrated gradient ratio0.3,
+  fixed1500+750 budgets/paired label/query streams. Full Nyquist energy correct.
+  Hist linear controls must reproduce18 previous corresponding state tensors.
+- Three new tests passed17.567s: state/capacity/linear equivalence, periodic scalar,
+  exact historical low penalty, full Parseval/Nyquist, CPU/CUDA exact resume,
+  calibration/pairing and delegated-core global restoration. No old source edits.
+
 ## 2026-10-09 Frequency artifacts, time derivative and discretization diagnosis
 
 - User requests diagnosis only, no extra network modules. Newphysics_diagnosis_v1
