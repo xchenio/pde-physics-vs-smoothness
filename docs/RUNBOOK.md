@@ -2,6 +2,11 @@
 
 ## Allen-only exploratory joint interval pilot (2026-10-16)
 
+UPDATE:15/15 completed and audited; workers61928/64744 exited, stderr empty.
+Completed rerun skipped15 with48 artifact SHA values unchanged. Do not launch
+new fits or change this completed budget. Commands below only recover an
+incomplete copy; sealed protocol stays unchanged. See results report.
+
 New family `results/allen_interval_pilot_v1`; fixed15 continuation fits, not a
 confirmation study. Protocol: `docs/ALLEN_INTERVAL_PILOT_V1.md`. Only one writer.
 After process exit, resume from repository root using:

@@ -1,5 +1,26 @@
 # Current conclusions
 
+> Latest2026-10-16 allen_interval_pilot_v1 COMPLETE, EXPLORATORY:15 fixed
+> Allen-only continuations;117 tests pass,15 prediction/RNG/state replays,
+> 9 historical control tensors exact,3 warm calibrations and6 train-reference
+> stages checked. No new module, Burgers training or reserve access.
+> Uniform JOINT interval consistency vs periodic/none: field.037159→.036545
+> (-1.65% relative), gradient.119583→.117599 (-1.66%), curvature.336740→.329575
+> (-2.13%), primary increment.192823→.189705 (-1.62%). All3 seed means improve
+> but68.6% of absolute field gain comes from one seed; cross-seed SD increases.
+> IC/.05 and earliest .025 interval endpoint errors worsen; full-curvature
+> smoothing still has better curvature. No universal or stability improvement.
+> TRAIN16 numerical-map float32 weights ALL170 exactly1; weighted/uniform
+> final models identical in all3 seeds. This is a DEGENERATE weighting contrast,
+> not added weighting benefit or evidence the weighting theory is invalid.
+> Only4 effective objectives, not5 independent mechanisms; no matched periodic
+> pointwise-PDE arm, so no superiority over pointwise PINN/AD-loss claim.
+> Total new timed optimizer steps390.73s +trainreference3.20s; final-segment
+> peaks119.71..135.79MiB. Completed rerun skips15,48 artifact hashes unchanged.
+> Next proposed only: fixed-rule new development split/sparse-time replication,
+> retrain warm from new training IDs, then lock rules before genuine confirmation.
+> Evidence, all arms/cost/local failures: ALLEN_INTERVAL_PILOT_V1_RESULTS.md.
+
 > Latest2026-10-10 interval_diagnosis_v1 COMPLETE:36 models/360 windows,
 > 2160 independent Simpson checks,8 referencechunks/16 stages and full audit pass.
 > New diagnostic times on SAME32dev IDs, zero training/modules/loss/confirmation.

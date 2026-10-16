@@ -1,5 +1,44 @@
 # Run log
 
+## 2026-10-16 Allen exploratory joint interval completed and audited
+
+- Hiddenworker61928 completed15/15 and exited; auditor64744 completed and exited.
+  Both stderr files0bytes. Sealed training/adaptor/protocol/plan unchanged.
+- Full audit PASS:15 field/prediction/RNG/optimizer/checkpoint replays,9 EXACT
+  old none/low/full tensor controls,3 warm calibration replays,all6 TRAIN16
+  reference chunks and map recomputation,200dev fields and32consumed-dev
+  midpoint/interval diagnostics (150 model/windows). No new solver in audit.
+- Uniform JOINT interval vs none: field.0371587001514→.0365453358261,
+  relative−1.6507%; gradient−1.6589%,curvature−2.1276%,increment−1.6169%.
+  Seed field gains.69294/4.04777/.75282%; seed1 contributes68.62% absolutegain.
+  Cross-seed SD increases.007111→.007515; not improved training stability.
+- Keep counterexamples: IC and earliest supervised.05 worsen; earliest.025
+  interval endpoint mean worsens.66449%/.60112% for h.005/.01. Full-frequency
+  smoothing has lower curvature.317558 vs uniform.329575. No Pareto dominance
+  or all-time/sample gain. Of30 seed/window means, increment28improve/2worsen,
+  endpoint22/8 and RHS24/6; correlated windows are not independent trials.
+- Effective170float32 weights EXACT1; all3 weighted/uniform finalmodels EXACT
+  identical, maximumtensor difference0. The weighting contrast is DEGENERATE,
+  not additional weighting benefit nor proof weighting is theoretically useless.
+  Only4 effective objectives; weighted duplicates are not extra independent seeds.
+  No matchedperiodic pointwise-PDE arm: cannot claim integral beats PINN/ADloss.
+- Timed new optimizer steps390.7318s, TRAIN16 extra reference3.2031s, existing
+  warm4500steps reused (not new compute). Uniformmean27.1767s vsnone23.2156s
+  under common penalty-forward protocol (+17.06%); calibration/eval excluded.
+  Lastsegment peak allocated119.705..135.794MiB, not whole/resumed-run peaks.
+  Inference20 repeats after3warmups, synchronizedCUDA batch16x5timesx256:
+  2.29..2.66ms medians; same architecture, no inference-efficiency gain claim.
+- SAME runner repeated using subprocess: exit0,15 skips,48 artifact SHA values
+  unchanged (summary/map/reference manifest/results/final+latest checkpoints).
+  Evidence: results/allen_interval_pilot_v1/idempotence.json. No active workers.
+- All200dev and32midpoint trajectories remain development; no reserve access,
+  no Burgers training, no new architecture or selected predictor export.
+  Sync report/paper/currentassessment/ledger and archive all JSON/histories/logs;
+  checkpoint binaries remain local ignored files, numerical stages external_data.
+- Proposed next only: new fixed-rule development split/sparse-time replication,
+  retrain newtrain warm and prohibit omitted-time scale leakage, then lock before
+  genuine confirmation. Do not retune this completed pilot or force weight contrast.
+
 ## 2026-10-16 Allen interval launch and numerical-weight degeneracy
 
 - Code/protocol/plan sealed as `edd79d5` BEFORE all formal new reference and

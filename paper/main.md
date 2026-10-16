@@ -1,5 +1,17 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
+**2026-10-16 exploratory Allen joint-interval follow-up:** all15 continuations
+and9 historical tensor controls pass audit;117 regression tests pass. On reused
+development data, uniform interval consistency reduces mean field error from
+.03715870 to.03654534 (1.6507%), with smaller gradient/curvature/increment errors.
+Three seed changes agree in direction but differ in magnitude; early-time errors
+can worsen, and full-band smoothing retains better curvature. All170 effective
+reliability weights equal1 and all3 weighted models are tensor-identical to
+uniform models: this is a degenerate weighting contrast, not evidence for its
+novelty or extra benefit. No new modules or reserved confirmation access.
+[Full follow-up, cost and claim boundaries](FOLLOWUP_ALLEN_INTERVAL_20261016.md).
+All earlier manuscript text and failed screens below are retained.
+
 **2026-10-10 fixed-midpoint/interval follow-up:** 36 frozen models/360 windows
 audited with2160 independent quadrature checks. New diagnostic times on the SAME
 32 development trajectories, no training/temporal loss or confirmation. Allen

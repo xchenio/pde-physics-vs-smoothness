@@ -1,5 +1,24 @@
 # Experiment ledger
 
+2026-10-16 ALLEN_INTERVAL_PILOT_V1: source/protocol/plan edd79d5 sealed before
+formal solve/train; TRAIN-only map/log4a7e2d8.15 fixed750-step continuations
+from3 old1500-step periodic warm states; no modules or new confirmation.
+117 tests92.767s PASS; full audit15 prediction/RNG/optimizer/checkpoint replays,
+9 exact historical controls,3 calibration replays,6 training reference chunks,
+200dev fields and32consumed-dev interval diagnostics150windows. All pass.
+Uniform interval field.03715870015→.03654533583 (-1.6507%), gradient-1.6589%,
+curvature-2.1276%, increment-1.6169%. Seed field gains.6929/4.0478/.7528%;
+IC/.05 and earliest .025 endpoints worsen, full-smooth curvature still better;
+cross-seed SD rises. No uniform improvement or training-stability claim.
+170 float32 reliability weights EXACT1, all3 weighted/uniform final tensors
+EXACT identical: candidate weighting contrast degenerates, no added mechanism
+benefit established. Extra TRAIN16 solver information/cost openly reported.
+New timed optimizer390.7318s +reference3.2031s, oldwarm4500steps reused;
+lastsegment CUDA peaks119.705..135.794MiB, direct inference2.29..2.66ms per
+batch16x5times (not end-to-end). Idempotent rerun skips15,48hashes unchanged.
+No surviving worker; paper/report/currentassessment synced. Further split/
+sparse-time replication and genuinely unused confirmation proposed, not run.
+
 2026-10-10 INTERVAL_DIAGNOSIS_V1: source584b5bf, auditor0b7d524;36 frozenmodels,
 360intervals,8referencechunks/16solverstages,2160 independent SciPy checks,
 alternateAD/forward/identity/energy/summary replay pass.94 tests63.898s;
