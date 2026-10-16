@@ -1,5 +1,33 @@
 # Run log
 
+## 2026-10-16 Fixed-uniform new-split/sparse replication registration
+
+- User authorizes fixed uniform constraint, new DEVELOPMENT split and sparse
+  supervision, explicitly no weight-scale tuning. New immutable family:
+  results/allen_interval_replication_v1; priorpilot/results untouched.
+- One seeded permutation2026101601 of consumed Allen IDs200000..200299:
+  newtrain100 (32oldtrain+68olddev), newdev200 (68oldtrain+132olddev), sorted
+  AFTER selecting each partition. No reserves200300+, no new trajectories,
+  generator, numerical map, solver or uncertainty-weight adjustment.
+- Six FROM-SCRATCH warm1500 fits (dense5/sparse2 labels x3seeds), then18 fixed
+ 750-step forks none/fullcurvature/uniforminterval:24records,22500newupdates.
+  Same architecture/formula/strength.3/windows, observed-only scales recalibrated
+  by the same rule. No inherited old warm/optimizer/stats despite old-ID overlap.
+- Dense primary4future vs sparse primary3omitted; BOTH additionally score same
+ 3interior/4future for valid descriptive interaction, never compare unlikeprimary.
+  Predeclare stronger directional marker>=1% mean primary gain AND3/3seedgains,
+  arbitrary descriptive threshold, not significance or proven application value.
+- Targeted data3tests PASS.395s; core5tests PASS22.699s onCPU+CUDA including
+  both conditions/all3fork exactresume, original loss/gradient operations,
+  and full end-to-end sparse omitted-frame poison invariance (1e150/NaN).
+  Poison leaves observed targets/sampleweights/calibration/full states exact.
+- Full regression `python -m unittest discover -s tests -q`:125 tests PASS,
+  113.049s, exit0. Audit compiled/imported, oldcache/split/observed-only proofs
+  checked read-only. `python scripts/run_allen_interval_replication.py plan`
+  exit0 created immutable source/protocol/cache/ID plan. No formal new model fit
+  at this entry. No independent confirmation or selected predictor export.
+  Concurrent unrelated audit_pairing/pdebench files are preserved, not staged.
+
 ## 2026-10-16 Allen exploratory joint interval completed and audited
 
 - Hiddenworker61928 completed15/15 and exited; auditor64744 completed and exited.

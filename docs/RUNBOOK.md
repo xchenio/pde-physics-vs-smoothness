@@ -1,5 +1,24 @@
 # Resumable experiment runbook
 
+## Fixed-uniform Allen new-split / sparse-time replication (2026-10-16)
+
+New family `results/allen_interval_replication_v1`:24 records (6 freshwarm,
+18continuations), one consumed300-ID development reshuffle, dense/sparse labels.
+Protocol `docs/ALLEN_INTERVAL_REPLICATION_V1.md`; no reference solver or map,
+no reserve access. At repository root after the single worker has EXITED:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_interval_replication.py run
+```
+
+Sleep may preserve the running worker; check existing Python processes before
+restarting. Full checkpoints every50steps, eval250, finished results verified
+and skipped. Do not change sealed sources/protocol/identities. Once24/24 finish:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_allen_interval_replication.py --require-complete
+```
+
 ## Allen-only exploratory joint interval pilot (2026-10-16)
 
 UPDATE:15/15 completed and audited; workers61928/64744 exited, stderr empty.
