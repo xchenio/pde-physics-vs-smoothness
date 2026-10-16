@@ -1,5 +1,23 @@
 # Resumable experiment runbook
 
+## Same-five-node Allen pointwise PDE control (2026-10-16)
+
+New family `results/allen_pointwise_control_v1`:24 continuations,6 audited
+parentwarm reused,no newwarm/reference solver/data/map/reserve. Protocol
+`docs/ALLEN_POINTWISE_CONTROL_V1.md`. One hiddenwriter only. From repo root:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_pointwise_control.py run
+```
+
+Check worker before restarting after sleep; it may still be alive. Samecommand
+verifies/skips finished models and resumes complete checkpoint every50steps;
+eval250. Never change sealed sources or identities to bypass mismatch. After24:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_allen_pointwise_control.py --require-complete
+```
+
 ## Fixed-uniform Allen new-split / sparse-time replication (2026-10-16)
 
 UPDATE:24/24 completed and audited. Workers8696/66548 exited, stderr0bytes.

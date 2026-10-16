@@ -1,5 +1,32 @@
 # Run log
 
+## 2026-10-16 Same-node pointwise PDE control registration
+
+- User requests same-architecture/same-budget pointwise PDE baseline, no modules.
+  New family results/allen_pointwise_control_v1; oldresults stay sealed.
+- Same reshuffled100TRAIN/200DEV anddense5/sparse2 observedlabels,3seeds,
+  reuseONLY6audited1500fullstatewarm from interval_replication_v1.24new750step
+  continuations none/full/interval/pointwise_nodes,18000newupdates;9000oldwarm
+  updates reused, not newly trained.18oldcontrol modeltensors must exactly replay.
+- Pointwise is TIME-local SAMEprojected modes0..16,AD queryut differentiable,
+  SAME5Simpson nodes/weights andT/observedscale. Average SQUARED residuals,
+  notsquaremean. Samecollocation/steps notFLOPs;allpenaltyforwards shared,
+  selected backward/JVP costdiffers. Primarycomparison intervalvs pointwise.
+- No solver/newdata/reserve/map/tau/new efficacythreshold;allperseed/time/IC/
+  field/gradient/curvature tradeoffs andcosts registeredbeforepointwiseoutcomes.
+  TRAIN16warm algebraQA mean-square=mean-residual-energy+variance attechnical
+  rtol1e-5/atol1e-7;endpoint−averageADut gap onlyreported,no efficacy gate.
+-5targeted tests PASS20.675s CPU/CUDA;fullregression130tests PASS130.826s,
+  including analyticut parametergradient/no detach,oldloss exactops+grad,
+  dense/sparse4arm fullresume/pairing andoldobserved-label poison protections.
+- Preflight caught metadata naming collision BEFORE formalplan/train: oldloader
+  reserves parent_plan_sha256 for physicsstresscache lineage. Newreplication
+  binding renamed replication_plan_sha256 in NEWrunner/audit only;no oldcode
+  or statistical rule changed. Real read-only plan(False)/cache/observations/
+ 6auditedwarm/18control lineage check PASS afterfix;no newplan/data written.
+- Source/protocol/plan seal next. Protocol ALLEN_POINTWISE_CONTROL_V1.md;
+  onehiddenwriter/checkpoint50/eval250,full optimizer/RNG/stage persistence.
+
 ## 2026-10-16 Fixed-uniform replication completed and archived
 
 - Hiddenworker8696 completed24/24 and exited; auditor66548 also exited, both
