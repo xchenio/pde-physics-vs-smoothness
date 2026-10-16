@@ -1,5 +1,46 @@
 # Run log
 
+## 2026-10-16 Fixed-uniform replication completed and archived
+
+- Hiddenworker8696 completed24/24 and exited; auditor66548 also exited, both
+  stderr0bytes. No sealed source/protocol/cache change, no extra model fit.
+- Formal audit PASS:6freshwarm+18fork,24complete RNG/checkpoint/optimizer/state
+  and200case prediction/structure replays,6frozen calibration replays,3seed
+  crossconditionfreshinitialpairs,independent IDreindex/observed-only proofs.
+  Sixoldcaches read-only;no solver/map/newreference/reserve/newcase access.
+- Uniformdense primary4future.029807542→.028859369 (−3.180982%), sparse
+  primary3omitted.128842430→.116313093 (−9.724543%). Do NOT compare unlikeprimary.
+  SAME3interior densegain2.497640%,sparse9.724543%,interaction+7.226903pp,
+  perseedinteraction+11.199902/+4.314789/+4.416381pp. Both fixeddescriptive
+  markers >=1% meanprimarygain AND3/3seedpositive pass;not significance.
+- Preserve allcounterexamples:ALL6seed/conditionIC errorsworsen,meansdense
+  +2.255748%,sparse+6.762661%;dense.05+1.202781%. Sparsefull gradient.240080
+  andcurvature.534994 outperformuniform.248563/.611276;fieldgainnot Pareto.
+  Sparseuniform still4.67xdenseuniform commoninteriorerror. DenseSD+40%,
+  sparseSD−27.14% iscrossseed outcome dispersion,not optimizerstability.
+- Selectedtrainingtargetσdense.6293242455978698/sparse.6857900440848712;
+  omittedframes physicallycacheloaded but never fitted/stats/calibrated.
+  Newdev68oldtrainIDs;all6newwarm fromscratch,nooldcheckpoint leakage,
+  butoneconsumedpool stilldevelopment rather thanfresh independent evidence.
+- Newtimed optimizersteps531.6839029s=warm93.2448726+continuation438.4390303,
+  22500updates. Eval/calibration/audit/tests excluded;allwarmcounts once.
+  Uniformcontinuationcost+22.02%dense/+17.96%sparse vs shared-forwardnone.
+  Final lastsegmentpeak107.92..135.76MiB;directbatch16x5inferencemedian
+  1.85..2.69ms. Identicalarchitecture/no efficiencygain claim.
+- SAME runner repeated aftercompletion:exit0,24skips,122artifactSHAunchanged
+  (plan/summary/results/manifests/events/latest+final checkpoints). Evidence
+  results/allen_interval_replication_v1/idempotence.json;no worker remains.
+- Final archive QA:77JSON files parse,11report/paper artifactlinks exist,
+  six-arm numeric table matchesaudit;allsealedsource/parent/cache and122
+  idempotenceartifact hashes remain unchanged;gitdiff whitespace check passes.
+- Full125tests113.049s passed beforeformal. Preservealloldpilot failures,
+  reliableweightdegeneracy andotherhistory. Report/currentassessment/ledger/
+  paper synced;newmetadata/event/log/audit archived,checkpointbinarieslocal.
+- No matchedperiodic pointwise-PDE comparator:cannot claimintegral betterthan
+  PINN/ADphysics. Nextcomparison prospective only, no confirmation/export here.
+  Concurrent unrelated audit_pairing / physics_vs_smoothness files preserved
+  and intentionally excluded from this task's Git staging.
+
 ## 2026-10-16 Fixed-uniform replication launch
 
 - Pretraining source/protocol/plan seal `bd90d53`; no formal fit preceded seal.

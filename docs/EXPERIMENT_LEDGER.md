@@ -1,5 +1,24 @@
 # Experiment ledger
 
+2026-10-16 ALLEN_INTERVAL_REPLICATION_V1: source/protocol/planbd90d53 before
+training;launchbc6a56f. One deterministic reshuffle2026101601 ofconsumed300IDs,
+100TRAIN/200DEV,68oldTRAIN innewDEV;all6freshwarm prevent oldweight leakage.
+Dense5labels/sparse2labels xnone/full/uniform x3seeds:6warm1500+18fork750,
+22500newupdates. Fixed formula/ratio.3/windows/architecture, no weightretuning.
+125tests113.049s PASS inclCPU/CUDA exactresume+endtoend omitted-labelpoison.
+Audit24 state/RNG/predictionreplays,6calibrations,3initialpairs,observed-only
+stats and200case field/structure/time metrics pass. No referencesolver/map.
+Uniformprimarygain dense3.1810%(4future),sparse9.7245%(3omitted),both preset
+descriptivemarkers pass. COMMON3times gains2.4976/9.7245%,interaction+7.2269pp,
+all3seed positive;oneconsumedpool,not independent confirmation or significance.
+IC worsens all6pairs;dense.05worse. Sparsefull retains lowergradient/curvature,
+not Pareto dominance. CrossseedSD dense+40%,sparse−27%,not trainingstability.
+New timedsteps531.6839s:93.2449warm+438.4390cont;lastsegmentfinalpeak
+107.923..135.756MiB;batch16x5 inference1.85..2.69ms,noarchitecture speedup.
+Workers8696/66548 exitedstderr0;rerun24skips/122artifacthashes unchanged.
+No reserve/newdata/module/export. Report+paper synced;matchedpointwise-PDE
+comparator remains prospective, before any separately authorized confirmation.
+
 2026-10-16 ALLEN_INTERVAL_PILOT_V1: source/protocol/plan edd79d5 sealed before
 formal solve/train; TRAIN-only map/log4a7e2d8.15 fixed750-step continuations
 from3 old1500-step periodic warm states; no modules or new confirmation.

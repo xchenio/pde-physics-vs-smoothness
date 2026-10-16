@@ -1,5 +1,25 @@
 # Current conclusions
 
+> Latest2026-10-16 allen_interval_replication_v1 COMPLETE, development-only:
+> 24 new records (6 FRESHwarm1500 +18fork750),125 tests113.049s pass;
+> audit24 streams/predictions,6 calibrations,3crossconditioninitialpairs pass.
+> Single reshuffle of consumed300 IDs,100train/200dev;68oldtrain innewdev.
+> No oldwarm reuse, no reserve/newtrajectory/reference/map/module access.
+> Uniform vsnone primary fieldgain3.1810% dense4future,9.7245% sparse3omitted;
+> DO NOT compare unlikeprimary. SAME3interior times:2.4976% vs9.7245%,
+> descriptive sparse-minus-dense gain+7.2269pp,all3seed directions positive.
+> Both preset1%+all3 primary markers pass, not significance/independent proof.
+> IC worsens ALL6 pairs (+2.26%dense/+6.76%sparse means);dense.05 also worse.
+> Sparsefull gradient.240080/curvature.534994 still better thanuniform
+> .248563/.611276;noPareto dominance. Sparseuniform remains4.67xdense error.
+> Dense crossseedSD increases40%,sparse decreases27%;not optimizerstability.
+> New timedsteps531.684s (warm93.245+continuation438.439),22500updates;
+> final lastsegment peaks107.92..135.76MiB,inferencemedianbatch1.85..2.69ms.
+> Complete rerun skips24 with122artifacthashes unchanged;workers exited.
+> Next proposed: matched periodic-FNO pointwisePDE strongcontrol before genuine
+> confirmation; no superiority over PINN/pointwisePDE or novelty claim yet.
+> Full report: ALLEN_INTERVAL_REPLICATION_V1_RESULTS.md.
+
 > Latest2026-10-16 allen_interval_pilot_v1 COMPLETE, EXPLORATORY:15 fixed
 > Allen-only continuations;117 tests pass,15 prediction/RNG/state replays,
 > 9 historical control tensors exact,3 warm calibrations and6 train-reference

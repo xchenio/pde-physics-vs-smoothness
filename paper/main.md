@@ -1,5 +1,16 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
+**2026-10-16 fixed-uniform new-split/sparse replication:**24 fresh-warm/fork
+records audited,125 tests pass. On the SAME three development interior times,
+uniform interval consistency improves field error2.4976% under dense labels
+and9.7245% under first/last-only labels (descriptive interaction+7.2269pp).
+All three seed directions agree, but IC error worsens in all six pairs and
+full curvature retains stronger sparse gradient/curvature scores. All300 cases
+were previously consumed;6 new warm fits prevent checkpoint leakage but do not
+create independent confirmation. No reserved set, reliability map or new module.
+No matched pointwise-PDE comparator or methodological-novelty claim.
+[Full replication, costs and counterexamples](FOLLOWUP_ALLEN_INTERVAL_REPLICATION_20261016.md).
+
 **2026-10-16 exploratory Allen joint-interval follow-up:** all15 continuations
 and9 historical tensor controls pass audit;117 regression tests pass. On reused
 development data, uniform interval consistency reduces mean field error from

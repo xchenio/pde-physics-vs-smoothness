@@ -2,6 +2,11 @@
 
 ## Fixed-uniform Allen new-split / sparse-time replication (2026-10-16)
 
+UPDATE:24/24 completed and audited. Workers8696/66548 exited, stderr0bytes.
+Repeated runner skips24 and122artifacthashes remain unchanged. Do not extend
+this completed budget. Below commands only recover incomplete local copies;
+sealed protocol stays unchanged. Full results in ALLEN_INTERVAL_REPLICATION_V1_RESULTS.md.
+
 New family `results/allen_interval_replication_v1`:24 records (6 freshwarm,
 18continuations), one consumed300-ID development reshuffle, dense/sparse labels.
 Protocol `docs/ALLEN_INTERVAL_REPLICATION_V1.md`; no reference solver or map,
