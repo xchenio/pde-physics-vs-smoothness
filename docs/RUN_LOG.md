@@ -991,3 +991,37 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   handling in PI-DeepONets, adjacent to our silent-broadcast contribution),
   arXiv:2610.07811 (NeurIPS 2026 STODY), arXiv:2610.10972 (ICLR 2027 under review).
   All fees, deadlines and independent-author policies are recorded as unverified.
+
+- 2026-10-16 D2 pairing checker: added tools/pairing_check.py (numpy-only, single file, meant to be
+  copied into other repos), tests/test_pairing_check.py (12 tests), scripts/audit_pairing.py.
+  Three training-free checks: C1 shape (catches (B,B,N) broadcast), C2 contamination, C3 pairing.
+  Measured boundaries, both locked by unit tests: (a) C3 is permuatation/singleton and is
+  structurally invalid for pipelines that sample coordinates internally (random stream changes
+  with batch size -> false FAIL), so check_pipeline disables C3 by default; (b) C2 MISSES pure
+  (B,B,N) broadcast because arr[i,i] happens to be the correctly paired value, so C1 is the only
+  fingerprint there. Project-internal audit: 16 targets (4 PDEs x {pipeline,evaluator} x
+  {fixed,legacy}), pre-registered expectations, 16/16 agree. legacy is a faithful REIMPLEMENTATION
+  of the pre-fix convention (README 6.5), NOT historical code: this repo starts 2026-09-22, after
+  the 2026-09-16 fix, so the buggy version is not in git. Real non-injected finding:
+  DarcyProblem.input_at still lacks the per-sample branch (only input_and_grad has it) and returns
+  (B,B,N) for (B,N,2) inputs; no effect on current training path. Traditional-QA proxy: on the
+  shared-grid path, fixed vs legacy outputs are bitwise identical for all 4 PDEs, i.e. the
+  reference/FD check cannot distinguish them. External repos NOT audited yet
+  (scripts/audit_external_pairing.py --status shows all MISSING).
+- 2026-10-16 D1 cross-architecture attribution: added scripts/readout_attribution.py with a unified
+  readout-projection LB: basis family (DeepONet, per-sample coefficients) vs pointwise family
+  (FNO, globally shared (W,b)). Ran on the 15 existing public_fixed_t1_v1 runs (PDEBench Burgers,
+  1000/200/200), no retraining; replayed metrics match archive to 1e-8 (DeepONet) / 1e-5 (FNO).
+  LB_train: fourier 0.0317, mlp 0.1175, fno 0.1033. opt_gap/train_rel: fourier 0.855, mlp 0.503,
+  fno 0.037 -> the two backbones have OPPOSITE bottlenecks (DeepONet optimization-limited,
+  FNO not). Fourier trunk cuts LB 3.7x but leaves test error unchanged (0.2469 -> 0.2539).
+  First version used LB_test in opt_gap and produced NEGATIVE opt_gap on FNO; fixed to two-sided
+  decomposition so opt_gap_train >= 0 by construction. Cross-family LB magnitudes are not comparable
+  (different readout freedom); only within-family or the normalized opt_gap/train_rel are.
+- 2026-10-16 D4 intervention selection: docs/INTERVENTION_SELECTION_PROTOCOL_V1.md frozen BEFORE any
+  selection result (thresholds 0.30/0.40/0.15 taken from the independent V1 observations, not tuned
+  here; failure criteria pre-declared). I4 dropped from the intervention set by an implementation
+  constraint (would change the split definition). scripts/intervention_selection.py is manifest
+  driven and resumable: every (setting, arch, seed, strategy) is written on completion and skipped
+  on re-run. Settings T1-T5 prepared from the existing HDF5 (no new download); T1 reproduces the
+  historical 0.39357 baseline.
