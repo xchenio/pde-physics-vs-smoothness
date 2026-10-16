@@ -19,3 +19,8 @@ results/**/tensorboard/
 # Downloaded public benchmark datasets are reproducible by provenance, not committed binaries.
 external_data/
 external_data_*
+
+# Third-party source snapshots (read-only audit targets). Only external/snapshots.json
+# (the fingerprint) is versioned; the sources themselves are re-downloadable.
+external/*
+!external/snapshots.json
