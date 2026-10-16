@@ -1,0 +1,61 @@
+{
+  "run": "fno_s2",
+  "architecture": "fno",
+  "seed": 2,
+  "family": "pointwise",
+  "steps": 1500,
+  "replayed_mean_relative_l2": {
+    "train": 0.16353470857563346,
+    "val": 0.22521727259753554,
+    "test": 0.21913202705065943
+  },
+  "archive_mean_relative_l2": {
+    "train": 0.1635476169059133,
+    "val": 0.2252251781077937,
+    "test": 0.21914150256537332
+  },
+  "replay_max_abs_diff": 1.2908330279837177e-05,
+  "relative_frobenius": {
+    "train": 0.10084360985100278,
+    "val": 0.15366384267062327,
+    "test": 0.14239188495260133
+  },
+  "lb": {
+    "train": 0.0994697092730406,
+    "val": 0.14275280194935425,
+    "test": 0.14003757110977946
+  },
+  "lb_detail": {
+    "train": {
+      "residual_fro": 50.32813247168143,
+      "readout_dof": "33 total (shared)",
+      "family": "pointwise",
+      "lb_refit_on_train": 0.0994697092730406
+    },
+    "val": {
+      "residual_fro": 33.77498987147589,
+      "readout_dof": "33 total (shared)",
+      "family": "pointwise",
+      "lb_refit_on_train": 0.15214180809210973
+    },
+    "test": {
+      "residual_fro": 31.59179188506793,
+      "readout_dof": "33 total (shared)",
+      "family": "pointwise",
+      "lb_refit_on_train": 0.14156985260308932
+    }
+  },
+  "attribution": {
+    "test_relative_fro": 0.14239188495260133,
+    "LB_train": 0.0994697092730406,
+    "LB_test": 0.14003757110977946,
+    "opt_gap_train": 0.0013739005779621893,
+    "gen_gap": 0.041548275101598545,
+    "test_minus_LB_test": 0.0023543138428218646,
+    "note": "opt_gap_train = train_rel - LB_train >= 0 \u7531\u5b9a\u4e49\u4fdd\u8bc1\uff1btest_rel - LB_test \u662f test \u4fa7\u79bb\u5730\u677f\u603b\u8ddd\u79bb\uff0c\u7b49\u4e8e opt_gap_train + gen_gap + (LB_train - LB_test)",
+    "lb_refit_on_train_then_test": 0.14156985260308932
+  },
+  "guarantee_ok": true,
+  "status": "ok",
+  "seconds": 1.15
+}

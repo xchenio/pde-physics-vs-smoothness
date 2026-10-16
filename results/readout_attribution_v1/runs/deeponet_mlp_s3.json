@@ -1,0 +1,57 @@
+{
+  "run": "deeponet_mlp_s3",
+  "architecture": "deeponet_mlp",
+  "seed": 3,
+  "family": "basis",
+  "steps": 1500,
+  "replayed_mean_relative_l2": {
+    "train": 0.393255410781539,
+    "val": 0.39292672060881145,
+    "test": 0.3931858825686176
+  },
+  "archive_mean_relative_l2": {
+    "train": 0.39325540697308586,
+    "val": 0.3929267348871346,
+    "test": 0.3931858820895116
+  },
+  "replay_max_abs_diff": 1.4278323134941928e-08,
+  "relative_frobenius": {
+    "train": 0.2369913868143716,
+    "val": 0.22742709363960614,
+    "test": 0.24542479787890004
+  },
+  "lb": {
+    "train": 0.11591864010581228,
+    "val": 0.1060708113313596,
+    "test": 0.1140403736360793
+  },
+  "lb_detail": {
+    "train": {
+      "residual_fro": 58.650706007076586,
+      "readout_dof": "65 per sample",
+      "family": "basis"
+    },
+    "val": {
+      "residual_fro": 25.09611390778103,
+      "readout_dof": "65 per sample",
+      "family": "basis"
+    },
+    "test": {
+      "residual_fro": 25.726951145004605,
+      "readout_dof": "65 per sample",
+      "family": "basis"
+    }
+  },
+  "attribution": {
+    "test_relative_fro": 0.24542479787890004,
+    "LB_train": 0.11591864010581228,
+    "LB_test": 0.1140403736360793,
+    "opt_gap_train": 0.12107274670855932,
+    "gen_gap": 0.00843341106452844,
+    "test_minus_LB_test": 0.13138442424282074,
+    "note": "opt_gap_train = train_rel - LB_train >= 0 \u7531\u5b9a\u4e49\u4fdd\u8bc1\uff1btest_rel - LB_test \u662f test \u4fa7\u79bb\u5730\u677f\u603b\u8ddd\u79bb\uff0c\u7b49\u4e8e opt_gap_train + gen_gap + (LB_train - LB_test)"
+  },
+  "guarantee_ok": true,
+  "status": "ok",
+  "seconds": 0.04
+}
