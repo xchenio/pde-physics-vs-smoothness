@@ -1,5 +1,14 @@
 # Run log
 
+## 2026-10-16 Same-node pointwise control launch
+
+- Source/protocol/plan sealed `99f34be` before allformalnewcontinuations.
+  Single hiddenworker70332 runs the same recoverable `run_allen_pointwise_control.py run`.
+  stdout/stderr: results/allen_pointwise_control_v1/worker_20261016_001.*.log.
+- Six warm states reused read-only;all24continuations stillcheckpoint50/eval250.
+  Exact18oldcontrols andnew6pointwise finals plusaudit pending;no interim
+  outcome used to modifyrules oropenconfirmation. No source/model-module change.
+
 ## 2026-10-16 Same-node pointwise PDE control registration
 
 - User requests same-architecture/same-budget pointwise PDE baseline, no modules.
@@ -16,7 +25,7 @@
   field/gradient/curvature tradeoffs andcosts registeredbeforepointwiseoutcomes.
   TRAIN16warm algebraQA mean-square=mean-residual-energy+variance attechnical
   rtol1e-5/atol1e-7;endpoint−averageADut gap onlyreported,no efficacy gate.
--5targeted tests PASS20.675s CPU/CUDA;fullregression130tests PASS130.826s,
+- 5targeted tests PASS20.675s CPU/CUDA;fullregression130tests PASS130.826s,
   including analyticut parametergradient/no detach,oldloss exactops+grad,
   dense/sparse4arm fullresume/pairing andoldobserved-label poison protections.
 - Preflight caught metadata naming collision BEFORE formalplan/train: oldloader
