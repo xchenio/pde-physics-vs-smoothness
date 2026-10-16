@@ -1,0 +1,44 @@
+{
+  "configs": {
+    "fno_w32_m16_s1500": {
+      "kind": "fno",
+      "width": 32,
+      "modes": 16,
+      "steps": 1500
+    },
+    "fno_w32_m16_s6000": {
+      "kind": "fno",
+      "width": 32,
+      "modes": 16,
+      "steps": 6000
+    },
+    "fno_w64_m32_s6000": {
+      "kind": "fno",
+      "width": 64,
+      "modes": 32,
+      "steps": 6000
+    },
+    "donet_fourier_s6000": {
+      "kind": "deeponet_fourier",
+      "steps": 6000
+    },
+    "donet_mlp_s6000": {
+      "kind": "deeponet_mlp",
+      "steps": 6000
+    }
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "code_hash": "fb3e6a2db9f00941",
+  "env": {
+    "python": "3.11.16",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "cuda": "13.0"
+  }
+}
