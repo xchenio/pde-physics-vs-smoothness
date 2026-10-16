@@ -1,5 +1,37 @@
 # Current conclusions
 
+> Latest2026-10-16 allen_pointwise_control_v1 COMPLETE, development-only:
+> SAME34209-parameter periodic FNO, observations, warm/full optimizer states,
+> batch/query streams, five time nodes and750-step continuation budget; NO modules.
+> 24new continuations=18000updates,6old warm states/9000updates reused read-only.
+> 130tests130.826s PASS; audit24stream/field/structure replays,6calibrations,
+> and18historical finalmodel tensor EXACT matches PASS. Replays are not new seeds.
+> TIME-pointwise PDE is projected to SAMEspatial modes0..16, not full-space PINN;
+> Simpson-weighted mean SQUARED residual, not squared mean residual.
+> Dense4future interval.028859369444 vs pointwise.028858915527:
+> interval/pointwise-1=+0.001573% (pointwise lower all3seeds, tiny magnitude).
+> Sparse3omitted interval.116313092935 vs pointwise.116321428657:
+> -0.007166% (interval lower2/3seeds). Common3times dense+0.001895%,
+> sparse-0.007166%. No stable additional interval advantage; NOT statistical
+> equivalence, no efficacy margin/search/test or independent confirmation.
+> Both physics objectives help field vsnone, but full-curvature remains stronger
+> for sparse gradient/curvature and dense primary curvature; IC worsens vsnone.
+> TRAIN16 warm-only variance decomposition: within-window residual variance
+> 0.0834..0.1119% of pointwise energy; endpoint-vs-averageADut gap3.36..3.97e-6
+> dimensionlessRMS. Known identity/explanatory QA, not truth accuracy or causation.
+> New timedsteps1147.324s (pointwise6=312.995;control18replays=834.330),
+> excludes calibration/eval/I/O/audit; previous warm93.245s separate. Same steps
+> and nodes NOT sameFLOPs/walltime; allarms compute all3penalty forwards.
+> Lastsegment allocated peaks860.15..910.92MiB, directbatch16x5 inference
+> 1.81..2.77ms; neither architecture speedup nor isolated production cost claim.
+> Completed rerun24skips/122hashes unchanged,54parentlineagehashes verified;
+> worker/auditor exitedstderr0. Same consumed300pool, no reserve/reference/map.
+> Supersedes prior 'pointwise comparator pending' status only. Preserve all
+> historical failures and limits. Freeze this comparison; do not search windows
+> or addmodules to chase tiny devrank. Next lock a bounded diagnostic paper/main
+> comparison before separately deciding genuine confirmation. Full report:
+> ALLEN_POINTWISE_CONTROL_V1_RESULTS.md; paper follow-up synchronized.
+
 > Latest2026-10-16 allen_interval_replication_v1 COMPLETE, development-only:
 > 24 new records (6 FRESHwarm1500 +18fork750),125 tests113.049s pass;
 > audit24 streams/predictions,6 calibrations,3crossconditioninitialpairs pass.

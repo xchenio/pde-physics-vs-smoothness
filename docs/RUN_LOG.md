@@ -1,5 +1,45 @@
 # Run log
 
+## 2026-10-16 Same-node pointwise control completed and audited
+
+- Hiddenworker70332 completed24/24 and exited;auditor71052 exited successfully.
+  Both stderr logs0bytes. Source/protocol/plan99f34be stayed frozen;no new
+  module,reference solve,reliabilitymap,newcase orconfirmation access.
+- Commands: conda pytorch Python scripts/run_allen_pointwise_control.py run;
+  then scripts/audit_allen_pointwise_control.py --require-complete. Full130
+  regressiontests130.826s passed beforeformaltrain. No newfit afterbudget.
+- Formal auditPASS:24final fullstate/batch/query/200DEV field+structure+time
+  replays,6calibration replays,6auditedfullstatewarm lineages,18oldcontrol
+  finalmodel tensors EXACT. Replayedcontrols do not add independent evidence.
+- Direct interval/pointwise primarydense.028859369444/.028858915527,
+  signed intervalrelativechange+.001572884%;sparse.116313092935/.116321428657,
+  -.007166110%,intervalbetteronly2/3seeds. Common3times dense+.001895279%,
+  sparse-.007166110%. No stableextra intervaladvantage;not statisticalequivalence
+  orfullytunedPINNcomparison. Reportall3seeds/5times,IC/fullstructuretradeoffs.
+- Pointwise ismean of5weighted SQUARED projectedPDE residuals,not squaremean.
+  TRAIN16warm algebraidentity passes;windowvariance .0834002.. .1119034% of
+  pointwiseenergy,endpointminusaverageADut3.36..3.97e-6dimensionlessRMS.
+  OwnmodelquadratureQA/knownidentity only,notnovelty,truthaccuracy orcausation.
+- Newtimedoptimizersteps1147.3241573s/18000updates:6pointwise312.9946225s,
+  18controlreplays834.3295348s. Reused6warm9000updates/93.2448726s previouswork
+  separate;calibration/evaluation/I/O/audit/tests excluded. Equalsteps/nodes NOT
+  FLOPs/walltime;allthreepenaltyforwards everyarm. Lastsegmentallocatedpeaks
+  860.15..910.92MiB;batch16x5 directinferencemedian1.81..2.77ms,not speedup.
+- Completed runner replay exit0,24skips,122plan/summary/result/manifest/event/
+  latest+finalcheckpoint SHA valuesunchanged;54parentlineagehashes verified.
+  Evidence results/allen_pointwise_control_v1/idempotence.json. First local
+  idempotence harness usedwrong atomic_json import andfailedbeforeany runner
+  action;corrected tosrc.public_benchmark,then fullreplay passed;no fit affected.
+- Allnewcheckpointbinaries remainlocal/ignored byGit;JSON/events/logs/audit
+  archived with report/paper/currentassessment/ledger/runbook synchronized.
+  Preserveunrelated audit_pairing/physics_vs_smoothness edits. No tinydevrank
+  winnerexport/windowsearch/extra modules orconfirmation;comparisonclosed.
+- FinalarchiveQA:77JSON parse,28newreport/paper linksresolve,56coretablevalues
+  matchaudit,37sealedsource/parent/cache hashes unchanged,122idempotenceartifact
+  hashes rechecked. Mainpaper oldcontent preserved. Read-only scientificreview
+  findsno blockingerror;clarified endpoint/ADgap caninclude float32roundoff,
+  not onlySimpsontruncation. Gitwhitespacecheck passes.
+
 ## 2026-10-16 Same-node pointwise control launch
 
 - Source/protocol/plan sealed `99f34be` before allformalnewcontinuations.

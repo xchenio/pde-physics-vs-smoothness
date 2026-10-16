@@ -1,5 +1,16 @@
 # Better Projection and Stable Fitting Do Not Guarantee Generalization in DeepONet
 
+**2026-10-16 matched same-node pointwise PDE control:**24 continuations audited,
+18 historical control tensors reproduced,130 tests pass. Dense interval/pointwise
+field means are.02885936944/.02885891553; sparse means are.11631309294/.11632142866.
+Differences are tiny and reverse direction across conditions, with no stable
+integral advantage or statistical-equivalence claim. Similar gains over none
+are compatible with a shared physical-constraint benefit, not integral novelty;
+early-time harms and full-curvature tradeoffs remain. Same consumed300-case
+pool, spatially projected time-pointwise baseline, fixed strength and unchanged FNO;
+no reserved confirmation or winner export. [Matched comparison, costs and revised
+claim](FOLLOWUP_ALLEN_POINTWISE_CONTROL_20261016.md). Earlier evidence is retained.
+
 **2026-10-16 fixed-uniform new-split/sparse replication:**24 fresh-warm/fork
 records audited,125 tests pass. On the SAME three development interior times,
 uniform interval consistency improves field error2.4976% under dense labels

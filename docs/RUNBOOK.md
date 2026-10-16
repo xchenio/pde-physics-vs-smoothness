@@ -2,6 +2,12 @@
 
 ## Same-five-node Allen pointwise PDE control (2026-10-16)
 
+UPDATE:24/24 continuations COMPLETE and audited;workers70332/71052 exited,
+stderr0bytes. Completed rerun skips24 and122artifactSHA values remainunchanged,
+54parentlineagehashes verified. Do not extend or rerun completedfits. Commands
+below recover incomplete copies only, without changing sealedprotocol. Results:
+`docs/ALLEN_POINTWISE_CONTROL_V1_RESULTS.md`;idempotence.json records recoveryQA.
+
 New family `results/allen_pointwise_control_v1`:24 continuations,6 audited
 parentwarm reused,no newwarm/reference solver/data/map/reserve. Protocol
 `docs/ALLEN_POINTWISE_CONTROL_V1.md`. One hiddenwriter only. From repo root:

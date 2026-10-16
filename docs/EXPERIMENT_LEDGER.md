@@ -1,5 +1,31 @@
 # Experiment ledger
 
+2026-10-16 ALLEN_POINTWISE_CONTROL_V1: source/protocol/plan99f34be before
+newfits;launchd970675. Sameperiodic FNO34209,consumed300ID100/200split,
+dense5/sparse2 observations,6condition-owned auditedfullstate1500warm reused.
+24new750step continuations none/full/interval_uniform/pointwise_nodes x3seeds
+x2conditions=18000newupdates,9000previouswarmupdates not retrained.
+Temporalpointwise SAME5Simpson nodes andspatial0..16 band/dealiasing;
+weightedmean SQUAREDresidual, AD-ut gradientretained;not unrestrictedPINN.
+Matchedsteps/nodes/calibrationratio.3 notmatchedFLOPs/strength or tuning.
+130tests130.826s PASS; audit24stream/200casefield+structure/state replays,
+6probe calibrations,18exact historicalfinalmodel tensor matches PASS.
+Dense interval/pointwise primary.028859369444/.028858915527 (+.001573%
+intervalrelativechange);sparse.116313092935/.116321428657 (-.007166%,
+intervalbetter2/3seeds). Common3 dense+.001895%,sparse-.007166%.
+Tinydevelopment differences,not statisticalequivalence/stableintervalgain;
+no efficacymargin orwinnerexport. Fullcurvature strongstructure andICtradeoffs
+retained. TRAIN16warm residualvariance share.0834.. .1119%;ownquadraturegap
+3.36..3.97e-6dimensionlessRMS,knownidentity/QA notnewtheory/truthaccuracy.
+Newtimedsteps1147.324157s=pointwise6 312.994623+18controls834.329535;
+priorwarm93.244873s separate,excludeseval/calibration/I/O/audit. All3penalty
+forwards everyarm;lastsegmentallocated860.15..910.92MiB,identicalinference
+batch16x5 medians1.81..2.77ms,not productionefficiencyclaim.
+Workers70332/71052 exitedstderr0;rerunexit0/24skips/122artifactSHAunchanged,
+54parentlineagehashes verified. No newmodule/solver/map/reference/reserve.
+Report/paper/currentassessment synchronized. This closes previouslypending
+matchedpointwisecontrol;oldfailures/developmentconsumptionremain unchanged.
+
 2026-10-16 ALLEN_INTERVAL_REPLICATION_V1: source/protocol/planbd90d53 before
 training;launchbc6a56f. One deterministic reshuffle2026101601 ofconsumed300IDs,
 100TRAIN/200DEV,68oldTRAIN innewDEV;all6freshwarm prevent oldweight leakage.
