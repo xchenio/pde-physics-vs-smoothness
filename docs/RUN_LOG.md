@@ -980,3 +980,14 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   Full regression60 tests passed54.721s before registered training. Checkpoints50.
 - Commands: python -m unittest tests.test_manifold_reconstruction -q;
   python scripts/run_manifold_reconstruction.py plan/run (conda pytorch interpreter).
+
+- 2026-10-16 literature and venue review: no training, no confirmation set opened, no paper
+  conclusion changed. Added docs/PUBLICATION_STRATEGY_20261016.md (venue tiers under a
+  zero/low-fee independent-author constraint, three submission routes, directions D1-D6,
+  practical checklist) plus a pointer at the top of docs/PUBLICATION_ASSESSMENT.md.
+  arXiv API returned HTTP 429 from this network; results were collected from arXiv search and
+  abs pages instead. Closest external work: arXiv:2601.11428 (neural-operator failure-mode
+  stress testing, single author, published at TMLR), arXiv:2610.22157 (2026-10-15, tensor
+  handling in PI-DeepONets, adjacent to our silent-broadcast contribution),
+  arXiv:2610.07811 (NeurIPS 2026 STODY), arXiv:2610.10972 (ICLR 2027 under review).
+  All fees, deadlines and independent-author policies are recorded as unverified.
