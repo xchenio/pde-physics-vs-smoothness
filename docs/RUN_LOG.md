@@ -1,5 +1,23 @@
 # Run log
 
+## 2026-10-16 Allen interval launch and numerical-weight degeneracy
+
+- Code/protocol/plan sealed as `edd79d5` BEFORE all formal new reference and
+  continuation work. Single hidden worker PID61928; logs in
+  results/allen_interval_pilot_v1/worker_20261016_001.{stdout,stderr}.log.
+- Formal TRAIN16 numerical reference completed6/6 stages in3.20s persisted
+  compute time; no development/reserve values enter the map. Stage arrays live
+  in ignored external_data/allen_interval_pilot_v1/train_reference; small full
+  map JSON and artifact hashes are archived in the result family.
+- Fixed tau=.001*trainstd/T=1.260765192620e-3. Float64 weights range
+  .9999999990656812 to .9999999999991117, maximum deviation from1=9.3432e-10.
+  Effective float32 ALL170 cells are EXACTLY1 (std0, weightedmassfraction1).
+  The candidate is therefore numerically identical to uniform weighting here.
+  Keep both groups; final bitwise equality is an explicit audit requirement.
+  Do not retune tau or amplify near-roundoff differences after observing this.
+- Training ongoing; no field-accuracy, gain, novelty or confirmation conclusion
+  inferred from the map. All15 fixed final models and independent audit pending.
+
 ## 2026-10-16 Allen-only exploratory joint-interval pilot registration
 
 - User explicitly authorizes a small Allen–Cahn continuation study, after the
