@@ -1,5 +1,16 @@
 # Run log
 
+## 2026-10-16 Fixed-uniform replication launch
+
+- Pretraining source/protocol/plan seal `bd90d53`; no formal fit preceded seal.
+  One hidden worker PID8696 runs
+  `D:\miniconda3\envs\pytorch\python.exe scripts/run_allen_interval_replication.py run`.
+- Logs: results/allen_interval_replication_v1/worker_20261016_001.stdout.log
+  and matching stderr. Fullstate50/eval250 persistence active; check worker
+  before restarting after sleep. Old300 caches read-only, no reference solves.
+- Training starts dense freshwarm then dense3forkgroups; sparse gets its OWN
+  from-scratch warm later. No conclusions inferred until fixed24 and audit finish.
+
 ## 2026-10-16 Fixed-uniform new-split/sparse replication registration
 
 - User authorizes fixed uniform constraint, new DEVELOPMENT split and sparse
