@@ -62,7 +62,16 @@ TARGETS = {
 }
 
 
-def probe_path(repo_dir: Path) -> Path:
+def probe_path(repo_dir: Path, name: str | None = None) -> Path:
+    """适配层优先放在 `scripts/audit_probes/<name>_probes.py`。
+
+    放在仓库自己的目录里，而不是目标仓库内——外部源码是**只读快照**（已登记
+    snapshot SHA-256），往里写文件会破坏指纹，也会让人分不清哪些是我们加的。
+    """
+    if name:
+        local = ROOT / "scripts" / "audit_probes" / f"{name}_probes.py"
+        if local.exists():
+            return local
     return Path(repo_dir) / "pairing_probes.py"
 
 
@@ -78,7 +87,7 @@ def load_probes(module_path: Path):
 
 
 def run_target(name, repo_dir: Path, out_root: Path, batch_limit: int | None = None):
-    pp = probe_path(repo_dir)
+    pp = probe_path(repo_dir, name)
     if not repo_dir.exists():
         return {"target": name, "status": "MISSING_REPO",
                 "clone": TARGETS[name]["clone"], "results": []}

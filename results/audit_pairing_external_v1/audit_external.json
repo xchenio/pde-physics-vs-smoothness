@@ -1,0 +1,194 @@
+{
+  "created": "2026-10-16T06:57:55",
+  "code_hash": "67c284b3bc0a96af",
+  "env": {
+    "python": "3.11.16",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "device": "cpu",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "cuda": "13.0"
+  },
+  "targets": {
+    "pi_deeponet": "OK"
+  },
+  "results": [
+    {
+      "label": "pi_deeponet/ic_target(official tile semantics)",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": true,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": true
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "label": "pi_deeponet/branch_tile(official np.tile)",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": true,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": true
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "label": "pi_deeponet/res_target(official zeros)",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": true,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": true
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "label": "pi_deeponet/counterfactual: shared-grid reshape",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": false,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": false
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "out"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": [
+          "out"
+        ]
+      },
+      "passed": false,
+      "error": null
+    },
+    {
+      "label": "pi_deeponet/counterfactual: broadcast tile",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": true,
+          "c2_diff": 4.163336342344337e-17,
+          "c3_diff": 4.163336342344337e-17,
+          "max_diff": 4.163336342344337e-17
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": true
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null
+    }
+  ],
+  "n_pass": 4,
+  "n_total": 5
+}
