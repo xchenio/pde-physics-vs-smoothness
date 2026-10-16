@@ -97,25 +97,45 @@ def main():
         best_fam = min(smooth, key=lambda f: fams[f]["test"])
         p = np.asarray(fams["physics"]["tests"], dtype=float)
         s = np.asarray(fams[best_fam]["tests"], dtype=float)
-        d = (s - p) / s                      # 正 = PDE 更好（相对 best_smoothness 的增益）
+        n0 = np.asarray(fams["none"]["tests"], dtype=float) if "none" in fams else None
+        # d > 0 表示 PDE 比对照更好（相对增益）
+        d = (s - p) / s
         n_p = len(d)
         idx = rng.integers(0, n_p, size=(BOOT, n_p))
         boot = d[idx].mean(axis=1)
         lo, hi = float(np.percentile(boot, 100 * alpha / 2)), \
             float(np.percentile(boot, 100 * (1 - alpha / 2)))
         gain = float(d.mean())
-        holds = bool(hi < 0 or (gain > THRESHOLD and np.percentile(boot, 100 * (1 - alpha)) < 0))
+        # 假设成立 = PDE 相对平滑正则**显著更好**：增益超门槛且校正后下界 > 0。
+        # （区间上界 < 0 说明的是"PDE 显著更差"，那是证伪，不是成立。）
+        holds = bool(gain > THRESHOLD and lo > 0)
+
+        # 附带对照：PDE 相对"无惩罚"。这是正面结论（物理是否有用），
+        # 与"是否优于平滑正则"是两个不同的问题，不能混为一谈。
+        vs_none = None
+        if n0 is not None:
+            d0 = (n0 - p) / n0
+            b0 = d0[rng.integers(0, n_p, size=(BOOT, n_p))].mean(axis=1)
+            vs_none = dict(gain=float(d0.mean()),
+                           ci=[float(np.percentile(b0, 100 * alpha / 2)),
+                               float(np.percentile(b0, 100 * (1 - alpha / 2)))])
         verdicts[label] = dict(best_smoothness_family=best_fam,
                                best_smoothness_strength=fams[best_fam]["st"],
                                physics_strength=fams["physics"]["st"],
                                gain_pde_over_smoothness=gain,
                                boot_ci_corrected=[lo, hi],
+                               gain_pde_over_none=(vs_none or {}).get("gain"),
+                               ci_pde_over_none=(vs_none or {}).get("ci"),
                                n_pairs=n_p,
                                hypothesis_holds=holds)
         lines.append(
-            f"| | **PDE − {best_fam}** | | gain={gain:+.4f} "
+            f"| | **PDE - {best_fam}** | | gain={gain:+.4f} "
             f"CI={lo:+.4f}..{hi:+.4f} → "
             f"{'holds' if holds else 'does NOT hold (negative result)'} |")
+        if vs_none is not None:
+            lines.append(
+                f"| | **PDE - none** | | gain={vs_none['gain']:+.4f} "
+                f"CI={vs_none['ci'][0]:+.4f}..{vs_none['ci'][1]:+.4f} |")
 
     text = "\n".join(lines)
     (out / "report.md").write_text(text + "\n", encoding="utf-8")
