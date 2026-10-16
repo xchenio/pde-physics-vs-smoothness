@@ -7,7 +7,13 @@ from pathlib import Path
 import h5py
 import numpy as np
 
-EXPECTED_SHA256 = 'afeeed1c40ce01d2ba5e1702f4f66b6bf95c65943eb0e4847691e9a10d1cb50d'
+# 上游文件的 SHA-256 pin，按文件名索引（PDEBench 1D Burgers 有多个粘度）。
+# 新增数据文件时：先跑 scripts/register_public_file.py 拿到摘要，核对过来源再登记进来。
+# 来源：DaRUS doi:10.18419/DARUS-2986, Version 8.0。
+EXPECTED_SHA256 = {
+    '1D_Burgers_Sols_Nu0.001.hdf5':
+        'afeeed1c40ce01d2ba5e1702f4f66b6bf95c65943eb0e4847691e9a10d1cb50d',
+}
 
 
 def atomic_json(path, value):
@@ -49,7 +55,13 @@ def prepare(source, folder, sizes=(1000, 200, 200), seed=20260922, time_index=10
     source, folder = Path(source), Path(folder)
     folder.mkdir(parents=True, exist_ok=True)
     digest = file_hash(source)
-    if digest != EXPECTED_SHA256:
+    expected = EXPECTED_SHA256.get(source.name)
+    if expected is None:
+        raise ValueError(
+            f'no pinned SHA-256 for {source.name}. Run '
+            f'scripts/register_public_file.py on it, verify the number against the '
+            f'publisher page, then add it to EXPECTED_SHA256. Current digest: {digest}')
+    if digest != expected:
         raise ValueError('public file checksum differs from pinned publisher SHA-256')
     with h5py.File(source, 'r') as f:
         data = f['tensor']
