@@ -1,0 +1,1273 @@
+{
+  "created": "2026-10-16T03:25:15",
+  "seed": 20261016,
+  "batch": 4,
+  "n_pts": 32,
+  "pipeline_pts": [
+    16,
+    8,
+    8
+  ],
+  "pdes": [
+    "burgers",
+    "burgers2d",
+    "dr",
+    "darcy"
+  ],
+  "code_hash": "5f671f2e3a328818",
+  "env": {
+    "python": "3.11.16",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "device": "cpu",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "cuda": "13.0"
+  },
+  "results": [
+    {
+      "label": "burgers/pipeline:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/a": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/b": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null,
+      "expected": "pass",
+      "agree_with_expected": true
+    },
+    {
+      "label": "burgers/evaluator:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": true,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": true
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null,
+      "expected": "pass",
+      "agree_with_expected": true
+    },
+    {
+      "label": "burgers/pipeline:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/target": {
+          "shape": [
+            4,
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/a": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/b": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "ic/target"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "burgers/evaluator:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": false,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": false
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "out"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": [
+          "out"
+        ]
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "burgers2d/pipeline:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/ax/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/bx/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/ay/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/by/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null,
+      "expected": "pass",
+      "agree_with_expected": true
+    },
+    {
+      "label": "burgers2d/evaluator:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": true,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": true
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null,
+      "expected": "pass",
+      "agree_with_expected": true
+    },
+    {
+      "label": "burgers2d/pipeline:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/target": {
+          "shape": [
+            4,
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/ax/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/bx/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/ay/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/by/coords": {
+          "shape": [
+            4,
+            8,
+            3
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "ic/target"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "burgers2d/evaluator:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": false,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": false
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "out"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": [
+          "out"
+        ]
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "dr/pipeline:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/forcing": {
+          "shape": [
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null,
+      "expected": "pass",
+      "agree_with_expected": true
+    },
+    {
+      "label": "dr/evaluator:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": true,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": true
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null,
+      "expected": "pass",
+      "agree_with_expected": true
+    },
+    {
+      "label": "dr/pipeline:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/forcing": {
+          "shape": [
+            4,
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "ic/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "col/forcing"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "dr/evaluator:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": false,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": false
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "out"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": [
+          "out"
+        ]
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "darcy/pipeline:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/a": {
+          "shape": [
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/ax": {
+          "shape": [
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/ay": {
+          "shape": [
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": true,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": true,
+      "error": null,
+      "expected": "pass",
+      "agree_with_expected": true
+    },
+    {
+      "label": "darcy/evaluator:fixed",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": false,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": false
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "out"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": [
+          "out"
+        ]
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "darcy/pipeline:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "col/coords": {
+          "shape": [
+            4,
+            16,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/a": {
+          "shape": [
+            4,
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/ax": {
+          "shape": [
+            4,
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "col/ay": {
+          "shape": [
+            4,
+            4,
+            16
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/coords": {
+          "shape": [
+            4,
+            8,
+            2
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        },
+        "bc/target": {
+          "shape": [
+            4,
+            8
+          ],
+          "skipped": false,
+          "suspected_broadcast": false,
+          "c1": true,
+          "c2": true,
+          "c3": null,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": null
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "col/a",
+          "col/ax",
+          "col/ay"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": []
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    },
+    {
+      "label": "darcy/evaluator:legacy",
+      "n_samples": 4,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "leaves": {
+        "out": {
+          "shape": [
+            4,
+            4,
+            32
+          ],
+          "skipped": false,
+          "suspected_broadcast": true,
+          "c1": false,
+          "c2": true,
+          "c3": false,
+          "c2_diff": 0.0,
+          "c3_diff": 0.0,
+          "max_diff": 0.0
+        }
+      },
+      "checks": {
+        "C1_shape": false,
+        "C2_contamination": true,
+        "C3_pairing": false
+      },
+      "failing_leaves": {
+        "C1_shape": [
+          "out"
+        ],
+        "C2_contamination": [],
+        "C3_pairing": [
+          "out"
+        ]
+      },
+      "passed": false,
+      "error": null,
+      "expected": "fail",
+      "agree_with_expected": true
+    }
+  ],
+  "fd_reference": {
+    "burgers": {
+      "identical": true,
+      "grid_shape": [
+        525,
+        2
+      ],
+      "max_abs_diff": 0.0
+    },
+    "burgers2d": {
+      "identical": true,
+      "grid_shape": [
+        512,
+        3
+      ],
+      "max_abs_diff": 0.0
+    },
+    "dr": {
+      "identical": true,
+      "grid_shape": [
+        518,
+        2
+      ],
+      "max_abs_diff": 0.0
+    },
+    "darcy": {
+      "identical": true,
+      "grid_shape": [
+        561,
+        2
+      ],
+      "max_abs_diff": 0.0
+    }
+  },
+  "errors": [],
+  "n_pass": 7,
+  "n_total": 16,
+  "n_agree_with_expected": 16
+}
