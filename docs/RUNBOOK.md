@@ -1,5 +1,25 @@
 # Resumable experiment runbook
 
+## Allen-only exploratory joint interval pilot (2026-10-16)
+
+New family `results/allen_interval_pilot_v1`; fixed15 continuation fits, not a
+confirmation study. Protocol: `docs/ALLEN_INTERVAL_PILOT_V1.md`. Only one writer.
+After process exit, resume from repository root using:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_interval_pilot.py run
+```
+
+First check existing Python workers. A sleeping PC may retain the process;
+do not launch a duplicate. Training atomically saves complete state every50
+steps, evaluates250; training-only reference stages save every8cases. Finished
+results are verified/skipped, not retrained. Sources/protocol/identities must
+match the sealed plan. No new confirmation is generated or read. After15/15:
+
+```powershell
+& 'D:\miniconda3\envs\pytorch\python.exe' scripts/audit_allen_interval_pilot.py --require-complete
+```
+
 ## Sparse-time/noisy-label and nonlinear Allen-Cahn pilot (2026-10-09)
 
 New48-fit familyphysics_stress_v1. Use exactly one worker; after shutdown rerun:

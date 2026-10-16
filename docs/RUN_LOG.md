@@ -1,5 +1,33 @@
 # Run log
 
+## 2026-10-16 Allen-only exploratory joint-interval pilot registration
+
+- User explicitly authorizes a small Allen–Cahn continuation study, after the
+  frozen all-window eligibility gate FAILED. This is a new exploratory pilot,
+  not a passed-screen confirmation. No Burgers training or reserve access.
+- New `allen_interval_pilot_v1`: five arms (none, low/full curvature, uniform
+  joint interval, training-numerical-reliability weighted joint interval), three
+  seeds, same periodic FNO34209 and existing1500-step full-state warm checkpoints,
+  fixed750-step continuations. No new modules, labels or checkpoint selection.
+- Numerical reliability uses additional solver information ONLY from fixed
+  first16 training IDs. Seven rate-RMS discrepancies, fixed tau=.001*trainstd/T,
+  positive continuous weights, no median amplification or hard deletion.
+  Global gradient calibration cancels constant weights; a near/all-ones map
+  must be reported as ineffective contrast, not engineered into a positive result.
+- New11 targeted tests passed independently (7 training-core tests15.819s and4
+  reference tests.637s), including exact interrupted CPU/CUDA continuation for
+  ALL five arms and optimizer/RNG state, analytic residual/gradient, all-ones
+  equality, historical curvature operations, train-only IDs and hashed cache.
+- Full regression `python -m unittest discover -s tests -q`:117 tests PASS,
+  92.767s, exit0, including new11 tests and existing historical suites.
+  Final runner preflight adds warm parent receipt/full-state/Adam step checks;
+  independent audit compiled/imported and inspected real old caches read-only.
+  `python scripts/run_allen_interval_pilot.py plan` exit0 created the immutable
+  source/protocol/parent/warm plan before any formal new solve or training.
+  Formal reference trajectories and new training have NOT been run at this entry.
+- Protocol: docs/ALLEN_INTERVAL_PILOT_V1.md. Checkpoint every50 steps, eval250,
+  extra numerical solves checkpoint each8-case stage; one hidden writer only.
+
 ## 2026-10-10 Midpoint and interval diagnosis completed
 
 - Sealed584b5bf before references/results. Hiddenworker17236 completed36 models
