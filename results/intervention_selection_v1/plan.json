@@ -1,0 +1,53 @@
+{
+  "settings": {
+    "T1": {
+      "time_index": 100,
+      "stride": 4,
+      "held_out": false
+    },
+    "T2": {
+      "time_index": 50,
+      "stride": 4,
+      "held_out": true
+    },
+    "T3": {
+      "time_index": 150,
+      "stride": 4,
+      "held_out": true
+    },
+    "T4": {
+      "time_index": 100,
+      "stride": 2,
+      "held_out": true
+    },
+    "T5": {
+      "time_index": 100,
+      "stride": 8,
+      "held_out": true
+    }
+  },
+  "archs": [
+    "deeponet_mlp",
+    "fno"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "base_steps": 1500,
+  "thresholds": [
+    0.3,
+    0.4,
+    0.15
+  ],
+  "code_hash": "3ca8fda04e0457f6",
+  "env": {
+    "python": "3.11.16",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "cuda": "13.0"
+  }
+}
