@@ -96,7 +96,8 @@ def _check_core(fn: Callable, coef: np.ndarray, *, label: str,
                 alt_coef: np.ndarray | None = None, rtol: float = 1e-5,
                 atol: float = 1e-6,                 allow_global: Sequence[str] = (),
                 singleton_call: Callable[[int], Any] | None = None,
-                enable_c3: bool = True) -> dict:
+                enable_c3: bool = True,
+                expected_shape: tuple | None = None) -> dict:
     """singleton_call：给定样本下标 i，返回"只对该样本求值"的结果。
 
     用于那些**输入本身也是逐样本的**场合（如 fn(coef, coords)）——
@@ -135,7 +136,13 @@ def _check_core(fn: Callable, coef: np.ndarray, *, label: str,
         arr = np.asarray(arr)
         batch_shaped = arr.ndim >= 1 and arr.shape[0] == B
         suspected = (arr.ndim == 3 and arr.shape[0] == B and arr.shape[1] == B)
-        c1 = bool(batch_shaped and not suspected)
+        if expected_shape is not None:
+            # 坐标由调用方显式给出时，输出形状就是硬契约：(B, N[, k])。
+            # 只查首维会把 (B, B) 这种二维错位放过，见 DeepXDE 的 einsum 案例。
+            c1 = bool(arr.shape == expected_shape
+                      or (arr.ndim == 3 and arr.shape[:2] == expected_shape))
+        else:
+            c1 = bool(batch_shaped and not suspected)
 
         # C2 contamination：逐个保留第 i 行，其余换成 alt_coef
         max_diff, c2_diff = 0.0, 0.0
@@ -285,7 +292,9 @@ def check_evaluator(fn: Callable[[np.ndarray, np.ndarray], Any],
     return _check_core(lambda c: fn(c, coords),
                        coef, label=label,
                        singleton_call=lambda i: fn(coef[i: i + 1], coords[i: i + 1]),
-                       enable_c3=enable_c3, **kw)
+                       enable_c3=enable_c3,
+                       expected_shape=(coef.shape[0], np.asarray(coords).shape[1]),
+                       **kw)
 
 
 # ---------------------------------------------------------------- 报告

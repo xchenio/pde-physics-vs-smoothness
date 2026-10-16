@@ -1,6 +1,6 @@
 {
-  "created": "2026-10-16T06:57:55",
-  "code_hash": "67c284b3bc0a96af",
+  "created": "2026-10-16T07:27:02",
+  "code_hash": "96beeede3a585f77",
   "env": {
     "python": "3.11.16",
     "torch": "2.14.0+cu130",
@@ -10,11 +10,11 @@
     "cuda": "13.0"
   },
   "targets": {
-    "pi_deeponet": "OK"
+    "deepxde": "OK"
   },
   "results": [
     {
-      "label": "pi_deeponet/ic_target(official tile semantics)",
+      "label": "deepxde/cartesian_prod(shared grid, correct)",
       "n_samples": 4,
       "rtol": 1e-05,
       "atol": 1e-06,
@@ -30,7 +30,7 @@
           "c2": true,
           "c3": true,
           "c2_diff": 0.0,
-          "c3_diff": 0.0,
+          "c3_diff": 6.661338147750939e-16,
           "max_diff": 0.0
         }
       },
@@ -48,7 +48,7 @@
       "error": null
     },
     {
-      "label": "pi_deeponet/branch_tile(official np.tile)",
+      "label": "deepxde/cartesian_prod(per-sample coords)",
       "n_samples": 4,
       "rtol": 1e-05,
       "atol": 1e-06,
@@ -56,79 +56,10 @@
         "out": {
           "shape": [
             4,
-            32
+            4
           ],
           "skipped": false,
           "suspected_broadcast": false,
-          "c1": true,
-          "c2": true,
-          "c3": true,
-          "c2_diff": 0.0,
-          "c3_diff": 0.0,
-          "max_diff": 0.0
-        }
-      },
-      "checks": {
-        "C1_shape": true,
-        "C2_contamination": true,
-        "C3_pairing": true
-      },
-      "failing_leaves": {
-        "C1_shape": [],
-        "C2_contamination": [],
-        "C3_pairing": []
-      },
-      "passed": true,
-      "error": null
-    },
-    {
-      "label": "pi_deeponet/res_target(official zeros)",
-      "n_samples": 4,
-      "rtol": 1e-05,
-      "atol": 1e-06,
-      "leaves": {
-        "out": {
-          "shape": [
-            4,
-            32
-          ],
-          "skipped": false,
-          "suspected_broadcast": false,
-          "c1": true,
-          "c2": true,
-          "c3": true,
-          "c2_diff": 0.0,
-          "c3_diff": 0.0,
-          "max_diff": 0.0
-        }
-      },
-      "checks": {
-        "C1_shape": true,
-        "C2_contamination": true,
-        "C3_pairing": true
-      },
-      "failing_leaves": {
-        "C1_shape": [],
-        "C2_contamination": [],
-        "C3_pairing": []
-      },
-      "passed": true,
-      "error": null
-    },
-    {
-      "label": "pi_deeponet/counterfactual: shared-grid reshape",
-      "n_samples": 4,
-      "rtol": 1e-05,
-      "atol": 1e-06,
-      "leaves": {
-        "out": {
-          "shape": [
-            4,
-            4,
-            32
-          ],
-          "skipped": false,
-          "suspected_broadcast": true,
           "c1": false,
           "c2": true,
           "c3": false,
@@ -155,7 +86,7 @@
       "error": null
     },
     {
-      "label": "pi_deeponet/counterfactual: broadcast tile",
+      "label": "deepxde/per-sample einsum(correct pairing)",
       "n_samples": 4,
       "rtol": 1e-05,
       "atol": 1e-06,
@@ -170,9 +101,9 @@
           "c1": true,
           "c2": true,
           "c3": true,
-          "c2_diff": 4.163336342344337e-17,
-          "c3_diff": 4.163336342344337e-17,
-          "max_diff": 4.163336342344337e-17
+          "c2_diff": 0.0,
+          "c3_diff": 8.881784197001252e-16,
+          "max_diff": 0.0
         }
       },
       "checks": {
@@ -189,6 +120,6 @@
       "error": null
     }
   ],
-  "n_pass": 4,
-  "n_total": 5
+  "n_pass": 2,
+  "n_total": 3
 }
