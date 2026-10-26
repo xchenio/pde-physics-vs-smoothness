@@ -1266,3 +1266,30 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   driven and resumable: every (setting, arch, seed, strategy) is written on completion and skipped
   on re-run. Settings T1-T5 prepared from the existing HDF5 (no new download); T1 reproduces the
   historical 0.39357 baseline.
+
+- 2026-10-26 Journal of Computational Science manuscript restructuring; no model training, data
+  generation, or evaluation was run. Archived the prior DeepONet-focused manuscript and legacy
+  short versions under `paper/archive/pre_jcs_20261026/`; replaced the active paper pointer and
+  updated the README and current-conclusion authority note. Added CAS-template main/supplement
+  sources, bibliography, highlights, cover-letter draft, submission checklist, evidence manifest,
+  and figure source data/script. The main text now centers the locked PDEBench Burgers comparison,
+  includes matched gradient/curvature baselines and negative/mixed results, and labels the Allen--Cahn
+  pointwise/interval work as consumed development evidence. Data-use limits and invalid archived
+  seed-bootstrap claims are explicit. No universal claim, formal equivalence claim, or new method
+  contribution is asserted.
+- Build commands from `paper/jcs_submission/`:
+  ```powershell
+  & 'D:\miniconda3\envs\pytorch\python.exe' scripts\plot_summary.py
+  latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
+  latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build supplement.tex
+  ```
+  Main PDF compiled to 8 pages
+  (CAS highlights page plus 7 article pages); supplement compiled to 4 pages. Citations and
+  references resolved. Rendered every page with `pdftoppm` and visually reviewed page layouts.
+  The CAS title macro still reports one empty overfull box in the log, with no visible overflow or
+  clipping in the rendered title page. A Perl locale warning is emitted by the local TeX toolchain.
+- Author identity/affiliation, CRediT roles, funding, competing interests, required AI disclosure,
+  and public code/archive URL/DOI remain author-provided submission gates. The PDFs are therefore
+  reviewed submission drafts, not upload-final files. No trajectory/checkpoint data were copied
+  into this paper package; the evidence/source map and reuse boundaries are recorded in
+  `paper/jcs_submission/submission_manifest.md`.

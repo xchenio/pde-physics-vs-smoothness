@@ -1,19 +1,17 @@
-# Manuscript revision, 2026-09-24
+# JCS manuscript restructuring notes (2026-10-26)
 
-Current authoritative text: main.md. Short text: short_paper.md.
-ml4ps2026_4page.md and ml4ps2026.tex retain legacy filenames, not a submission claim.
-No publication, acceptance, official template verification or PDF compilation is asserted.
+Active manuscript: `jcs_submission/main.tex`. Supplement: `jcs_submission/supplement.tex`.
 
-| Previous statement | Current treatment |
-|---|---|
-| test relative L2 minus a truncated captured-energy proxy is pure optimization error | Replaced with same-grid squared Frobenius projection identity and attribution caveats. |
-| A low supervised value error must imply lower PDE residual than the trivial predictor | Withdrawn: derivative error is not controlled by value error; sampler contracts are direct checks. |
-| Alignment mechanism confirmed by output NTK/sharpness correlations | Historical exploratory observation, not current causal claim. |
-| Problem-independent variance floor and pooled historical significance | Removed as active evidence; unknown source fingerprints remain unknown. |
-| Fourier trunk repairs the public-data failure | Contradicted by initial public controls; better oracle does not imply better predictions. |
-| Stable convergence improves validation | Replaced by the observed dissociation, including the MLP/full-batch exception. |
-| New physics-informed method / novel orthogonalization | Current public study is supervised; prior two-step and POD work acknowledged. |
+## Changes to the publication claim
 
-Completed public records: 15 + 40 + 60 + 40 = 155, including 10 repeated controls.
-Do not count these as independent data partitions or as 155 novel method evaluations.
-Publication gap assessment and proposed next work are in ../docs/PUBLICATION_ASSESSMENT.md.
+- Replaced the September DeepONet-focused draft with a coherent study of physics penalties versus matched smoothness controls. The prior draft is preserved under `archive/pre_jcs_20261026/` and is not the active submission.
+- Removed the old draft's basis/projection, optimizer, and generalization claims from the new main text because they concern a separate supervised DeepONet study and do not support the latest physics-versus-smoothness question.
+- Put the locked PDEBench Burgers holdout, matched gradient/curvature controls, the Allen--Cahn pointwise-versus-interval comparison, and observed negative results in the main text.
+- Explicitly distinguish the 500-trajectory Burgers holdout, which was locked before evaluation and is now consumed, from reused Burgers stress data and the previously consumed Allen--Cahn development pool.
+- Report Allen--Cahn pointwise/interval scores descriptively. No equivalence margin, significance test, or independent confirmation exists for that comparison.
+- Include the sparse/resolution study's per-family means only. Its archived significance intervals resample three seed aggregates and select a smoothness family on test outcomes; these intervals are not used as evidence in the manuscript.
+- Avoid claims of a new architecture, new integral loss, universal PINN failure, universal PDE/smoothing equivalence, or cross-resolution transfer.
+
+## Remaining release gates
+
+Author metadata and declarations, public code/data archive URL/DOI, current JCS author-guide checks, AI-assisted writing disclosure if required, and final rebuild after those edits. See `jcs_submission/submission_checklist.md`.

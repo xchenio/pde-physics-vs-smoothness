@@ -606,32 +606,14 @@ baseline std:  0.0061 → 0.0118 → 0.0257 → 0.0924
 `python scripts/plot_ntk.py --json results/ntk.json` →
 `results/ntk_fig/ntk_mechanism.png`（三联图：输出 NTK 谱 / trunk 谱 / 有效秩与尖锐度柱状图）
 
-## 8.11 论文
+## 8.11 Active manuscript
 
-- **`paper/main.md`** —— 完整论文（约 4700 词，含参考文献与复现附录），当前唯一权威版本。
-- `paper/short_paper.md` —— 早期短稿，已被 `main.md` 取代（保留作对照）。
-- 图：`results/ntk_fig/ntk_mechanism.png`（机制三联图）、`results/gain_vs_std.png`（r=0.985）
+- Current Journal of Computational Science draft: `paper/jcs_submission/main.tex`.
+- Supplementary methods/results: `paper/jcs_submission/supplement.tex`.
+- Submission checklist and remaining author/release fields: `paper/jcs_submission/submission_checklist.md`.
+- The earlier DeepONet-focused manuscript and short versions are preserved in `paper/archive/pre_jcs_20261026/`; they are historical, not the active paper.
 
-论文标题：
-> *What Really Limits Physics-Informed Operator Learning? A Silent Broadcasting Pitfall,
-> an Error-Attribution Diagnostic, and Evidence that Subspace Alignment Regularizes Rather
-> than Expands*
-
-四条贡献：
-① 静默广播 bug + 最小检测配方 + "它能制造出可发表假象"的实证；
-② `LB = sqrt(1-captured)` 免训练硬下界与归因框架；
-③ 机制（对齐 = 正则化：NTK 有效秩翻倍、尖锐度减半、**方差钉在 ≈0.01 的地板**）；
-④ **2D 上对齐不可缺席**（baseline 坍缩到 NTK 秩 1.1、relL2 1.003 → 对齐后 0.807）。
-
-> 已**撤回**的第五条：线性关系 r = 0.985（见 §8.13）。论文中作为"自我修正"保留，是加分项。
-
-**投稿定位（诚实评估）**
-| 目标 | 可行性 | 缺口 |
-|---|---|---|
-| ICLR/NeurIPS AI4Science / ML4PS Workshop | ✅ 高 | 无明显缺口，当前即投 |
-| J. Machine Learning for Modeling and Computing / Neurocomputing | ⚠️ 中 | 需补 2D 问题与更多设置 |
-| JCP / CMAME | ⚠️ 中低 | 需 2D/3D、更高精度区间、n≥8 的设置 |
-| NeurIPS/ICLR 主会 | ❌ 低 | 仅 1D、精度区间偏低、核心是自身 bug |
+The current paper compares resolved PDE penalties against matched gradient and curvature controls. It reports the locked Burgers holdout, negative and mixed stress-test outcomes, and the reused Allen--Cahn pointwise/interval comparison with explicit data-use boundaries. It does not claim a new architecture, universal physics-loss advantage, or independent Allen--Cahn confirmation.
 
 ## 8.12 2D 问题（Burgers2D）与 n 扩展（进行中）
 

@@ -349,9 +349,11 @@
 > to architecture capacity. Historical p-values and variance-floor claims require regrouping.
 
 **Authority.** The dated audit and public-data updates above override conflicting legacy claims
-below and in the paper. The historical text of this document and `paper/main.md` superseded older entries in `README.md` and
-`paper/short_paper.md`. Historical claims remain recorded in `docs/EXPERIMENT_LEDGER.md`, but
-are not evidence for the current paper.
+below. `paper/main.md` now points to the active Journal of Computational Science manuscript,
+which focuses on matched physics-versus-smoothness evidence. The former DeepONet draft and short
+versions are archived under `paper/archive/pre_jcs_20261026/`; they are not the active paper.
+Historical claims remain recorded in `docs/EXPERIMENT_LEDGER.md`, but are not evidence for the
+current paper unless separately re-established in its cited protocols and results.
 
 ## Supported by the committed results
 

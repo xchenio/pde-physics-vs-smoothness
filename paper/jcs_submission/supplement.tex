@@ -1,0 +1,157 @@
+% Supplementary material for the Journal of Computational Science manuscript.
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=0.78in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,booktabs,graphicx,siunitx,float,url,natbib}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\setlength{\parskip}{0.35em}
+
+\begin{document}
+\title{Supplementary material\\[0.35em]\large Do physics-informed losses add value beyond smoothness?}
+\author{}
+\date{}
+\maketitle
+\noindent This supplement provides the complete experiment ledger, outcome details, and reproducibility boundaries for the accompanying Journal of Computational Science manuscript.
+
+\section{Complete experimental registry and provenance}
+This supplement records the scope and provenance needed to interpret the results in the main manuscript. The research repository contains the complete protocol files, per-run JSON records, audit outputs, and event logs. Model checkpoints are local ignored artifacts and are not represented as part of this text package.
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Evidence and data-use ledger for experiments included in the manuscript.}
+\label{tab:ledger}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.18\linewidth}p{0.36\linewidth}p{0.36\linewidth}}
+\toprule
+Family and source & Split and work represented & Permitted interpretation \\
+\midrule
+Burgers primary & Public PDEBench 1D Burgers, $\epsilon=0.001$; 100 train / 200 development; 500 locked holdout trajectories. Thirty development fits and 12 final models, three seeds per family. & Confirmatory only for registered fixed-grid, seen-time contrasts. The holdout is now consumed. \\
+Burgers stress & Same public source and reused project IDs; sparse/noisy labels, spatial subsampling, and 150 sample-count/resolution runs. & Secondary and exploratory; not fresh confirmation. \\
+Allen--Cahn periodic & Synthetic pool 200000--200299; 100 train / 200 development after deterministic repartition; 68 development IDs appeared in an earlier training partition. Twenty-four continuations: six new pointwise fits and 18 exact control replays. & Development-only; no independent confirmation and no untouched-trajectory claim. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Burgers confirmation holdout was chosen only after the model family, training protocol, selection rules, and contrasts were sealed. At that time, 8,329 conservatively tracked trajectory IDs had prior project use, and the 500 holdout IDs were selected from the remaining registered pool. The holdout labels are now consumed. We do not make a claim that any remaining ID is a future untouched test set without rebuilding the registry against all subsequent project use.
+
+The public PDEBench dataset is hosted through DaRUS under DOI 10.18419/darus-2986 and is described in \citet{takamoto2022pdebench}. The project used the 1D Burgers HDF5 file with source shape $(10000,201,1024)$ and SHA-256 \texttt{afeeed1c\allowbreak40ce01d2\allowbreak ba5e1702\allowbreak 4f66b6bf\allowbreak 95c65943\allowbreak eb0e4847\allowbreak 69e1e9a1\allowbreak 0d1cb50d}. The training and test IDs, split seed 20260922, spatial stride, temporal indices, and normalization values are preserved in the corresponding protocol JSON files. The Allen--Cahn data were generated synthetically with a Fourier spectral solver, independently checked against time refinement, spatial refinement, and a separate DOP853 solve on dedicated QA trajectories. These QA checks concern the generated reference fields and implementation, not the accuracy of the learned model.
+
+\section{Primary Burgers comparison}
+The continuous-time FNO has four spectral blocks, width 16, 16 modes, and 34,209 real parameters. Its final output layer is initialized to zero. The primary training condition uses 100 training trajectories, times $0,0.1,0.25,0.5,1$, a 256-point spatial grid, and three model seeds. Each regularized model starts from a shared 1,500-update data-only warm state and receives 750 additional updates. The optimizer, minibatch stream, query-time stream, model initialization, and final checkpoint rule are paired across penalty families.
+
+The penalty family is selected from data-only, PDE residual, first-derivative, and second-derivative penalties. PDE and both smoothness penalties use Fourier modes 0--16. The penalty scale uses a training-only initial gradient-norm calibration. Each family has a three-value scale grid; the selected primary scale lies at the upper edge, so this experiment does not fully optimize either family. The holdout protocol registered five contrasts and a 1\% minimum effect marker. Ten thousand paired trajectory bootstrap replicates and Bonferroni adjustment were used for these five contrasts. Intervals are conditional on the three fitted seeds, rather than a population-level estimate across retrained models.
+
+\begin{table}[H]
+\centering\small
+\caption{Registered paired contrasts on the 500-trajectory holdout. Differences are left minus right; a negative value favors the left method.}
+\label{tab:burgers-contrasts}
+\begin{tabular}{lrrl}
+\toprule
+Contrast & Mean difference & Adjusted interval & Registered 1\% direction criterion \\
+\midrule
+PDE $-$ data only & $-0.003993$ & $[-0.004726,-0.003376]$ & Pass \\
+Gradient $-$ data only & $-0.004177$ & $[-0.004843,-0.003602]$ & Pass \\
+Curvature $-$ data only & $-0.007433$ & $[-0.008552,-0.006432]$ & Pass \\
+PDE $-$ gradient & $+0.000184$ & $[-0.000086,+0.000440]$ & Not established \\
+PDE $-$ curvature & $+0.003440$ & $[+0.002879,+0.004032]$ & PDE is worse \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The confidence procedure resamples trajectories paired across methods and seed, while holding fitted models fixed. It does not estimate optimizer randomness or the uncertainty from training with a new data split. The 1\% rule was a practical effect marker in the registered protocol and should not be interpreted as a universal scientific relevance threshold.
+
+\section{Secondary Burgers stress protocols}
+The sparse-time and noisy-label experiments use the continuous-time FNO with 100 training trajectories and condition-specific warm starts. Dense observations are at times $0,0.1,0.25,0.5,1$; sparse training uses only the initial and final labels. Noise is one fixed Gaussian perturbation with standard deviation 10\% of the global RMS of the observed clean future training labels. It is applied only to training targets, not inputs or evaluation labels. Model means are conditional on three seeds and, for noisy settings, on the one fixed corruption draw.
+
+The separate resolution/sample-count experiment uses a direct two-output FNO map from the stored Burgers field at index 100 to the field at index 150. It evaluates at spatial strides 4 and 8 for the resolution comparison and stride 4 for the sample-count comparison. Its PDE term estimates $u_t$ by a finite difference across these two stored times and projects the PDE and smoothness terms to modes 0--16. The PDEBench diffusion coefficient is $0.001/\pi$. Training uses 1,500 updates, three seeds, and a 50-step data-only warmup before penalty calibration. Samples and the test subset come from the original fixed-ID project split. This is not the same objective or time-continuous model as the primary study.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Full descriptive means for the secondary Burgers sample-count and resolution experiment. Each family scale was selected on validation from the registered grid.}
+\label{tab:h2h3full}
+\begin{tabular}{lrrrrr}
+\toprule
+Setting & Selected scale & Data only & PDE & Gradient & Curvature \\
+\midrule
+Stride 4, $n=1000$ & 0.03 & 0.208337 & 0.205374 & 0.216689 & 0.205024 \\
+Stride 8, $n=1000$ & 0.03 & 0.208841 & 0.205445 & 0.216130 & 0.205399 \\
+Stride 4, $n=20$ & 0.3 & 0.528445 & 0.513482 & 0.449342 & 0.479830 \\
+Stride 4, $n=50$ & 0.3 & 0.4960 & 0.4166 & 0.3873 & 0.3781 \\
+Stride 4, $n=100$ & 0.3 & 0.4230 & 0.3560 & 0.3517 & 0.3364 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No inferential intervals from the archived \path{physics_vs_smoothness_report.py} are reproduced. That report bootstraps three seed-level test aggregates, and chooses the better of gradient and curvature using their test means. The first choice leaves only three resampling units; the second is test-outcome dependent. We therefore show the raw per-family means and do not describe the original report's “significant” labels as valid confirmatory inference. The resolution settings are trained and evaluated at the same respective resolution; they do not test resolution transfer.
+
+\section{Allen--Cahn loss definitions and full timewise outcomes}
+The Allen--Cahn model is evaluated at 256 periodic output nodes over a domain of length 2 and time interval $[0,0.5]$. Its equation is given in Eq.~(1) of the main text; the reaction term uses 4-times FFT dealiasing. The spatial derivative loss and both physical constraints use modes 0--16. The full-curvature baseline includes all represented modes, with the Nyquist energy counted once. Dense and sparse warm fits are trained from scratch for the repartitioned training subset; subsequent loss arms branch from complete model/optimizer/RNG warm states. The final continuation is fixed at 750 steps; no early stopping or checkpoint selection is used.
+
+Table~\ref{tab:timewise} makes the initial-condition and early-time trade-offs explicit. The error at $t=0$ is not included in the future-time primary score, but is retained here. Values are three-seed means over the 200 development trajectories.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Timewise mean per-trajectory relative field error on the reused Allen--Cahn development split.}
+\label{tab:timewise}
+\begin{tabular}{llrrrr}
+\toprule
+Labels & Method & $t=0$ & $t=0.05$ & $t=0.125$ & $t=0.25$ / $t=0.5$ \\
+\midrule
+Dense & Data only & 0.036788 & 0.022249 & 0.025181 & 0.029197 / 0.042603 \\
+Dense & Full curvature & 0.037546 & 0.022360 & 0.025413 & 0.030451 / 0.043949 \\
+Dense & Interval & 0.037618 & 0.022516 & 0.024380 & 0.027816 / 0.040724 \\
+Dense & Pointwise & 0.037618 & 0.022516 & 0.024380 & 0.027816 / 0.040724 \\
+\midrule
+Sparse & Data only & 0.025780 & 0.076535 & 0.143607 & 0.166386 / 0.031704 \\
+Sparse & Full curvature & 0.026560 & 0.075130 & 0.141270 & 0.163866 / 0.032143 \\
+Sparse & Interval & 0.027524 & 0.070514 & 0.130226 & 0.148199 / 0.031057 \\
+Sparse & Pointwise & 0.027521 & 0.070517 & 0.130235 & 0.148212 / 0.031057 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For readability, the final column reports two time values separated by a slash. In dense supervision, the interval and pointwise field means are nearly identical at every time. In sparse supervision, they also remain close, with signs of interval-minus-pointwise differences varying across seed and time. The observed three-seed means do not define an equivalence margin or formal equivalence test.
+
+The full-frequency curvature baseline is a strong structural control, not a claim about the globally optimal smoothness regularizer. In the dense condition its curvature mean is lower than the physical arms. In the sparse condition it has lower gradient and curvature errors than the physical arms, while having higher field error. Every continuation also increases the initial-condition error relative to data-only training. These trade-offs are preserved rather than resolved by selecting a single metric.
+
+\section{Allen--Cahn paired pointwise/interval comparison}
+The latest comparison contains 24 completed continuation records. Six pointwise models are new fits; the other 18 models are control replays whose parameter tensors match their historical counterparts exactly. The primary field means are computed over different windows by condition: four future times for dense supervision and the three omitted intermediate times for sparse supervision. The same three intermediate times are additionally reported for cross-condition descriptive context in the archived audit, but the paper does not compare the different primary averages as if they were the same estimand.
+
+\begin{table}[H]
+\centering\small
+\caption{Direct interval-minus-pointwise field differences. Negative values favor interval.}
+\label{tab:interval-pointwise}
+\begin{tabular}{lrrrl}
+\toprule
+Condition & Interval mean & Pointwise mean & Difference & Seed directions (difference) \\
+\midrule
+Dense primary & 0.028859369444 & 0.028858915527 & $+4.54\times10^{-7}$ & $+3.22\times10^{-7}, +8.74\times10^{-7}, +1.66\times10^{-7}$ \\
+Sparse primary & 0.116313092935 & 0.116321428657 & $-8.34\times10^{-6}$ & $-9.27\times10^{-6}, -1.62\times10^{-5}, +4.23\times10^{-7}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The interval constraint improves its condition-specific primary field mean versus data-only by 3.1810\% in dense and 9.7245\% in sparse supervision. The pointwise penalty improves by 3.1825\% and 9.7181\%, respectively. These descriptive percentages are not statistical tests. The absolute interval/pointwise gap is substantially smaller than the difference between model seeds in the sparse condition.
+
+\subsection{Training-probe diagnostic}
+For the first 16 observed training cases in each fixed warm state, the registered diagnostic verifies the weighted variance identity
+\[
+  \sum_j \alpha_j\|r_j\|_2^2 = \left\|\sum_j\alpha_jr_j\right\|_2^2 + \sum_j\alpha_j\left\|r_j-\sum_\ell\alpha_\ell r_\ell\right\|_2^2.
+\]
+The within-window residual variance is 0.0834\%--0.1119\% of the pointwise residual energy across the six warm probes. This indicates that the two objectives are close on these particular probes, but it is a known algebraic identity evaluated on warm predictions; it does not establish a causal explanation for final field errors or apply automatically to all training stages. The endpoint secant and Simpson-averaged automatic-differentiation derivative also differ numerically, so the pointwise and interval losses are not exactly the same objective.
+
+\section{Audits, compute records, and reproducibility}
+For the latest Allen pointwise experiment, the independent audit reports all 24 records complete, all 24 query/batch stream replays, all 6 calibration replays, all 18 control tensor matches, and all final predictions recomputed on the 200 development cases. The protocol's regression suite reported 130 passing tests. These checks establish artifact consistency and implementation behavior; they are not independent replication or proof of scientific superiority.
+
+The 18,000 new continuation steps recorded 1,147.32 seconds of optimizer-step time, including 834.33 seconds for historical controls rerun for audit and 312.99 seconds for the six newly trained pointwise models. Six 1,500-step warm histories were reused and are reported separately (93.24 seconds of original logged step time). Evaluation, calibration, I/O, audit, and launch overhead are excluded. Under the shared-forward implementation, mean 750-step segments were 47.81 seconds for interval and 52.14 seconds for pointwise in dense supervision, and 47.72 versus 52.19 seconds in sparse supervision. All continuation arms computed common penalty forwards; these are not FLOP-matched or minimal-implementation wall-clock comparisons. The training-time JVP is not needed at inference.
+
+The primary Burgers experiment's holdout predictions and bootstrap decisions were independently replayed after the lock. Its confidence procedure is conditioned on the three fit seeds. The result files preserve complete per-seed metrics, hashes, selection decisions, and sample identities. Large model/optimizer checkpoints are local ignored artifacts and must be deposited separately if exact binary replay is required.
+
+\section{Reproduction entry points and publication release requirements}
+The project release manifest identifies the result summaries, protocol files, audit records, and source-data provenance used for each manuscript table. Before submission, the release should include a public source-code URL and immutable archive DOI. This paper does not claim that the full raw trajectory cache, model checkpoints, or a future untouched holdout are included in the manuscript package.
+
+\bibliographystyle{cas-model2-names}
+\bibliography{references}
+\end{document}
