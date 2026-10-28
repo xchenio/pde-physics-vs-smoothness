@@ -3,14 +3,15 @@
 \usepackage[margin=0.78in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
-\usepackage{amsmath,amssymb,booktabs,graphicx,siunitx,float,url,natbib}
+\usepackage{amsmath,amssymb,booktabs,graphicx,siunitx,float,url}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage[hidelinks]{hyperref}
 \setlength{\emergencystretch}{3em}
 \setlength{\parskip}{0.35em}
 
 \begin{document}
 \title{Supplementary material\\[0.35em]\large Do physics-informed losses add value beyond smoothness?}
-\author{}
+\author{Xiaochen Yan}
 \date{}
 \maketitle
 \noindent This supplement provides the complete experiment ledger, outcome details, and reproducibility boundaries for the accompanying Journal of Computational Science manuscript.
@@ -36,7 +37,7 @@ Allen--Cahn periodic & Synthetic pool 200000--200299; 100 train / 200 developmen
 
 The Burgers confirmation holdout was chosen only after the model family, training protocol, selection rules, and contrasts were sealed. At that time, 8,329 conservatively tracked trajectory IDs had prior project use, and the 500 holdout IDs were selected from the remaining registered pool. The holdout labels are now consumed. We do not make a claim that any remaining ID is a future untouched test set without rebuilding the registry against all subsequent project use.
 
-The public PDEBench dataset is hosted through DaRUS under DOI 10.18419/darus-2986 and is described in \citet{takamoto2022pdebench}. The project used the 1D Burgers HDF5 file with source shape $(10000,201,1024)$ and SHA-256 \texttt{afeeed1c\allowbreak40ce01d2\allowbreak ba5e1702\allowbreak 4f66b6bf\allowbreak 95c65943\allowbreak eb0e4847\allowbreak 69e1e9a1\allowbreak 0d1cb50d}. The training and test IDs, split seed 20260922, spatial stride, temporal indices, and normalization values are preserved in the corresponding protocol JSON files. The Allen--Cahn data were generated synthetically with a Fourier spectral solver, independently checked against time refinement, spatial refinement, and a separate DOP853 solve on dedicated QA trajectories. These QA checks concern the generated reference fields and implementation, not the accuracy of the learned model.
+The public PDEBench dataset is hosted through DaRUS under DOI 10.18419/darus-2986 and is described in the benchmark paper and dataset record \citep{takamoto2022pdebench,pdebench_dataset}. The project used the 1D Burgers HDF5 file with source shape $(10000,201,1024)$ and SHA-256 \texttt{afeeed1c\allowbreak40ce01d2\allowbreak ba5e1702\allowbreak 4f66b6bf\allowbreak 95c65943\allowbreak eb0e4847\allowbreak 69e1e9a1\allowbreak 0d1cb50d}. The training and test IDs, split seed 20260922, spatial stride, temporal indices, and normalization values are preserved in the corresponding protocol JSON files. The Allen--Cahn data were generated synthetically with a Fourier spectral solver, independently checked against time refinement, spatial refinement, and a separate DOP853 solve on dedicated QA trajectories. These QA checks concern the generated reference fields and implementation, not the accuracy of the learned model.
 
 \section{Primary Burgers comparison}
 The continuous-time FNO has four spectral blocks, width 16, 16 modes, and 34,209 real parameters. Its final output layer is initialized to zero. The primary training condition uses 100 training trajectories, times $0,0.1,0.25,0.5,1$, a 256-point spatial grid, and three model seeds. Each regularized model starts from a shared 1,500-update data-only warm state and receives 750 additional updates. The optimizer, minibatch stream, query-time stream, model initialization, and final checkpoint rule are paired across penalty families.
@@ -152,6 +153,6 @@ The primary Burgers experiment's holdout predictions and bootstrap decisions wer
 \section{Reproduction entry points and publication release requirements}
 The project release manifest identifies the result summaries, protocol files, audit records, and source-data provenance used for each manuscript table. Before submission, the release should include a public source-code URL and immutable archive DOI. This paper does not claim that the full raw trajectory cache, model checkpoints, or a future untouched holdout are included in the manuscript package.
 
-\bibliographystyle{cas-model2-names}
+\bibliographystyle{elsarticle-num}
 \bibliography{references}
 \end{document}

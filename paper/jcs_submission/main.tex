@@ -1,17 +1,15 @@
 % Journal of Computational Science submission draft.
 % CAS single-column template supplied by the author (2026-10-26).
-% Replace the explicit author/declaration fields in this file before submission.
+% Verify the author roles and add the public data/code archive before submission.
 \documentclass[a4paper,fleqn]{cas-sc}
 
-\usepackage[authoryear,longnamesfirst]{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{amsmath,amssymb,booktabs,graphicx,siunitx}
-\RenewDocumentCommand \printorcid {}{}
 
 \newcommand{\RelLTwo}{\mathrm{RelL2}}
 \newcommand{\PDE}{\mathrm{PDE}}
 \newcommand{\curv}{\mathrm{curv}}
 \newcommand{\grad}{\mathrm{grad}}
-\newcommand{\TableCaption}[2]{\par\medskip\refstepcounter{table}\label{#1}\noindent\textbf{Table \thetable.} #2\par}
 
 \begin{document}
 \let\WriteBookmarks\relax
@@ -19,13 +17,16 @@
 \def\textpagefraction{.001}
 
 \shorttitle{Physics penalties versus smoothness}
-\shortauthors{Author}
+\shortauthors{X. Yan}
 \title[mode=title]{Do physics-informed losses add value beyond smoothness? Controlled comparisons for neural PDE surrogates}
 
-% Submission metadata are deliberately not fabricated. Replace this author block.
-\author[1]{Author name to be completed}
-\affiliation[1]{organization={Affiliation to be completed},
-  city={City to be completed}, country={Country to be completed}}
+\author[1]{Xiaochen Yan}[orcid=0009-0002-9280-4323]
+\cormark[1]
+\ead{319914780@qq.com}
+\credit{Conceptualization, Data curation, Formal analysis, Investigation, Methodology, Software, Validation, Visualization, Writing -- original draft, Writing -- review and editing}
+\affiliation[1]{organization={Independent Researcher},
+  city={Shenzhen}, state={Guangdong}, country={China}}
+\cortext[1]{Corresponding author}
 
 \begin{abstract}
 Physics-informed losses can improve neural PDE surrogates over data-only training, but the improvement may reflect generic regularization rather than equation-specific information. We compare resolved-band PDE residual penalties with matched gradient and curvature penalties using a fixed Fourier neural operator (FNO), paired optimization budgets, and training-only loss calibration. On a locked 500-trajectory holdout from the public PDEBench one-dimensional Burgers dataset, all three penalties reduce mean per-trajectory relative $L^2$ error compared with no penalty. The PDE penalty improves error by 1.38\%, but no advantage over gradient smoothing is established; curvature smoothing is better by 0.00344 in absolute relative-$L^2$ error, with a registered trajectory-bootstrap interval of [0.002879, 0.004032] for PDE minus curvature. Secondary sparse-time, noisy-label, sample-count, and resolution comparisons do not establish a consistent PDE advantage over the strongest smoothness control. On a synthetic periodic Allen--Cahn problem, a uniform joint interval constraint improves development-set field error over data-only fitting, but a matched time-pointwise, spatially projected PDE penalty gives virtually the same mean error. Both physical penalties retain initial-time trade-offs, while full-frequency curvature smoothing has lower derivative error in the sparse condition. The Allen--Cahn comparisons reuse a previously consumed development pool and are not independent confirmation. These results support a conditional conclusion: PDE penalties can regularize predictions, but the tested gains do not establish a general benefit beyond matched smoothness penalties.
@@ -34,7 +35,7 @@ Physics-informed losses can improve neural PDE surrogates over data-only trainin
 \begin{highlights}
 \item Matched smoothness controls explain much of the measured PDE-loss benefit.
 \item Curvature smoothing outperforms the resolved PDE penalty on a locked Burgers holdout.
-\item Pointwise and interval constraints have nearly identical Allen--Cahn development errors.
+\item Allen--Cahn pointwise and interval constraints yield similar development means.
 \item Sparse-label gains coexist with initial-time and derivative-error trade-offs.
 \item Every reused split is identified; no untouched Allen--Cahn confirmation is claimed.
 \end{highlights}
@@ -47,9 +48,11 @@ scientific machine learning \sep neural PDE surrogate \sep Fourier neural operat
 \maketitle
 
 \section{Introduction}
-Neural operators approximate maps between function spaces and are increasingly used as surrogates for repeated PDE solves \citep{li2021fno,karniadakis2021sciML}. Physics-informed training adds a differential residual to data-fitting objectives, as in physics-informed neural networks and physics-informed neural operators \citep{raissi2019pinn,li2021pino}. Integral and variational residual formulations are also established approaches \citep{kharazmi2021vpinn}. These methods can improve predictions when labels are sparse or noisy, but a reduction in prediction error relative to an unregularized model does not by itself show that the governing equation supplied information beyond an ordinary smoothness prior.
+Neural operators approximate maps between function spaces and are increasingly used as surrogates for repeated PDE solves, with DeepONet and Fourier neural operators as established formulations \citep{lu2021deeponet,kovachki2023neuraloperator,li2021fno,karniadakis2021sciML}. Physics-informed training adds a differential residual to data-fitting objectives, as in physics-informed neural networks and physics-informed neural operators \citep{raissi2019pinn,li2021pino}. Integral and variational residual formulations are also established approaches \citep{kharazmi2021vpinn}. These methods can improve predictions when labels are sparse or noisy, but a reduction in prediction error relative to an unregularized model does not by itself show that the governing equation supplied information beyond an ordinary smoothness prior.
 
 This distinction matters in computational PDE learning. Differential residuals act on spatial and temporal derivatives, and their numerical evaluation depends on resolution, boundary representation, spectral truncation, and the learned solution's regularity. A derivative penalty can therefore improve a field metric even when it does not uniquely encode the relevant dynamics. A useful comparison must retain the same architecture and data, include derivative-based controls, and report field and structural errors together.
+
+Prior analyses also document failure modes associated with ill-conditioned PDE residual objectives and imbalanced gradients among composite loss terms \citep{krishnapriyan2021characterizing,wang2021understanding}. These findings motivate treating matched smoothness penalties as substantive comparators rather than relying only on an unregularized baseline.
 
 We present a controlled diagnostic study of PDE penalties against matched smoothness penalties. The main Burgers experiment uses a fixed FNO and a held-out set locked before its labels were opened. Secondary Burgers stress studies vary temporal supervision, label noise, spatial subsampling, and training-set size. A separate periodic Allen--Cahn study compares a joint interval constraint with a time-pointwise PDE constraint under dense and sparse temporal labels. The latter comparison is development-only and uses an already consumed trajectory pool.
 
@@ -66,8 +69,10 @@ We do not introduce a new network, residual, regularizer, or numerical identity.
 \subsection{Evidence tiers and datasets}
 The study combines three evidence tiers, summarized in Table~\ref{tab:design}. The principal confirmatory comparison is the Burgers holdout locked before evaluation. Burgers stress tests and all Allen--Cahn results are reported as secondary evidence. Trajectory IDs used for these comparisons have already been consumed within this project; none is presented as an available future holdout.
 
-\TableCaption{tab:design}{Study components and evidence status. Scores from distinct rows use different tasks, time windows, and metrics and must not be compared across rows.}
-\begin{center}\small
+\begin{table}
+\centering\small
+\caption{Study components and evidence status. Scores from distinct rows use different tasks, time windows, and metrics and must not be compared across rows.}
+\label{tab:design}
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{p{0.18\linewidth}p{0.26\linewidth}p{0.25\linewidth}p{0.23\linewidth}}
 \toprule
@@ -78,7 +83,7 @@ Burgers stress & Same public source; sparse times, 10\% noisy future labels, 128
 Allen--Cahn interval & Synthetic periodic Allen--Cahn; 100 training and 200 development trajectories; dense or endpoint-only time labels & no penalty, full curvature, interval, pointwise PDE & Same previously consumed 300-case pool; no independent confirmation \\
 \bottomrule
 \end{tabular}
-\end{center}\par\medskip
+\end{table}
 
 The Burgers data come from the public PDEBench release \citep{takamoto2022pdebench}. The source HDF5 file has 10,000 trajectories, 201 solution times, and 1,024 cell-centered spatial values per time; its SHA-256 is recorded in the supplementary reproducibility record. We use the dataset's $\nu=0.001$ file, but the upstream generator uses diffusion coefficient $\epsilon/\pi$; the residual uses $0.001/\pi$ rather than silently identifying the filename parameter with the equation coefficient. Spatial samples are taken at stride four for the primary 256-point setting, without an anti-alias filter.
 
@@ -124,8 +129,10 @@ For the primary Burgers holdout, five pairwise contrasts were specified before t
 \subsection{A locked Burgers holdout shows regularization gains, not a unique PDE advantage}
 All three penalties improve on the data-only model in the locked 500-trajectory Burgers holdout (Table~\ref{tab:burgers-confirm}). The PDE penalty lowers mean relative $L^2$ error by 1.376\%, while gradient and curvature penalties lower it by 1.439\% and 2.561\%, respectively. The PDE-minus-gradient interval includes zero. The PDE-minus-curvature contrast is positive throughout its adjusted interval, indicating that the tested curvature penalty has lower field error in this fixed setup. These intervals are trajectory-level and conditional on the three trained seeds.
 
-\TableCaption{tab:burgers-confirm}{Primary Burgers holdout (500 trajectories). Lower error is better. Gains are relative to the data-only mean.}
-\begin{center}\small
+\begin{table}
+\centering\small
+\caption{Primary Burgers holdout (500 trajectories). Lower error is better. Gains are relative to the data-only mean.}
+\label{tab:burgers-confirm}
 \begin{tabular}{lrr}
 \toprule
 Training objective & Mean per-trajectory relative $L^2$ & Gain vs. data only \\
@@ -139,22 +146,33 @@ PDE $-$ gradient & $+0.000184$ & adjusted interval $[-0.000086,\ 0.000440]$ \\
 PDE $-$ curvature & $+0.003440$ & adjusted interval $[+0.002879,\ +0.004032]$ \\
 \bottomrule
 \end{tabular}
-\end{center}\par\medskip
+\end{table}
 
-The selected multiplier for each family was determined on development data from a three-value grid, with the upper value selected in the primary comparison. The result therefore compares the locked selected candidates, not fully optimized PDE and smoothness families. This qualification narrows the inference: the data show that the tested PDE penalty helps over no penalty, but do not establish a general ranking over all possible smoothness controls.
+The selected multiplier for each family was determined on development data from a three-value grid, with the upper value selected in the primary comparison. The result therefore compares the locked selected candidates, not fully optimized PDE and smoothness families. This qualification narrows the inference: the data show that the tested PDE penalty helps over no penalty, but do not establish a general ranking over all possible smoothness controls. Figure~\ref{fig:relative-gains} summarizes the condition-specific field-error changes; the registered uncertainty estimates apply to the paired Burgers contrasts in Table~\ref{tab:burgers-confirm}.
 
-\par\medskip
-\begin{center}
+\begin{figure}
+\centering
 \includegraphics[width=0.88\linewidth]{figures/relative_gains.pdf}
-\end{center}
-\refstepcounter{figure}\label{fig:relative-gains}
-\noindent\textbf{Figure \thefigure.} Relative field-error improvement over the data-only baseline, computed separately within each evaluation condition. Positive values indicate lower error. The Burgers panel reports a locked 500-trajectory holdout; both Allen--Cahn panels report reused development data. No Allen--Cahn error bars are shown because these summaries use three fitted seeds without a confirmatory uncertainty procedure. The Burgers registered intervals apply to paired contrasts, not to individual bars.\par\medskip
+\caption{Relative field-error improvement over the data-only baseline, computed separately within each evaluation condition. Positive values indicate lower error. The Burgers panel reports a locked 500-trajectory holdout; both Allen--Cahn panels report reused development data. No Allen--Cahn error bars are shown because these summaries use three fitted seeds without a confirmatory uncertainty procedure. The Burgers registered intervals apply to paired contrasts, not to individual bars.}
+\label{fig:relative-gains}
+\end{figure}
+
+The registered mean contrasts conceal case-level variation. Figure~\ref{fig:paired-differences} displays the empirical distribution of paired, per-trajectory relative-$L^2$ differences on the 500-case Burgers holdout. Errors are first averaged across the three fitted seeds for each trajectory; negative values favor the PDE penalty. This is a descriptive view of the same consumed confirmation set, not an additional test or an independent estimate of training-seed uncertainty.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.78\linewidth]{figures/paired_burgers_differences.pdf}
+\caption{Empirical cumulative distributions of paired per-trajectory relative-$L^2$ differences on the locked Burgers holdout. Each trajectory's error is averaged across the three model seeds before subtraction. Negative values favor the PDE penalty; positive values favor the comparator. Colored dashed vertical lines mark the corresponding mean differences. These descriptive distributions reuse the same 500 trajectories and do not replace the registered bootstrap intervals in Table~\ref{tab:burgers-confirm}.}
+\label{fig:paired-differences}
+\end{figure}
 
 \subsection{Stress tests retain negative and mixed outcomes}
 The Burgers stress experiments reuse project trajectories and are not independent confirmation. Under sparse time labels, 10\% noise on observed future labels, and their combination, PDE regularization reduces error relative to data-only fitting, but curvature smoothing has lower error in all three registered conditions (Table~\ref{tab:stress}). The noise is applied to training targets only; these results do not test noisy inputs. The synthetic Allen--Cahn pilot using the earlier linear-coordinate model gives a small 0.839\% field-error reduction for PDE versus no penalty, while curvature smoothing is worse than no penalty. This is a descriptive development result and is not pooled with the later periodic-coordinate Allen--Cahn experiments.
 
-\TableCaption{tab:stress}{Secondary fixed-architecture stress results. Entries are three-seed means of the condition-specific primary field metric. They use different task/time definitions and must only be read within each row.}
-\begin{center}\small
+\begin{table}
+\centering\small
+\caption{Secondary fixed-architecture stress results. Entries are three-seed means of the condition-specific primary field metric. They use different task/time definitions and must only be read within each row.}
+\label{tab:stress}
 \begin{tabular}{lrrrr}
 \toprule
 Condition & Data only & PDE & Gradient & Curvature \\
@@ -167,12 +185,14 @@ Burgers, sparse and noisy & 0.648667 & 0.611887 & -- & 0.599397 \\
 Allen--Cahn, dense labels & 0.043007 & 0.042646 & -- & 0.043966 \\
 \bottomrule
 \end{tabular}
-\end{center}\par\medskip
+\end{table}
 
 An additional Burgers sample-count and spatial-subsampling study reports three-seed means in Table~\ref{tab:sample-resolution}. At 256 and 128 points, the PDE and curvature means are nearly tied. At 20, 50, and 100 training trajectories, the PDE mean is higher than the better of the two displayed smoothness means. These rows reuse the project's original fixed-ID Burgers split and use a two-snapshot finite-difference residual rather than the continuous-time JVP residual of the primary study. We treat them as descriptive negatives only: the archived summary bootstraps three seed-level aggregates and also selects the better smoothness family from test outcomes, so those intervals do not support inferential claims.
 
-\TableCaption{tab:sample-resolution}{Descriptive Burgers resolution and sample-count results. Three-seed mean relative $L^2$ errors; no inferential interval is used.}
-\begin{center}\small
+\begin{table}
+\centering\small
+\caption{Descriptive Burgers resolution and sample-count results. Three-seed mean relative $L^2$ errors; no inferential interval is used.}
+\label{tab:sample-resolution}
 \begin{tabular}{lrrrr}
 \toprule
 Setting & Data only & PDE & Gradient & Curvature \\
@@ -184,15 +204,17 @@ $n=50$, 256 points & 0.4960 & 0.4166 & 0.3873 & 0.3781 \\
 $n=100$, 256 points & 0.4230 & 0.3560 & 0.3517 & 0.3364 \\
 \bottomrule
 \end{tabular}
-\end{center}\par\medskip
+\end{table}
 
 The two resolution rows are same-resolution training and evaluation at different spatial sampling rates; they are not cross-resolution generalization tests. The finite-difference time derivative spans stored indices 100 to 150 and is sensitive to the chosen temporal spacing. Neither study tests extrapolation to a new viscosity.
 
 \subsection{On the reused Allen--Cahn pool, pointwise and interval constraints are nearly indistinguishable}
 Table~\ref{tab:allen} reports field and derivative errors for the latest paired Allen--Cahn experiment. Under dense supervision, interval and pointwise field means differ by $4.5\times10^{-7}$ in absolute relative-$L^2$ error. Under sparse supervision, the interval mean is lower by $8.3\times10^{-6}$, but only two of three seed-level comparisons favor it. No statistical equivalence test was performed, so the small observed differences do not establish equivalence. They also do not establish an interval advantage.
 
-\TableCaption{tab:allen}{Allen--Cahn development-set means over three model seeds. Lower values are better. Primary field windows differ between dense (four future times) and sparse (three omitted interior times), so dense and sparse magnitudes are not a direct treatment contrast.}
-\begin{center}\scriptsize
+\begin{table}
+\centering\scriptsize
+\caption{Allen--Cahn development-set means over three model seeds. Lower values are better. Primary field windows differ between dense (four future times) and sparse (three omitted interior times), so dense and sparse magnitudes are not a direct treatment contrast.}
+\label{tab:allen}
 \begin{tabular}{llrrr}
 \toprule
 Labels & Continuation & Field relative $L^2$ & Gradient error & Curvature error \\
@@ -208,7 +230,7 @@ Sparse & Uniform interval & \textbf{0.116313} & 0.248563 & 0.611276 \\
 Sparse & Pointwise PDE nodes & 0.116321 & 0.248583 & 0.611329 \\
 \bottomrule
 \end{tabular}
-\end{center}\par\medskip
+\end{table}
 
 Relative to data-only training, the interval and pointwise groups improve their condition-specific field means by approximately 3.18\% (dense) and 9.72\% (sparse). Both physical groups worsen mean initial-condition error by 2.26\% under dense labels and 6.76\% under sparse labels. The full-frequency curvature control has lower curvature error in the dense condition and lower gradient and curvature errors in the sparse condition, while its sparse field error is higher than the two PDE groups. No single objective dominates all metrics.
 
@@ -229,22 +251,21 @@ The Allen--Cahn experiments use synthetic trajectories and one reused developmen
 \section{Conclusion}
 Under the tested fixed-architecture protocols, PDE penalties can improve neural PDE surrogate field error relative to data-only fitting, but the measured gains do not establish a general advantage over matched smoothness regularization. A locked Burgers holdout favors curvature smoothing over the selected PDE penalty, while the PDE-versus-gradient comparison remains unresolved. On reused Allen--Cahn development data, interval and pointwise constraints have virtually identical mean field errors, with initial-time and derivative-error trade-offs. The appropriate conclusion is conditional and diagnostic; no new architecture or universally superior physical loss is demonstrated.
 
-\section*{CRediT authorship contribution statement}
-Author list and CRediT contribution roles to be completed and verified before submission.
+\printcredits
 
 \section*{Funding}
-Funding information to be completed by the author. If there was no external funding, replace this sentence with an explicit no-funding statement.
+This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors.
 
 \section*{Declaration of competing interest}
-Competing-interest declaration to be completed by the author.
+The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 \section*{Data and code availability}
-The PDEBench Burgers source data are publicly distributed through the PDEBench/DaRUS repositories (dataset DOI: 10.18419/darus-2986). The exact file hash, sample IDs, training protocols, derived metrics, and synthetic Allen--Cahn generation details are recorded in the accompanying supplement and project repository. A public repository/archival DOI for the code and derived data must be added before submission; raw checkpoints are not included in this manuscript package. The Allen--Cahn evaluation pool described here was previously consumed and is not an untouched test set.
+The PDEBench Burgers source data are available from DaRUS as the PDEBench Datasets record (version 8.0; DOI: 10.18419/darus-2986) \citep{pdebench_dataset}; the source file used here is identified by the SHA-256 recorded in the supplementary material. The code, experiment protocols, split manifest, derived metrics, plot data, and synthetic Allen--Cahn generation materials for this study have not yet been deposited in a public repository. Add the repository URL and persistent identifier before submission. The raw PDEBench file and model/optimizer checkpoints are not included. The Allen--Cahn evaluation pool described here was previously consumed and is not an untouched test set.
 
-\section*{Declaration on generative AI and AI-assisted technologies}
-The author should review the target journal's current policy and replace this text with the required disclosure, if applicable, before submission.
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this work, the author used OpenAI Codex to assist with manuscript restructuring and drafting and with preparation of a plotting script. The author reviewed and edited the material as needed and takes full responsibility for the content of the article.
 
-\bibliographystyle{cas-model2-names}
+\bibliographystyle{elsarticle-num}
 \bibliography{references}
 
 \end{document}

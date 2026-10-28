@@ -1293,3 +1293,33 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   reviewed submission drafts, not upload-final files. No trajectory/checkpoint data were copied
   into this paper package; the evidence/source map and reuse boundaries are recorded in
   `paper/jcs_submission/submission_manifest.md`.
+
+- 2026-10-28 JCS submission metadata, literature, and visualization pass: added Xiaochen Yan's
+  ORCID, Shenzhen independent-researcher affiliation, selected correspondence email, single-author
+  CRediT draft, no-funding/no-competing-interest statements, and a generative-AI disclosure for
+  author verification. Changed citations to numeric Elsevier style, updated the PINO citation to
+  its 2024 journal publication, added the DaRUS dataset record citation, and added NeurIPS 2021
+  failure-mode and SIAM 2021 gradient-pathology references to motivate matched smoothness controls,
+  plus foundational DeepONet and neural-operator literature for the opening context. The main
+  bibliography now contains 12 cited entries.
+  Converted table/figure captions and labels to standard LaTeX floats and ensured the main figure
+  is cited. Added Figure 2, an ECDF of paired per-trajectory Burgers error differences averaged
+  over the three registered model seeds (PDE is better than data-only on 93.8% of cases, better
+  than gradient smoothing on 50.2%, and better than curvature smoothing on 21.4%). This is a
+  descriptive reanalysis of saved per-sample metrics from the already consumed 500-trajectory
+  confirmation set; no model training, data generation, or model evaluation was performed. Added
+  the derived CSV and plotting script.
+- Rebuilt from `paper/jcs_submission/` with the two plotting scripts and `latexmk -pdf
+  -interaction=nonstopmode -halt-on-error -outdir=build main.tex` plus the analogous supplement
+  command. Manuscript PDF: 9 pages total (CAS highlights page plus 8 article pages); supplement:
+  4 pages. Rendered every page with `pdftoppm` and visually inspected contact sheets plus the
+  title/abstract and paired-difference figure at full resolution. No unresolved citations or
+  references remain in the final logs. The CAS `\maketitle` call still reports a 117 pt overfull
+  box, although visual inspection shows no clipped title/author text;
+  the design table has benign underfull-cell warnings. The local Perl/TeX environment emits a
+  locale warning. Release PDF SHA-256 values are in `paper/jcs_submission/submission_manifest.md`.
+- Submission remains gated on the author's full postal address/postcode, verification of CRediT,
+  AI-use and other declarations, a thesis-overlap/citation check, a short author bio, and a public
+  code/derived-material archive URL plus persistent identifier. The Allen--Cahn pool remains
+  reused development evidence; a fresh confirmation can be generated with the existing solver and
+  does not require another dataset download. No new experiment was run in this pass.
