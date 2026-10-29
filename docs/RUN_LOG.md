@@ -1372,3 +1372,14 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   the dense (`0.6293242456`) and sparse (`0.6857900441`) target scales, and verified training input
   normalization and target scale against all 24 frozen checkpoints. This preflight read no V2
   confirmation data and wrote no evaluation result. V2 trajectories had not yet been generated.
+- 2026-10-29 Allen--Cahn V2 data preparation: after committing and pushing the locked plan, ran
+  `& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_cahn_fresh_confirmation.py prepare`.
+  Generated 200 cases with IDs `320000..320199` in ten resumable chunks. QA passed again on the
+  separate `300000..300015` cases: time-refinement maximum `8.50e-8`, spatial discrepancy
+  `1.24e-13`, minimum refinement ratio `5.00`, independent DOP853 discrepancy `7.49e-8`, maximum
+  resolved residual `2.66e-7`, and constant-state error `2.51e-14`. The dataset SHA-256 is
+  `50a7375941f2577f10abff9bd70996fd576ebbbcca0c9cb33fd29d5ec15abfed`; input and solution array
+  SHA-256 values are `644528a61383c2a62279a08917c6c9849859bbd087452d93e233e5166e515608` and
+  `985d03eb28b22beb7728e7cc965e284011343ddccbbe2d895cb27544166cb519`. The prepared receipt
+  confirms no overlap with the old pool, QA IDs, or retired V1 IDs; zero of 24 models has been
+  evaluated at this point.
