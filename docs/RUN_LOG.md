@@ -1323,3 +1323,22 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   code/derived-material archive URL plus persistent identifier. The Allen--Cahn pool remains
   reused development evidence; a fresh confirmation can be generated with the existing solver and
   does not require another dataset download. No new experiment was run in this pass.
+
+- 2026-10-29 GitHub publication and Allen--Cahn fresh confirmation protocol: pushed the existing
+  `main` history to the author's private repository
+  `https://github.com/xchenio/pde-physics-vs-smoothness` (initial repository push at commit
+  `5dce493`). Before creating any new trajectories, locked the frozen-model confirmation protocol
+  in `docs/ALLEN_CAHN_FRESH_CONFIRMATION_V1.md` and
+  `results/allen_cahn_fresh_confirmation_v1/plan.json` (plan SHA-256
+  `6cef74b361f69c8c3f187ed405740e1a155431b8250514faaf76ec83563e7a9a`). The set uses 200 new
+  initial conditions, IDs `310000..310199`, and 16 separate solver-QA cases, IDs `300000..300015`;
+  both are disjoint from the reused development pool `200000..200299`. It evaluates all 24 already
+  audited checkpoints from the pointwise/interval Allen--Cahn factorial without fitting, tuning,
+  or selecting a model. Primary contrasts, bootstrap unit and multiplicity correction, metric
+  columns, data-derived diagnostic floors, and interpretation boundary were fixed in advance.
+  The script writes resumable 20-trajectory generation chunks and one atomic result per model,
+  verifies all hashes on resume, and marks the confirmation consumed before the first model is
+  scored. The plan stage was run with
+  `& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_cahn_fresh_confirmation.py plan`;
+  it verified the 24 audited model artifacts. At this log entry, no confirmation trajectories had
+  yet been generated and no model had been evaluated.
