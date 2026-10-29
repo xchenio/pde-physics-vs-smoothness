@@ -1342,3 +1342,15 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   `& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_cahn_fresh_confirmation.py plan`;
   it verified the 24 audited model artifacts. At this log entry, no confirmation trajectories had
   yet been generated and no model had been evaluated.
+- 2026-10-29 Allen--Cahn confirmation preparation: ran
+  `& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_cahn_fresh_confirmation.py prepare`.
+  The solver QA passed on the disjoint 16-case QA set: maximum relative time-refinement error
+  `8.50e-8`, maximum 256/512-grid discrepancy `1.24e-13`, minimum coarse/fine refinement ratio
+  `5.00`, independent DOP853 discrepancy `7.49e-8`, maximum resolved residual `2.66e-7`, and
+  constant-state error `2.51e-14`. Generated all 200 locked confirmation trajectories in ten
+  verified chunks. Dataset SHA-256 is
+  `5fa3d28c77716fb63ff9b0f5c056d19e603fbafdcd046fbcf08401e2824b72e5`; initial-field SHA-256 is
+  `705eacd71f9e7d2ea7be41349c4d26cb555f110df43dd56e4cba8d8ae7279d6f`, and solution SHA-256 is
+  `dc6261ed8f0e1ea428844153466790eadbfb409287357caa37402d2917f22324`. The data receipt confirms
+  disjoint IDs and all 24 models remain unevaluated. This preparation state is committed before
+  opening the confirmation results.
