@@ -21,7 +21,7 @@
 
 ## Optional scientific strengthening and upload preparation
 
-- [ ] Decide whether to add a fresh, independently generated Allen--Cahn confirmation set. This is not a stated journal format requirement, but would strengthen the second-PDE evidence; it can be generated with the existing validated solver and does not require downloading a dataset.
+- [x] Add and report a fresh, independently generated Allen--Cahn trajectory set for inference-only evaluation of the 24 frozen fits. It strengthens same-distribution case-generalization evidence, but it is not an independent training replication or second-PDE validation.
 - [ ] Consider a graphical abstract; the guide encourages it but does not make it mandatory.
 - [ ] Confirm that the figure is cited in the text and uploaded as a separate vector file, and upload `highlights.txt` as a separate editable file.
 - [ ] Rebuild both PDFs after final metadata and archive updates, inspect every page, and upload the editable LaTeX sources and required support files.

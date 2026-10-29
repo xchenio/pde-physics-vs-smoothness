@@ -1396,3 +1396,16 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   3.07%/3.07% dense and 9.30%/9.29% sparse, descriptively. Full curvature retains lower sparse
   gradient/curvature error, and both physical fits retain worse initial-time error than data-only.
   Complete results and interpretation limits: `docs/ALLEN_CAHN_FRESH_CONFIRMATION_V2_RESULTS.md`.
+- 2026-10-29 JCS manuscript synchronization: updated the abstract, highlights, evidence-status
+  table, Allen--Cahn results/discussion/limitations, supplement, checklist, and release manifest
+  to distinguish the reused development pool from the new inference-only trajectory confirmation.
+  The text states the fixed-fit bootstrap boundary and makes no equivalence, training-replication,
+  second-PDE, or distribution-shift claim. Rebuilt with `latexmk -pdf -interaction=nonstopmode
+  -halt-on-error -outdir=build main.tex` and
+  `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build supplement.tex`. Main PDF is
+  9 pages (highlights plus 8 article pages); supplement is 5 pages. Rendered all pages with
+  `pdftoppm -png -r 120` and visually reviewed contact sheets and the new results pages. Citation
+  and reference resolution is clean. Existing CAS title overfull-box and table underfull-box
+  warnings remain, with no visible clipping; the long supplement hash no longer overflows. Release
+  PDF SHA-256 values are recorded in `paper/jcs_submission/submission_manifest.md`. The repository
+  is private and the public archive URL/DOI remains a pre-submission action.

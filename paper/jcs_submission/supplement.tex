@@ -30,7 +30,7 @@ Family and source & Split and work represented & Permitted interpretation \\
 \midrule
 Burgers primary & Public PDEBench 1D Burgers, $\epsilon=0.001$; 100 train / 200 development; 500 locked holdout trajectories. Thirty development fits and 12 final models, three seeds per family. & Confirmatory only for registered fixed-grid, seen-time contrasts. The holdout is now consumed. \\
 Burgers stress & Same public source and reused project IDs; sparse/noisy labels, spatial subsampling, and 150 sample-count/resolution runs. & Secondary and exploratory; not fresh confirmation. \\
-Allen--Cahn periodic & Synthetic pool 200000--200299; 100 train / 200 development after deterministic repartition; 68 development IDs appeared in an earlier training partition. Twenty-four continuations: six new pointwise fits and 18 exact control replays. & Development-only; no independent confirmation and no untouched-trajectory claim. \\
+Allen--Cahn periodic & Synthetic pool 200000--200299; 100 train / 200 development after deterministic repartition; 68 development IDs appeared in an earlier training partition. Twenty-four continuations: six new pointwise fits and 18 exact control replays. A separate 200-case set evaluates these frozen fits. & Development comparison plus inference-only confirmation on new cases from the same distribution; no independent training replication or second-PDE claim. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -38,6 +38,8 @@ Allen--Cahn periodic & Synthetic pool 200000--200299; 100 train / 200 developmen
 The Burgers confirmation holdout was chosen only after the model family, training protocol, selection rules, and contrasts were sealed. At that time, 8,329 conservatively tracked trajectory IDs had prior project use, and the 500 holdout IDs were selected from the remaining registered pool. The holdout labels are now consumed. We do not make a claim that any remaining ID is a future untouched test set without rebuilding the registry against all subsequent project use.
 
 The public PDEBench dataset is hosted through DaRUS under DOI 10.18419/darus-2986 and is described in the benchmark paper and dataset record \citep{takamoto2022pdebench,pdebench_dataset}. The project used the 1D Burgers HDF5 file with source shape $(10000,201,1024)$ and SHA-256 \texttt{afeeed1c\allowbreak40ce01d2\allowbreak ba5e1702\allowbreak 4f66b6bf\allowbreak 95c65943\allowbreak eb0e4847\allowbreak 69e1e9a1\allowbreak 0d1cb50d}. The training and test IDs, split seed 20260922, spatial stride, temporal indices, and normalization values are preserved in the corresponding protocol JSON files. The Allen--Cahn data were generated synthetically with a Fourier spectral solver, independently checked against time refinement, spatial refinement, and a separate DOP853 solve on dedicated QA trajectories. These QA checks concern the generated reference fields and implementation, not the accuracy of the learned model.
+
+The fresh Allen--Cahn confirmation used IDs 320000--320199, distinct from the consumed development pool 200000--200299. The generated data file SHA-256 is \texttt{50a73759\allowbreak 41f2577f\allowbreak 10abff9b\allowbreak d70996fd\allowbreak 576ebbbc\allowbreak a0c9cb33\allowbreak fd29d5ec\allowbreak 15abfed}. The separate QA cases were IDs 300000--300015: maximum relative time-refinement error $8.50\times10^{-8}$, maximum 256/512-grid discrepancy $1.24\times10^{-13}$, minimum coarse/fine error ratio 5.00, independent DOP853 discrepancy $7.49\times10^{-8}$, maximum resolved residual $2.66\times10^{-7}$, and constant-state error $2.51\times10^{-14}$. These numerical checks do not validate the learned predictions against another PDE solver on the confirmation cases.
 
 \section{Primary Burgers comparison}
 The continuous-time FNO has four spectral blocks, width 16, 16 modes, and 34,209 real parameters. Its final output layer is initialized to zero. The primary training condition uses 100 training trajectories, times $0,0.1,0.25,0.5,1$, a 256-point spatial grid, and three model seeds. Each regularized model starts from a shared 1,500-update data-only warm state and receives 750 additional updates. The optimizer, minibatch stream, query-time stream, model initialization, and final checkpoint rule are paired across penalty families.
@@ -142,6 +144,48 @@ For the first 16 observed training cases in each fixed warm state, the registere
   \sum_j \alpha_j\|r_j\|_2^2 = \left\|\sum_j\alpha_jr_j\right\|_2^2 + \sum_j\alpha_j\left\|r_j-\sum_\ell\alpha_\ell r_\ell\right\|_2^2.
 \]
 The within-window residual variance is 0.0834\%--0.1119\% of the pointwise residual energy across the six warm probes. This indicates that the two objectives are close on these particular probes, but it is a known algebraic identity evaluated on warm predictions; it does not establish a causal explanation for final field errors or apply automatically to all training stages. The endpoint secant and Simpson-averaged automatic-differentiation derivative also differ numerically, so the pointwise and interval losses are not exactly the same objective.
+
+\section{Fresh-trajectory Allen--Cahn confirmation}
+The V2 confirmation evaluates the same 24 fully audited checkpoints on 200 new trajectories with IDs 320000--320199. No weights were trained, selected, recalibrated, or early-stopped on these cases. Dense primary error averages the four future times; sparse primary error averages the three unobserved interior times. The bootstrap first averages each trajectory's error over the three fixed model seeds and then resamples 200 trajectories 10,000 times. The 97.5\% intervals use a Bonferroni adjustment for the two condition-specific contrasts and are conditional on the three fitted seeds; they do not quantify variability from training a new set of seeds.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Primary field errors and fresh-set paired interval-minus-pointwise differences. Negative differences favor interval.}
+\label{tab:allen-fresh-primary}
+\begin{tabular}{lrrrr}
+\toprule
+Condition & Interval & Pointwise & Difference & 97.5\% paired interval \\
+\midrule
+Dense & 0.027689008 & 0.027688556 & $+4.5158\times10^{-7}$ & [$3.4321$, $5.5879$]$\times10^{-7}$ \\
+Sparse & 0.114505896 & 0.114514050 & $-8.1544\times10^{-6}$ & [$-8.7682$, $-7.5516$]$\times10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The relative interval-minus-pointwise differences are $+0.00163\%$ for dense and $-0.00712\%$ for sparse supervision. The paired bootstrap intervals exclude zero, but the effects are small. No equivalence margin was specified, so the intervals do not demonstrate equivalence and should not be read as a meaningful treatment advantage. Relative to data-only fitting, the interval and pointwise field means are lower by 3.07\%/3.07\% in dense and 9.30\%/9.29\% in sparse supervision; these are descriptive contrasts for the frozen fits.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Fresh-set field and structural errors, averaged over three frozen fits. Lower values are better.}
+\label{tab:allen-fresh-structure}
+\begin{tabular}{llrrrr}
+\toprule
+Labels & Arm & Field & Gradient & Curvature & Initial time \\
+\midrule
+Dense & Data only & 0.028566 & 0.108517 & 0.300265 & 0.034094 \\
+Dense & Full curvature & 0.029291 & 0.109170 & \textbf{0.279846} & 0.034856 \\
+Dense & Interval & 0.027689 & 0.104470 & 0.287756 & 0.034841 \\
+Dense & Pointwise & 0.027689 & 0.104469 & 0.287753 & 0.034841 \\
+\midrule
+Sparse & Data only & 0.126244 & 0.265855 & 0.662483 & 0.024156 \\
+Sparse & Full curvature & 0.124732 & \textbf{0.232804} & \textbf{0.523595} & 0.024957 \\
+Sparse & Interval & \textbf{0.114506} & 0.239772 & 0.597934 & 0.025680 \\
+Sparse & Pointwise & 0.114514 & 0.239792 & 0.597987 & 0.025678 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The physical arms have lower fresh-set primary field means than data-only, but both have higher initial-time error. Full curvature retains lower sparse gradient and curvature errors. No objective dominates every reported metric. This confirmation is limited to new cases from the same synthetic initial-condition distribution; it is not an independent training replication, distribution-shift test, solver-independent truth test, or second-PDE validation. A prior V1 data preparation was retired before scoring after a training-cache ID preflight check failed; its IDs were not evaluated and do not contribute here. The exact protocol correction and evidence trail are preserved in the project repository.
 
 \section{Audits, compute records, and reproducibility}
 For the latest Allen pointwise experiment, the independent audit reports all 24 records complete, all 24 query/batch stream replays, all 6 calibration replays, all 18 control tensor matches, and all final predictions recomputed on the 200 development cases. The protocol's regression suite reported 130 passing tests. These checks establish artifact consistency and implementation behavior; they are not independent replication or proof of scientific superiority.
