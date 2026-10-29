@@ -1,5 +1,29 @@
 # Current conclusions
 
+> Latest2026-10-29 allen_cahn_fresh_confirmation_v2 COMPLETE, inference-only:
+> 200 new IDs320000--320199 from the declared Allen--Cahn initial-condition family;
+> no overlap with consumed development IDs200000--200299, QA IDs300000--300015,
+> or retired unscored V1 IDs310000--310199. QA time refinement8.50e-8,
+> 256/512 spatial discrepancy1.24e-13, DOP853 discrepancy7.49e-8, resolved
+> residual max2.66e-7. All24 already audited checkpoints evaluated; zero new fits.
+> Plan5929fb27b95a881f9d6f13be14109995c9534d48a91aa9c626c046d4facc47a4;
+> dataset50a7375941f2577f10abff9bd70996fd576ebbbcca0c9cb33fd29d5ec15abfed.
+> Fresh-case dense interval-minus-pointwise field error+4.5158e-7, bootstrap
+> 97.5% CI[3.4321e-7,5.5879e-7], +0.00163%; sparse-8.1544e-6,
+> CI[-8.7682e-6,-7.5516e-6], -0.00712%. Bootstrap resamples200 trajectories
+> after averaging3 fixed seeds: conditional on these fits, not seed variability.
+> Effects are tiny, but no equivalence margin was prespecified: no equivalence
+> claim. Interval/pointwise both improve field means vsnone descriptively
+> (dense3.07%, sparse~9.3%); full curvature retains lower sparse gradient/
+> curvature errors; physical arms worsen initial-time field error vsnone.
+> This confirms frozen-fit generalization to new cases from the SAME synthetic
+> distribution only; not retraining replication, second PDE, distribution shift,
+> superiority over tuned smoothing, or architectural novelty. V1 ID block310000
+> was generated but never scored after its cache-ID preflight failed; it is
+> preserved and retired. Erratum and full results are recorded; the JCS manuscript
+> now reports this as same-distribution frozen-fit case confirmation, not training
+> replication; public repository/DOI remains a submission prerequisite.
+
 > Latest2026-10-16 allen_pointwise_control_v1 COMPLETE, development-only:
 > SAME34209-parameter periodic FNO, observations, warm/full optimizer states,
 > batch/query streams, five time nodes and750-step continuation budget; NO modules.

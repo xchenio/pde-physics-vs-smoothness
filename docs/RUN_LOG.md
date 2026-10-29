@@ -1383,3 +1383,16 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   `985d03eb28b22beb7728e7cc965e284011343ddccbbe2d895cb27544166cb519`. The prepared receipt
   confirms no overlap with the old pool, QA IDs, or retired V1 IDs; zero of 24 models has been
   evaluated at this point.
+- 2026-10-29 Allen--Cahn V2 confirmation evaluation: after committing and pushing the prepared
+  set, ran `& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_cahn_fresh_confirmation.py evaluate`
+  and `& 'D:\miniconda3\envs\pytorch\python.exe' scripts/run_allen_cahn_fresh_confirmation.py summarize`.
+  All 24 frozen checkpoints completed; no training was run. Dense
+  interval-minus-pointwise primary error is `+4.5158e-7` (97.5% paired trajectory-bootstrap
+  interval `[3.4321e-7, 5.5879e-7]`, `+0.00163%` relative to pointwise); sparse is `-8.1544e-6`
+  (interval `[-8.7682e-6, -7.5516e-6]`, `-0.00712%`). Each bootstrap averages the three fixed
+  model seeds per trajectory, resamples 200 trajectories 10,000 times, and is conditional on
+  those fitted seeds. Both differences are very small; no equivalence margin was specified, so
+  no equivalence claim is made. Versus data-only, interval/pointwise field means are lower by
+  3.07%/3.07% dense and 9.30%/9.29% sparse, descriptively. Full curvature retains lower sparse
+  gradient/curvature error, and both physical fits retain worse initial-time error than data-only.
+  Complete results and interpretation limits: `docs/ALLEN_CAHN_FRESH_CONFIRMATION_V2_RESULTS.md`.
