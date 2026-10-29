@@ -1354,3 +1354,21 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   `dc6261ed8f0e1ea428844153466790eadbfb409287357caa37402d2917f22324`. The data receipt confirms
   disjoint IDs and all 24 models remain unevaluated. This preparation state is committed before
   opening the confirmation results.
+- 2026-10-29 pre-scoring stop and protocol correction: the first V1 evaluation command stopped
+  before inference or any model-result write because its training-reference loader expected the
+  frozen 100 training IDs to be in the two original contiguous training shards. The current
+  frozen split actually draws training IDs across the entire old 300-case pool, represented by
+  all six source shards. No V1 metrics were computed, no consumption marker was written, and no
+  model-selection decision used V1 cases. Preserved the V1 plan/data/failed command trail and
+  retired IDs `310000..310199` without scoring. Added the erratum
+  `docs/ALLEN_CAHN_FRESH_CONFIRMATION_V1_ERRATUM.md`; the corrected V2 protocol will pin all six
+  shards and select only the exact frozen 100 training rows for training-derived metric floors and
+  observed-label scale checks. V2 will use new confirmation IDs `320000..320199` and be locked
+  before generating or evaluating them.
+- 2026-10-29 Allen--Cahn V2 protocol locked before generation: plan SHA-256
+  `5929fb27b95a881f9d6f13be14109995c9534d48a91aa9c626c046d4facc47a4`; confirmation IDs
+  `320000..320199`; QA IDs `300000..300015`; retired unscored V1 IDs `310000..310199`. The plan
+  binds all six source shards. Preflight extracted the exact 100 frozen training IDs, reproduced
+  the dense (`0.6293242456`) and sparse (`0.6857900441`) target scales, and verified training input
+  normalization and target scale against all 24 frozen checkpoints. This preflight read no V2
+  confirmation data and wrote no evaluation result. V2 trajectories had not yet been generated.

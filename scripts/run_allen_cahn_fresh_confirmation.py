@@ -28,16 +28,17 @@ from src.periodic_position_fno import PositionTimeFNO1d
 from src.public_benchmark import atomic_json, file_hash
 
 
-OUT = ROOT / "results/allen_cahn_fresh_confirmation_v1"
+OUT = ROOT / "results/allen_cahn_fresh_confirmation_v2"
 MODELS_ROOT = ROOT / "results/allen_pointwise_control_v1"
 CONDITIONS = ["dense", "sparse"]
 ARMS = ["none", "full", "interval_uniform", "pointwise_nodes"]
 SEEDS = [0, 1, 2]
 TIMES = np.asarray([0.0, 0.05, 0.125, 0.25, 0.5], dtype=np.float64)
 GRID = np.arange(256, dtype=np.float64) * (2.0 / 256)
-CONFIRM_IDS = list(range(310000, 310200))
+CONFIRM_IDS = list(range(320000, 320200))
 QA_IDS = list(range(300000, 300016))
 OLD_POOL = list(range(200000, 200300))
+RETIRED_UNSCORED_IDS = list(range(310000, 310200))
 CHUNK_SIZE = 20
 BATCH_SIZE = 16
 BOOTSTRAP_REPLICATES = 10000
@@ -138,14 +139,14 @@ def plan(write=True):
             parent_summary.get("completed_runs") != 24):
         raise ValueError("the full audited 24-model parent experiment is required")
 
-    if set(CONFIRM_IDS) & (set(OLD_POOL) | set(QA_IDS)):
+    if set(CONFIRM_IDS) & (set(OLD_POOL) | set(QA_IDS) | set(RETIRED_UNSCORED_IDS)):
         raise ValueError("confirmation IDs overlap a prior or solver-QA set")
-    if CONFIRM_IDS != list(range(310000, 310200)):
+    if CONFIRM_IDS != list(range(320000, 320200)):
         raise ValueError("confirmation ID range changed")
 
     source_names = [
         "scripts/run_allen_cahn_fresh_confirmation.py",
-        "docs/ALLEN_CAHN_FRESH_CONFIRMATION_V1.md",
+        "docs/ALLEN_CAHN_FRESH_CONFIRMATION_V2.md",
         "scripts/allen_cahn_data.py",
         "scripts/allen_cahn_trajectory_v1.py",
         "scripts/field_derivative_diagnostics.py",
@@ -161,15 +162,12 @@ def plan(write=True):
         parent_summary_path.relative_to(ROOT).as_posix(): file_hash(parent_summary_path),
     }
     model_entries = _model_entries(parent_plan, parent_audit)
-    training_cache_hashes = {
-        name: sha for name, sha in parent_plan["data_chunks"].items()
-        if "allen_train_" in name
-    }
-    if len(training_cache_hashes) != 2:
-        raise ValueError("expected the two old Allen--Cahn training cache chunks")
+    source_cache_hashes = dict(parent_plan["data_chunks"])
+    if len(source_cache_hashes) != 6:
+        raise ValueError("expected all six pinned Allen--Cahn source cache chunks")
 
     payload = dict(
-        version="allen_cahn_fresh_confirmation_v1",
+        version="allen_cahn_fresh_confirmation_v2",
         protocol="frozen-model independent-trajectory confirmation; evaluation only",
         prepared_date="2026-10-29",
         parent_plan_sha256=digest(parent_plan),
@@ -177,12 +175,13 @@ def plan(write=True):
         parent_summary_sha256=file_hash(parent_summary_path),
         sources=sources,
         parents=parents,
-        training_cache_hashes=training_cache_hashes,
+        source_cache_hashes=source_cache_hashes,
         models=model_entries,
         conditions=CONDITIONS,
         arms=ARMS,
         seeds=SEEDS,
         old_trajectory_ids=OLD_POOL,
+        retired_unscored_ids=RETIRED_UNSCORED_IDS,
         solver_qa_ids=QA_IDS,
         confirmation_ids=CONFIRM_IDS,
         generation=dict(
@@ -204,7 +203,7 @@ def plan(write=True):
             sparse_primary_columns=[1, 2, 3],
             common_interior_columns=[1, 2, 3],
             all_time_columns=[0, 1, 2, 3, 4],
-            derivative_diagnostic="band_errors from the existing shared numerical helper; denominator floors use the original 100 training initial fields only",
+            derivative_diagnostic="band_errors from the existing shared numerical helper; denominator floors use only the exact 100 frozen training IDs; selected target scales use only those IDs and the condition's observed training times",
             no_training=True,
             no_calibration=True,
             no_model_selection=True,
@@ -222,7 +221,7 @@ def plan(write=True):
             interpretation="no equivalence margin or success threshold; no formal equivalence claim",
         ),
         secondary_comparisons="Report all four arms and all seeds; contrasts against none and full curvature are descriptive.",
-        evidence_boundary="The confirmation trajectories are from the declared existing initial-condition distribution but have new independent IDs and are never used for model development. QA cases are disjoint. The confirmation set is consumed once evaluation begins.",
+        evidence_boundary="The confirmation trajectories are from the declared existing initial-condition distribution but have new independent IDs and are never used for model development. QA cases are disjoint. V1 IDs 310000..310199 were generated but never scored and are retired; this V2 uses distinct IDs. The confirmation set is consumed once evaluation begins.",
     )
     if write:
         locked_json(OUT / "plan.json", payload)
@@ -230,12 +229,12 @@ def plan(write=True):
 
 
 def verify_plan(p):
-    for name, expected in {**p["sources"], **p["parents"], **p["training_cache_hashes"]}.items():
+    for name, expected in {**p["sources"], **p["parents"], **p["source_cache_hashes"]}.items():
         if file_hash(ROOT / name) != expected:
             raise ValueError("sealed dependency changed: " + name)
     if digest(p) != digest(read_json(OUT / "plan.json")):
         raise ValueError("locked plan changed")
-    if set(p["confirmation_ids"]) & (set(p["old_trajectory_ids"]) | set(p["solver_qa_ids"])):
+    if set(p["confirmation_ids"]) & (set(p["old_trajectory_ids"]) | set(p["solver_qa_ids"]) | set(p["retired_unscored_ids"])):
         raise ValueError("confirmed set overlaps a prior or QA ID")
     for key, entry in p["models"].items():
         for path_key, hash_key in [("result_path", "result_sha256"),
@@ -325,7 +324,7 @@ def prepare():
         atomic_npz(dataset_path, ids=ids, x=x, y=y, times=TIMES, grid=GRID)
     prepared = dict(
         plan_sha256=digest(p),
-        data_file="results/allen_cahn_fresh_confirmation_v1/confirmation_data.npz",
+        data_file="results/allen_cahn_fresh_confirmation_v2/confirmation_data.npz",
         data_file_sha256=file_hash(dataset_path),
         data_ids=ids.tolist(),
         data_count=int(len(ids)),
@@ -350,23 +349,49 @@ def prepare():
 
 
 def load_training_initials(p):
-    """Load only the old training cache; never read its validation chunks."""
+    """Extract exactly the frozen training IDs from the six pinned source shards."""
     pointwise_plan = read_json(MODELS_ROOT / "plan.json")
     if digest(pointwise_plan) != p["parent_plan_sha256"]:
         raise ValueError("parent training plan changed")
+    legacy_plan_path = ROOT / "results/physics_stress_v1/plan.json"
+    legacy_plan_name = legacy_plan_path.relative_to(ROOT).as_posix()
+    expected_legacy_sha = pointwise_plan["parents"].get(legacy_plan_name)
+    if expected_legacy_sha is None or file_hash(legacy_plan_path) != expected_legacy_sha:
+        raise ValueError("original Allen--Cahn cache plan changed")
+    legacy_plan = read_json(legacy_plan_path)
+    legacy_task = legacy_plan["tasks"]["allen_cahn"]
+    if (legacy_task["train_ids"] != list(range(200000, 200100)) or
+            legacy_task["val_ids"] != list(range(200100, 200300)) or
+            legacy_task["times"] != TIMES.tolist()):
+        raise ValueError("original Allen--Cahn cache split changed")
+    expected_chunks = {}
+    for split, key in [("train", "train_ids"), ("val", "val_ids")]:
+        ids = legacy_task[key]
+        for start in range(0, len(ids), 50):
+            name = f"external_data/physics_stress_v1/allen_{split}_{start:04d}.pt"
+            expected_chunks[name] = ids[start:start + 50]
+    if set(expected_chunks) != set(p["source_cache_hashes"]):
+        raise ValueError("pinned source shards do not match the original six-chunk cache layout")
+    requested_ids = set(pointwise_plan["train_ids"])
     by_id = {}
-    for name, sha in p["training_cache_hashes"].items():
+    for name, sha in p["source_cache_hashes"].items():
         path = ROOT / name
         if file_hash(path) != sha:
-            raise ValueError("training cache hash changed: " + name)
+            raise ValueError("source cache hash changed: " + name)
         obj = torch.load(path, map_location="cpu", weights_only=False)
-        if obj["y"].shape[1:] != (5, 256):
-            raise ValueError("unexpected old training cache field shape")
+        if (obj["plan"] != digest(legacy_plan) or obj["ids"] != expected_chunks[name] or
+                obj["x"].shape != (len(expected_chunks[name]), 256) or
+                obj["y"].shape != (len(expected_chunks[name]), 5, 256)):
+            raise ValueError("source cache identity or field shape changed: " + name)
         for j, case_id in enumerate(obj["ids"]):
-            if case_id in by_id:
-                raise ValueError("duplicate old training cache ID")
-            by_id[int(case_id)] = (np.asarray(obj["x"][j], dtype=np.float64),
-                                   np.asarray(obj["y"][j], dtype=np.float64))
+            if case_id in requested_ids:
+                if case_id in by_id:
+                    raise ValueError("duplicate frozen training cache ID")
+                xrow = np.asarray(obj["x"][j], dtype=np.float64)
+                yrow = np.asarray(obj["y"][j], dtype=np.float64)
+                if not np.isfinite(xrow).all() or not np.isfinite(yrow).all() or not np.array_equal(xrow, yrow[0]):
+                    raise ValueError("invalid frozen training cache row")
+                by_id[int(case_id)] = (xrow, yrow)
     ids = pointwise_plan["train_ids"]
     if set(ids) != set(by_id):
         raise ValueError("old training cache IDs do not match the audited train split")
