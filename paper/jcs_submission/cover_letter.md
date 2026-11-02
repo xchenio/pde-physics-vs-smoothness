@@ -14,4 +14,4 @@ Sincerely,
 
 Xiaochen Yan
 Independent Researcher, Shenzhen, Guangdong, China
-Corresponding author: 319914780@qq.com
+Corresponding author: xiaochen-yan@qq.com

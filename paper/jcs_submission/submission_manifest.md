@@ -1,6 +1,6 @@
 # JCS submission package manifest
 
-Prepared: 2026-10-29. Author identity and selected declarations have been added from the author's instructions. The code repository is currently private; a public archival URL and persistent identifier for this study's code and derived research materials, a full postal-address check, and final author verification remain outstanding.
+Prepared: 2026-11-02. Corresponding-author email is `xiaochen-yan@qq.com`. The code repository is currently private and has no public archival URL or persistent identifier. The author still needs to verify personal declarations, the AI-use description, thesis overlap, and any address information requested by the submission system. The journal-specific online Guide for Authors could not be fetched during this review; confirm its data and upload requirements in the live submission portal.
 
 ## Package contents
 
@@ -21,12 +21,12 @@ Prepared: 2026-10-29. Author identity and selected declarations have been added 
 
 ## Checked release PDFs
 
-The manuscript PDF is 9 pages total (CAS highlights page plus 8 article pages); the supplement is 5 pages. Both were rebuilt and every page was visually reviewed after adding the fresh Allen--Cahn trajectory confirmation. The main PDF retains the existing CAS title overfull-box warning; visual review found no clipping. The design-table cells have underfull-box warnings but are readable. The supplement SHA line was made breakable; no overfull paragraph remains there.
+The manuscript PDF is 10 pages total (CAS highlights page plus 9 article pages); the supplement is 5 pages. Both were rebuilt and every page was visually reviewed after updating the correspondence email, research-data citation, AI-use description, and fresh Allen--Cahn trajectory reporting. The main PDF retains the existing CAS title overfull-box warning; visual review found no clipping. The design-table cells have underfull-box warnings but are readable. BibTeX warns that the FNO conference item has no page range; the citation currently links to the paper's arXiv record. The supplement SHA line remains breakable with no overfull paragraph.
 
 | File | SHA-256 |
 |---|---|
-| `../../output/pdf/jcs_manuscript.pdf` | `9FA977E791413CD5D0A19407B5D1753055CCC9450A15F54256DA5D36BB27C83D` |
-| `../../output/pdf/jcs_supplement.pdf` | `9534AAA6FBAA21750E4E9E49395C55BE8449AC0C5190667E1408671173D40A36` |
+| `../../output/pdf/jcs_manuscript.pdf` | `9C13B65A493141A32FEFA146ABA4204D03462058356109DA7834D221F36849DE` |
+| `../../output/pdf/jcs_supplement.pdf` | `BC9CE47A91B48F2D6405A4A0E4473CE4CC86B7A0E4C45D77C1A0A26F1F3E8F62` |
 
 ## Evidence source map
 
@@ -45,8 +45,8 @@ The manuscript PDF is 9 pages total (CAS highlights page plus 8 article pages); 
 - The Allen--Cahn development split uses the reused pool 200000--200299; 68 of its 200 development IDs were in an earlier training partition. V2 additionally evaluates the 24 frozen model fits on 200 new IDs 320000--320199 from the same declared initial-condition distribution. This is new-trajectory generalization evidence, not independent retraining, a distribution-shift test, or second-PDE validation. V1 IDs 310000--310199 were generated but retired without scoring after a cache-ID preflight failure; the erratum preserves the audit trail.
 - Fresh V2 interval-minus-pointwise differences are small (+0.00163% dense and -0.00712% sparse relative to pointwise). The trajectory-bootstrap intervals are conditional on the three frozen seeds. No equivalence margin was specified; the manuscript makes no equivalence claim.
 - The two Allen--Cahn constraints are close in the reported means, but no equivalence margin or formal equivalence test was specified. The paper makes no equivalence claim.
-- The package does not include raw PDEBench trajectory caches, model/optimizer checkpoints, or a future unused holdout. The GitHub repository is currently private; a public code and derived-artifact archive with a stable URL and persistent identifier remains to be created before submission.
+- The package does not include raw PDEBench trajectory caches, model/optimizer checkpoints, or a future unused holdout. The GitHub repository is currently private. A public code and derived-artifact archive with a stable URL and persistent identifier is strongly recommended for reproducibility; check the current JCS-specific research-data policy before treating it as mandatory. The data-availability statement now accurately reports that the repository is private.
 
-## Required before journal upload
+## Open pre-submission actions
 
-Before submission, verify the author name, ORCID, corresponding email, affiliation and postal address, CRediT roles, no-funding and no-competing-interest statements, and generative-AI disclosure. Add the code/data repository URL and persistent identifier, verify whether the 2025 thesis has overlapping material that needs citation, confirm the no-concurrent-submission declaration, and regenerate and inspect both PDFs.
+Before final submission, verify author name, ORCID, corresponding email, affiliation and any address requested, CRediT roles, funding/competing-interest statements, and the AI-use account in both Methods and the declaration. Check the JCS-specific research-data and figure/upload rules, decide whether to create a public code/derived-data archive, assess thesis overlap, confirm exclusive submission, verify reviewer suggestions if requested, and rebuild/inspect both PDFs after all changes.

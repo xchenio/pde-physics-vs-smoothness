@@ -22,7 +22,7 @@
 
 \author[1]{Xiaochen Yan}[orcid=0009-0002-9280-4323]
 \cormark[1]
-\ead{319914780@qq.com}
+\ead{xiaochen-yan@qq.com}
 \credit{Conceptualization, Data curation, Formal analysis, Investigation, Methodology, Software, Validation, Visualization, Writing -- original draft, Writing -- review and editing}
 \affiliation[1]{organization={Independent Researcher},
   city={Shenzhen}, state={Guangdong}, country={China}}
@@ -37,7 +37,7 @@ Physics-informed losses can improve neural PDE surrogates through generic regula
 \item Curvature smoothing outperforms the resolved PDE penalty on a locked Burgers holdout.
 \item Fresh Allen--Cahn trajectories preserve the near-equal interval and pointwise means.
 \item Sparse-label gains coexist with initial-time and derivative-error trade-offs.
-\item Allen--Cahn confirmation evaluates frozen fits on new trajectories from the same distribution.
+\item 200 new Allen--Cahn cases evaluate frozen models in the same distribution.
 \end{highlights}
 
 \begin{keywords}
@@ -124,6 +124,9 @@ The primary field metric is mean per-trajectory relative $L^2$ error,
 For multi-time experiments, the metric is averaged over the time points registered for that condition. Relative first- and second-spatial-derivative errors are secondary structural metrics, computed on the native output grid with spectral derivatives and a fixed denominator floor derived from clean training data. The initial-condition score is reported separately and is not included in future-time means.
 
 For the primary Burgers holdout, five pairwise contrasts were specified before target extraction: each penalty versus no penalty, PDE versus gradient, and PDE versus curvature. We use 10,000 paired trajectory bootstrap replicates with Bonferroni adjustment; the resulting intervals are conditional on the three fitted model seeds and do not quantify training-seed uncertainty. The minimum effect marker was 1\%. For the Allen--Cahn development comparison, no equivalence margin or confirmatory test was set. The later fresh-trajectory comparison uses two registered contrasts and reports Bonferroni-adjusted 97.5\% paired intervals, conditional on the same three frozen fits; no equivalence margin or training-seed inference is claimed.
+
+\subsection{Software and AI-assisted research support}
+The experiments, synthetic reference trajectories, and metric calculations were produced by the documented Python and spectral-solver programs. OpenAI Codex assisted with development and debugging of parts of the data-preparation, training/evaluation, audit, and plotting code, and with manuscript restructuring and drafting. Numerical outputs were computed by the recorded programs from the specified data and protocols rather than generated directly by a language model. The author is responsible for reviewing the software, provenance, results, references, and final manuscript.
 
 \section{Results}
 \subsection{A locked Burgers holdout shows regularization gains, not a unique PDE advantage}
@@ -278,10 +281,10 @@ This research received no specific grant from any funding agency in the public, 
 The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 \section*{Data and code availability}
-The PDEBench Burgers source data are available from DaRUS as the PDEBench Datasets record (version 8.0; DOI: 10.18419/darus-2986); the source file used here is identified by the SHA-256 recorded in the supplementary material. The code, experiment protocols, split manifest, derived metrics, and synthetic Allen--Cahn materials, including the new trajectory confirmation set, are held in the author's GitHub repository but have not yet been deposited in a public archive. Add a public repository URL and persistent identifier before submission. The raw PDEBench file and model/optimizer checkpoints are not included. All Allen--Cahn comparison cases reported here have been consumed; no future holdout is claimed.
+The PDEBench Burgers source data are available from the DaRUS PDEBench Datasets record (version 8.0; DOI: 10.18419/darus-2986)\citep{pdebench_dataset}; the source file used here is identified by the SHA-256 recorded in the supplementary material. The code, experiment protocols, split manifest, derived metrics, and synthetic Allen--Cahn materials, including the new trajectory evaluation set, are held in the author's private GitHub repository and are not publicly accessible at present. The raw PDEBench file and model/optimizer checkpoints are not included. All Allen--Cahn comparison cases reported here have been consumed; no future holdout is claimed.
 
 \section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
-During the preparation of this work, the author used OpenAI Codex to assist with manuscript restructuring and drafting and with preparation of a plotting script. The author reviewed and edited the material as needed and takes full responsibility for the content of the article.
+During the preparation of this work, the author used OpenAI Codex to assist with research-code development and debugging, data analysis and figure preparation, and manuscript restructuring and drafting. The author reviewed and edited the AI-assisted material as needed and takes full responsibility for the content of the article.
 
 \footnotesize
 \setlength{\bibsep}{0pt}

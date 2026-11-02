@@ -1409,3 +1409,21 @@ manifest before launching and the FNO job checkpoints every 25 steps.
   warnings remain, with no visible clipping; the long supplement hash no longer overflows. Release
   PDF SHA-256 values are recorded in `paper/jcs_submission/submission_manifest.md`. The repository
   is private and the public archive URL/DOI remains a pre-submission action.
+- 2026-11-02 JCS correspondence and submission-readiness pass: changed the manuscript and cover-letter
+  corresponding email to `xiaochen-yan@qq.com`, tightened the fifth highlight to fit the standard
+  85-character ceiling, and replaced draft-only language in the data-availability sections with the
+  current fact that the GitHub repository is private and has no public persistent identifier. Added
+  the DaRUS dataset record citation to the main manuscript; it had been cited only in the supplement.
+  Expanded the AI-use account to cover research-code development/debugging and analysis/figure support
+  in Methods and in the declaration. The author must still verify that account and review all outputs.
+  Rebuilt with `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex` and the
+  analogous `supplement.tex` command. Main PDF is 10 pages (CAS highlights page plus 9 article pages);
+  supplement is 5 pages. Rendered all pages with `pdftoppm -png -r 90` and reviewed contact sheets and
+  the title/abstract and disclosure pages at higher resolution. All 12 bibliography items now appear
+  in the main PDF and the dataset DOI is cited. No undefined references remain. Existing CAS title
+  overfull-box and design-table underfull-box warnings remain without visible clipping; BibTeX notes
+  that the FNO conference entry has no page range. Updated PDF hashes and the author-action checklist
+  in `paper/jcs_submission/`. The live JCS Guide for Authors link returned HTTP 403 during this pass;
+  journal-specific upload and data rules must be checked in the live portal. The package can be used
+  to create a draft submission, but author confirmations and the final guide/data-policy check remain
+  open before clicking final submit.
